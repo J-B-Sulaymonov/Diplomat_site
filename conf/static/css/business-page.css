@@ -1,0 +1,555 @@
+/*
+=========================================
+BIZNESNI BOSHQARISH - PREMIUM STYLE (FINAL)
+=========================================
+*/
+
+/* ------------------------------------------------
+   1. GLOBAL FONT SOZLAMALARI
+------------------------------------------------ */
+body {
+    font-family: 'Unbounded', sans-serif;
+}
+
+p,
+.vaw-text,
+.strategy-item-text,
+.step-desc,
+.stat-label,
+.card-text {
+    font-weight: 400;
+}
+
+/* ------------------------------------------------
+   2. HERO SECTION (BOSH QISM)
+------------------------------------------------ */
+
+
+/* MUHIM FIX: Animatsiya matnini "JARAYONI" dan "BOSHQARISH" ga o'zgartirish */
+.highlight-text-premium::before {
+    content: 'BOSHQARISH' !important;
+}
+
+/* ------------------------------------------------
+   3. PREMIUM STATISTIKA KARTALARI (FLOATING)
+------------------------------------------------ */
+.stat-card-premium {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 35px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 35px rgba(7, 0, 107, 0.05);
+    border: 1px solid rgba(7, 0, 107, 0.05);
+    height: 100%;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Ikonka qutisi */
+.stat-icon-box {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #07006b;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(7, 0, 107, 0.1);
+    transition: all 0.5s ease;
+    border: 1px solid rgba(7, 0, 107, 0.05);
+}
+
+/* Matnlar */
+.stat-value {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #07006b;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Suzish Animatsiyasi (Floating) */
+@keyframes floatVertical {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.float-anim-1 {
+    animation: floatVertical 4s ease-in-out infinite;
+}
+
+.float-anim-2 {
+    animation: floatVertical 4.5s ease-in-out infinite 0.5s;
+}
+
+.float-anim-3 {
+    animation: floatVertical 4.2s ease-in-out infinite 1s;
+}
+
+.float-anim-4 {
+    animation: floatVertical 4.8s ease-in-out infinite 0.2s;
+}
+
+/* Hover effektlari */
+.stat-card-premium:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(7, 0, 107, 0.15);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+.stat-card-premium:hover .stat-icon-box {
+    background: #07006b;
+    color: #FFC107;
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 25px rgba(7, 0, 107, 0.3);
+}
+
+.stat-card-premium:hover .stat-icon-box i {
+    transform: rotateY(-180deg);
+}
+
+.stat-card-premium:hover .stat-value {
+    color: #FFC107;
+}
+
+/* Active (Oltin) Karta */
+.stat-card-premium.active-gold {
+    border-bottom: 4px solid #FFC107;
+}
+
+.stat-card-premium.active-gold .stat-icon-box {
+    background: #fff8e1;
+    color: #ff8f00;
+}
+
+/* Shine (Yaltirash) Effekti */
+.card-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    z-index: 2;
+    transition: none;
+}
+
+.stat-card-premium:hover .card-shine {
+    left: 150%;
+    transition: left 0.7s ease;
+}
+
+/* ------------------------------------------------
+   4. VAW CARD & CONTENT (MOSLASHTIRISH)
+------------------------------------------------ */
+.vaw-image-wrapper {
+    height: 100%;
+    min-height: 400px;
+}
+
+.vaw-features li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* ------------------------------------------------
+   5. STRATEGIYA QISMI (YUMSHOQ ORQA FON)
+------------------------------------------------ */
+.strategy-section-bg {
+    position: relative;
+    /* Fon: Rasm + Yumshoqroq Gradient (0.75 opacity) */
+    background:
+        linear-gradient(135deg, rgb(35 64 128 / 20%) 0%, rgb(1 23 67 / 64%) 100%),
+        url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax */
+
+    padding: 80px 40px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(7, 0, 107, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Dekorativ nur */
+.strategy-section-bg::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.15) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.strategy-desc {
+    max-width: 750px;
+    font-size: 1.15rem;
+    position: relative;
+    z-index: 2;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* ------------------------------------------------
+   6. STRATEGIYA KARTALARI (ELITE)
+------------------------------------------------ */
+.strategy-card-elite {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 45px 30px;
+    height: 100%;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    backdrop-filter: blur(15px);
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.strategy-card-elite:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-15px);
+    border-color: rgba(255, 193, 7, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Ikonka doirasi */
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px auto;
+    font-size: 32px;
+    color: #FFC107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.05);
+    transition: all 0.5s ease;
+}
+
+.strategy-card-elite:hover .icon-circle {
+    background: #FFC107;
+    color: #07006b;
+    transform: rotateY(180deg) scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 193, 7, 0.5);
+    border-color: transparent;
+}
+
+.strategy-card-elite:hover .icon-circle i {
+    transform: rotateY(-180deg);
+}
+
+/* Karta matnlari */
+.card-title {
+    color: #ffffff;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.card-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Pastki chiziq animatsiyasi */
+.hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #FFC107, transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    box-shadow: 0 -5px 15px rgba(255, 193, 7, 0.4);
+}
+
+.strategy-card-elite:hover .hover-line {
+    transform: scaleX(1);
+}
+
+/* ------------------------------------------------
+   8. LEAD MAGNET FORM (LID MAGNIT)
+------------------------------------------------ */
+.lead-magnet-section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.lm-card {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 60px 50px;
+    box-shadow: 0 25px 60px rgba(7, 0, 107, 0.08);
+    border: 1px solid rgba(7, 0, 107, 0.05);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.lm-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    transform: translate(-30%, -30%);
+}
+
+.lm-content {
+    position: relative;
+    z-index: 2;
+}
+
+.lm-title {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: #07006b;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.lm-desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.lm-form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.lm-form-group i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFC107;
+    font-size: 1.3rem;
+    z-index: 2;
+}
+
+/* Yopishib chiquvchi form kard (rasm ustida) */
+.lm-overlap-card {
+    background: linear-gradient(145deg, #ffffff, #fdfdff);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(7, 0, 107, 0.08);
+    border: 1px solid rgba(7, 0, 107, 0.05);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+    width: 125%;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+@media (max-width: 991px) {
+    .lm-overlap-card {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.lm-input {
+    width: 100%;
+    padding: 18px 20px 18px 55px;
+    border: 2px solid rgba(7, 0, 107, 0.08);
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fbfdff;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.lm-input:focus {
+    outline: none;
+    border-color: #07006b;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(7, 0, 107, 0.1);
+}
+
+.lm-input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+.lm-btn {
+    width: 100%;
+    padding: 18px 30px;
+    background: linear-gradient(135deg, #07006b, #1a237e);
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 15px 30px rgba(7, 0, 107, 0.2);
+}
+
+.lm-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(7, 0, 107, 0.3);
+    background: #07006b;
+}
+
+.btn-vaw-primary {
+    background: linear-gradient(135deg, #07006b 0%, #1a0b9e 100%);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(7, 0, 107, 0.2);
+    border: 2px solid transparent;
+}
+
+.btn-vaw-primary:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(7, 0, 107, 0.3);
+    color: white;
+    background: linear-gradient(135deg, #1a0b9e 0%, #07006b 100%);
+}
+
+.btn-vaw-secondary {
+    background: linear-gradient(135deg, #FFC107 0%, #ff9800 100%);
+    color: #07006b;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-vaw-secondary:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(255, 152, 0, 0.4);
+    color: #07006b;
+    background: linear-gradient(135deg, #ff9800 0%, #FFC107 100%);
+}
+
+.lm-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.lm-note i {
+    color: #28a745;
+}
+
+.lm-image-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.lm-image {
+    max-width: 100%;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    transform: scale(1.05);
+}
+
+/* ------------------------------------------------
+   9. MOBIL MOSLASHUV (RESPONSIVE)
+------------------------------------------------ */
+@media (max-width: 768px) {
+    .strategy-section-bg {
+        padding: 40px 20px;
+    }
+
+    .step-card-ultra,
+    .stat-card-premium {
+        min-height: 200px;
+    }
+
+    .lm-card {
+        padding: 40px 25px;
+    }
+
+    .lm-title {
+        font-size: 1.8rem;
+    }
+
+    .lm-image-wrapper {
+        margin-top: 40px;
+    }
+
+    .lm-image {
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,444 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Qabul - Hujjatlarni topshirish | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+        <!-- Asosiy Meta Teglar -->
+        <meta name="description"
+            content="Diplomat Universityga o'qishga kirish, qabul jarayonlari, kerakli hujjatlar va yo'riqnomalar haqida batafsil ma'lumot. Biz bilan yorqin kelajagingizni quring!">
+        <meta name="keywords"
+            content="Diplomat University qabul, hujjat topshirish, o'qishga kirish, abituriyent 2025, universitet qabul komissiyasi, bakalavriat, O'zbekiston, qabul talablari">
+        <meta name="author" content="Diplomat University">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="language" content="Uzbek">
+        <meta name="theme-color" content="#07006b">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+        <meta name="generator" content="Diplomat University Engine">
+    
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://diplomat.university/admission-page.html">
+    
+        <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Qabul 2025 - Hujjatlarni topshirish | Diplomat University">
+        <meta property="og:description"
+            content="Diplomat Universityga o'qishga kirish va hujjatlarni topshirish jarayoni bo'yicha to'liq ma'lumot. Abituriyentlar uchun yo'riqnoma.">
+        <meta property="og:url" content="https://diplomat.university/admission-page.html">
+        <meta property="og:site_name" content="Diplomat University">
+        <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="Diplomat University Admission Banner">
+        <meta property="og:locale" content="uz_UZ">
+    
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@diplomat_uni">
+        <meta name="twitter:creator" content="@diplomat_uni">
+        <meta name="twitter:title" content="Qabul 2025 - Hujjatlarni topshirish | Diplomat University">
+        <meta name="twitter:description"
+            content="Diplomat Universityga o'qishga kirish va hujjatlarni topshirish jarayoni bo'yicha to'liq ma'lumot.">
+        <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta name="twitter:image:alt" content="Diplomat University Admission">
+    
+        <!-- JSON-LD (Schema.org) -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Qabul - Hujjatlarni topshirish",
+          "description": "Diplomat University qabul komissiyasi, hujjat topshirish talablari va onlayn ro'yxatdan o'tish.",
+          "url": "https://diplomat.university/admission-page.html",
+          "publisher": {
+            "@type": "EducationalOrganization",
+            "name": "Diplomat University",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg"
+            }
+          },
+          "mainEntity": {
+            "@type": "HowTo",
+            "name": "Diplomat Universityga qanday hujjat topshirish mumkin?",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "name": "Kerakli hujjatlarni yig'ish",
+                "text": "O'rta yoki o'rta-maxsus ta'lim diplomi, pasport/ID karta, fotosurat va til sertifikati (mavjud bo'lsa)."
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Onlayn ariza yuborish",
+                "text": "apply.diplomat.university sayti orqali onlayn ro'yxatdan o'ting."
+              }
+            ]
+          }
+        }
+        </script>
+{% endblock extra_head %}
+
+{% block content %}
+    <main>
+        <div class="container">
+                    <section class="admission-hero-elite" data-aos="zoom-in">
+                        <div class="page-hero-header-premium">
+                            <h1 class="title-premium">
+                                HUJJATLARNI TOPSHIRISH <br>
+                                <span class="highlight-text-premium">JARAYONI</span>
+                            </h1>
+                            <div class="premium-line-divider"></div>
+                        </div>
+                    </section>
+                </div>
+        
+                <section class="admission-body-wrapper">
+                    <div class="container">
+                        <div class="foundation-premium-accordion" data-aos="fade-up" style="margin-top: 80px;">
+                            <div class="text-center mb-5">
+                                <h2 class="title-premium-section">
+                                    <span class="text-highlight-gold">BAKALAVRIAT</span>
+                                </h2>
+                                <div class="premium-divider-icon">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star big-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+        
+                            <div class="accordion elite-accordion" id="businessAccordion">
+        
+                                <div class="accordion-item shadow-hover">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#req1" aria-expanded="true">
+                                            <div class="btn-content">
+                                                <span class="icon-box-btn"><i class="fas fa-list-check"></i></span>
+                                                <span class="btn-text">TALABLAR</span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="req1" class="accordion-collapse collapse show" data-bs-parent="#businessAccordion">
+                                        <div class="accordion-body">
+        
+                                            <div class="tree-container">
+        
+        
+                                                <div class="tree-branch-wrapper">
+                                                    <div class="tree-leaf">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-graduation-cap"></i>
+                                                            </div>
+                                                            <div class="req-content">
+                                                                <span class="req-title">O‘rta yoki o‘rta-maxsus ta'lim
+                                                                    diplomi</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="tree-leaf">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-id-card"></i></div>
+                                                            <div class="req-content">
+                                                                <span class="req-title">Shaxsni Tasdiqlovchi hujjat</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="tree-leaf">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-portrait"></i></div>
+                                                            <div class="req-content">
+                                                                <span class="req-title">Fotosurat (3x4)</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="tree-leaf has-sub-tree">
+                                                        <div class="req-card-elite lang-root-card">
+                                                            <div class="req-icon-box"><i class="fas fa-medal"></i></div>
+                                                            <div class="req-content">
+                                                                <span class="req-title">Til sertifikatlari (Imtiyoz)</span>
+                                                                <small class="text-muted">Chet tili imtihonidan ozod
+                                                                    etiladi</small>
+                                                            </div>
+                                                        </div>
+        
+                                                        <div class="sub-tree-grid">
+                                                            <div class="sub-leaf"><span>IELTS 5.5+</span></div>
+                                                            <div class="sub-leaf"><span>Multi Level B1</span></div>
+                                                            <div class="sub-leaf"><span>TOEFL iBT 42-71</span></div>
+                                                            <div class="sub-leaf"><span>iTEP B1</span></div>
+                                                            <div class="sub-leaf"><span>ESOL B1</span></div>
+                                                            <div class="sub-leaf"><span>DELF B1</span></div>
+                                                            <div class="sub-leaf"><span>Goethe B1</span></div>
+                                                            <div class="sub-leaf"><span>HSK 3</span></div>
+                                                            <div class="sub-leaf"><span>TOPIC II (Lvl 3)</span></div>
+                                                            <div class="sub-leaf"><span>TYS B2</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+        
+        
+        
+        
+                                <div class="accordion-item shadow-hover">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#req3">
+                                            <div class="btn-content">
+                                                <span class="icon-box-btn"><i class="fas fa-exchange-alt"></i></span>
+                                                <span class="btn-text">O'QISHNI KO'CHIRISH, QAYTA TIKLASH</span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="req3" class="accordion-collapse collapse" data-bs-parent="#businessAccordion">
+                                        <div class="accordion-body">
+        
+                                            <div class="tree-container">
+        
+        
+                                                <div class="tree-branch-wrapper">
+        
+                                                    <div class="tree-leaf has-sub-tree">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-random"></i></div>
+                                                            <div class="req-content">
+                                                                <span class="req-title">O'qishni ko'chirish</span>
+                                                            </div>
+                                                        </div>
+        
+                                                        <div class="sub-tree-grid" style="grid-template-columns: 1fr;">
+                                                            <div class="sub-leaf"
+                                                                style="justify-content: flex-start; text-align: left;">
+                                                                <span>O'qishni ko'chirish bo'yicha arizalar o'quv yilining
+                                                                    avgust va yanvar oylarida Universitet qabul komissiyasiga
+                                                                    taqdim etiladi.</span>
+                                                            </div>
+                                                            <div class="sub-leaf"
+                                                                style="justify-content: flex-start; text-align: left;">
+                                                                <span>O'qishni ko'chirish Oliy Ta'lim, Fan va Innovatsiya
+                                                                    Vazirligi tomonidan tasdiqlangan turdosh yo'nalishlar
+                                                                    doirasida amalga oshiriladi.</span>
+                                                            </div>
+                                                            <div class="sub-leaf"
+                                                                style="justify-content: flex-start; text-align: left;">
+                                                                <span>Talaba 1-bosqichni tugatgan bo'lishi kerak.</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="tree-leaf has-sub-tree" style="margin-top: 30px;">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-redo"></i></div>
+                                                            <div class="req-content">
+                                                                <span class="req-title">Qayta tiklash</span>
+                                                            </div>
+                                                        </div>
+        
+                                                        <div class="sub-tree-grid" style="grid-template-columns: 1fr;">
+                                                            <div class="sub-leaf"
+                                                                style="justify-content: flex-start; text-align: left;">
+                                                                <span>Qayta tiklash bo'yicha arizalar o'quv yilining avgust va
+                                                                    yanvar oylarida Universitet qabul komissiyasiga taqdim
+                                                                    etiladi.</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+        
+        
+                        <div class="foundation-premium-accordion" data-aos="fade-up" style="margin-top: 80px;">
+                            <div class="text-center mb-5">
+                                <h2 class="title-premium-section">
+                                    <span class="text-highlight-gold">MAGISTRATURA</span>
+                                </h2>
+                                <div class="premium-divider-icon">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star big-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+        
+                            <div class="accordion elite-accordion" id="businessAccordion1">
+        
+                                <div class="accordion-item shadow-hover">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#masterCombinedReq" aria-expanded="true">
+                                            <div class="btn-content">
+                                                <span class="icon-box-btn"><i class="fas fa-file-signature"></i></span>
+                                                <span class="btn-text">TALABLAR</span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="masterCombinedReq" class="accordion-collapse collapse show"
+                                        data-bs-parent="#businessAccordion1">
+                                        <div class="accordion-body">
+        
+                                            <div class="tree-container">
+        
+        
+                                                <div class="tree-branch-wrapper">
+                                                    <div class="tree-leaf">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-graduation-cap"></i>
+                                                            </div>
+                                                            <div class="req-content"><span class="req-title">Bakalavr
+                                                                    diplomi</span></div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="tree-leaf">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-id-card"></i></div>
+                                                            <div class="req-content"><span class="req-title">Shaxsni
+                                                                    tasdiqlovchi hujjat</span></div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="tree-leaf">
+                                                        <div class="req-card-elite">
+                                                            <div class="req-icon-box"><i class="fas fa-portrait"></i></div>
+                                                            <div class="req-content"><span class="req-title">Fotosurat
+                                                                    (3x4)</span></div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="tree-leaf has-sub-tree">
+                                                        <div class="req-card-elite lang-root-card">
+                                                            <div class="req-icon-box"><i class="fas fa-language"></i></div>
+                                                            <div class="req-content">
+                                                                <span class="req-title">Til sertifikatlari</span>
+                                                            </div>
+                                                        </div>
+        
+                                                        <div class="sub-tree-grid">
+                                                            <div class="sub-leaf"><span>IELTS 5.5+</span></div>
+                                                            <div class="sub-leaf"><span>Multi level B1</span></div>
+                                                            <div class="sub-leaf"><span>TOEFL iBT 42-71</span></div>
+                                                            <div class="sub-leaf"><span>iTEB B1</span></div>
+                                                            <div class="sub-leaf"><span>ESOL B1</span></div>
+                                                            <div class="sub-leaf"><span>DELF B1</span></div>
+                                                            <div class="sub-leaf"><span>Goethe B1</span></div>
+                                                            <div class="sub-leaf"><span>HSK 3</span></div>
+                                                            <div class="sub-leaf"><span>TOPIC II (Lvl 3)</span></div>
+                                                            <div class="sub-leaf"><span>TYS B2</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="accordion-item shadow-hover">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#req3_3">
+                                            <div class="btn-content">
+                                                <span class="icon-box-btn"><i class="fas fa-exchange-alt"></i></span>
+                                                <span class="btn-text">QAYTA TIKLASH </span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="req3_3" class="accordion-collapse collapse" data-bs-parent="#businessAccordion1">
+                                        <div class="accordion-body">
+        
+                                            <div class="tree-container">
+        
+        
+                                                <div class="tree-branch-wrapper">
+                                                    <div class="tree-leaf">
+                                                        <div class="req-card-elite" style="border-left: 4px solid #FFC107;">
+                                                            <div class="req-icon-box"
+                                                                style="background: #FFC107; color: #07006b;">
+                                                                <i class="fas fa-file-alt"></i>
+                                                            </div>
+                                                            <div class="req-content">
+                                                                <span class="req-title"
+                                                                    style="text-transform: none; line-height: 1.5;">
+                                                                    Qayta tiklash bo'yicha arizalar o'quv yilining avgust va
+                                                                    yanvar oylarida Universitet qabul komissiyasiga taqdim
+                                                                    etiladi.
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+        
+        
+                        <section class="apply-compact-wrap" data-aos="fade-up">
+                            <div class="container">
+                                <div class="apply-premium-bar">
+                                    <div class="apply-info-side">
+                                        <div class="apply-text-content">
+                                            <h2 class="apply-title-new">Hujjatlarni <span class="gold-gradient-text">onlayn
+                                                    topshirish</span></h2>
+                                            <p class="apply-subtitle">Universitetga kelish shart emas. Bir necha daqiqada
+                                                talabaga aylaning!</p>
+                                        </div>
+                                    </div>
+        
+                                    <div class="apply-action-side">
+                                        <a href="https://apply.diplomat.university" class="btn-premium-slim">
+                                            <span class="btn-text">ARIZA</span>
+                                            <div class="btn-icon-circle">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </div>
+                                        </a>
+        
+                                        <div class="apply-status-note">
+                                            <i class="fas fa-bolt"></i> <span>Tezkor qabul</span>
+                                        </div>
+                                    </div>
+        
+                                    <div class="bar-glow"></div>
+                                </div>
+                            </div>
+                        </section>
+        
+                        <div class="premium-main-card" data-aos="fade-up" style="margin-top: 50px; margin-bottom: 50px;">
+                            <h2 class="title-kanit-main text-center">VIDEO KO'RSATMALAR</h2>
+                            <div class="divider-gold-center"></div>
+                            <div class="video-container-elite mt-5">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/vyG39mepTdI" title="Guide"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </section>
+    </main>
+{% endblock content %}

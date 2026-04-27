@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Ko'p so'raladigan savollar (FAQ) | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/faq.css' %}">
+
+    <!-- SEO -->
+        <meta name="description" content="Diplomat University haqida ko'p so'raladigan savollar va javoblar: qabul, kontrakt, o'quv jarayoni, stipendiya, chegirmalar va boshqa muhim ma'lumotlar.">
+        <meta name="keywords" content="FAQ, Diplomat University savollar, qabul savollari, kontrakt narxi, chegirmalar, ta'lim krediti, magistratura, bakalavriat">
+        <meta name="author" content="Diplomat University">
+        <meta name="robots" content="index, follow">
+        <meta name="theme-color" content="#07006b">
+        <link rel="canonical" href="https://diplomat.university/faq.html">
+    
+        <!-- Open Graph -->
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Ko'p so'raladigan savollar | Diplomat University">
+        <meta property="og:description" content="Qabul, kontrakt, o'quv jarayoni va boshqa yo'nalishlardagi eng ko'p berilgan savollar va tezkor javoblar.">
+        <meta property="og:url" content="https://diplomat.university/faq.html">
+        <meta property="og:site_name" content="Diplomat University">
+        <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta property="og:locale" content="uz_UZ">
+    
+        <!-- Schema.org FAQ structured data -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Diplomat Universityga qabul qachon boshlanadi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bakalavriat va magistratura yo'nalishlariga qabul har yili iyul-avgust oylarida boshlanadi. Online ariza topshirish apply.diplomat.university saytida doimo ochoq."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Kontrakt to'lovini qismlarga bo'lib to'lash mumkinmi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ha, kontrakt to'plami 4 ta bosqichda to'lanishi mumkin: 25%, 50%, 75% va 100%."
+              }
+            }
+          ]
+        }
+        </script>
+{% endblock extra_head %}
+
+{% block content %}
+    <main>
+        <!-- HERO -->
+                <div class="container">
+                    <section class="admission-hero-elite faq-hero" data-aos="zoom-in">
+                        <div class="page-hero-header-premium">
+                            <h1 class="title-premium">
+                                KO'P SO'RALADIGAN <br>
+                                <span class="highlight-text-premium faq-anim">SAVOLLAR</span>
+                            </h1>
+                            <div class="premium-line-divider"></div>
+                        </div>
+                    </section>
+                </div>
+        
+                <!-- BODY -->
+                <section class="admission-body-wrapper" style="padding-top: 60px; padding-bottom: 80px;">
+                    <div class="container">
+        
+                        <!-- SEARCH -->
+                        <div class="faq-search-wrapper" data-aos="fade-up">
+                            <input type="text" class="faq-search-input" id="faqSearch" placeholder="Savol qidiring...">
+                            <i class="fas fa-search faq-search-icon"></i>
+                        </div>
+        
+                        <!-- CATEGORY TABS -->
+                        <div class="faq-tabs-wrapper" data-aos="fade-up">
+                            <button class="faq-tab-btn active" data-cat="all">
+                                <i class="fas fa-th"></i> Barchasi
+                            </button>
+                            {% for category in categories %}
+                            <button class="faq-tab-btn" data-cat="{{ category.slug }}">
+                                <i class="{{ category.icon }}"></i> {{ category.title }}
+                            </button>
+                            {% endfor %}
+                        </div>
+        
+                        <!-- NO RESULTS -->
+                        <div class="faq-no-results" id="faqNoResults">
+                            <i class="fas fa-search-minus"></i>
+                            <p>Hech nima topilmadi. Boshqa kalit so'z bilan qidirib ko'ring.</p>
+                        </div>
+
+                        {% for category in categories %}
+                        <div class="faq-accordion-group" data-aos="fade-up" data-cat-group="{{ category.slug }}">
+                            <div class="faq-group-title">
+                                <i class="{{ category.icon }}"></i> {{ category.title|upper }}
+                            </div>
+        
+                            {% for item in category.faqs.all %}
+                            {% if item.is_active %}
+                            <div class="faq-item" data-cat="{{ category.slug }}">
+                                <button class="faq-question" onclick="toggleFaq(this)">
+                                    <div class="faq-q-icon"><i class="{% if item.icon %}{{ item.icon }}{% else %}fas fa-question-circle{% endif %}"></i></div>
+                                    <span class="faq-q-text">{{ item.question }}</span>
+                                    <i class="fas fa-chevron-down faq-chevron"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-inner">
+                                        {{ item.answer|safe }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+        
+                        <!-- CTA -->
+                        <div class="faq-cta-card" data-aos="fade-up">
+                            <div class="faq-cta-icon-wrap">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h2 class="faq-cta-title">Savolingizga javob topmadingizmi?</h2>
+                            <p class="faq-cta-desc">
+                                Mutaxassislarimiz siz bilan bog'lanishga tayyor. Kerakli ma'lumotni bevosita qabul komissiyasidan oling.
+                            </p>
+                            <div class="faq-cta-btns">
+                                <a href="tel:+998881248888" class="btn-faq-primary">
+                                    <i class="fas fa-phone-alt"></i> Qo'ng'iroq qiling
+                                </a>
+                                <a href="https://apply.diplomat.university" target="_blank" class="btn-faq-outline">
+                                    <i class="fas fa-paper-plane"></i> Ariza topshirish
+                                </a>
+                            </div>
+                        </div>
+        
+                    </div>
+                </section>
+    </main>
+{% endblock content %}
+
+{% block extra_js %}
+    <script>
+    /* ── FAQ ACCORDION ── */
+            function toggleFaq(btn) {
+                const item = btn.closest('.faq-item');
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('open');
+    
+                // Close all
+                document.querySelectorAll('.faq-item.open').forEach(el => {
+                    el.classList.remove('open');
+                    el.querySelector('.faq-answer').style.maxHeight = '0';
+                });
+    
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            }
+    
+            /* ── CATEGORY TABS ── */
+            document.querySelectorAll('.faq-tab-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.faq-tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+    
+                    const cat = this.dataset.cat;
+    
+                    document.querySelectorAll('.faq-accordion-group').forEach(group => {
+                        if (cat === 'all') {
+                            group.style.display = '';
+                        } else {
+                            group.style.display = (group.dataset.catGroup === cat) ? '' : 'none';
+                        }
+                    });
+    
+                    // Reset search
+                    document.getElementById('faqSearch').value = '';
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('faq-hidden'));
+                    document.getElementById('faqNoResults').style.display = 'none';
+                });
+            });
+    
+            /* ── SEARCH ── */
+            document.getElementById('faqSearch').addEventListener('input', function () {
+                const query = this.value.toLowerCase().trim();
+    
+                // Show all groups
+                document.querySelectorAll('.faq-accordion-group').forEach(g => g.style.display = '');
+                document.querySelectorAll('.faq-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector('[data-cat="all"]').classList.add('active');
+    
+                let anyVisible = false;
+    
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    const text = item.innerText.toLowerCase();
+                    if (!query || text.includes(query)) {
+                        item.classList.remove('faq-hidden');
+                        anyVisible = true;
+                    } else {
+                        item.classList.add('faq-hidden');
+                        // Close if open
+                        item.classList.remove('open');
+                        const ans = item.querySelector('.faq-answer');
+                        if (ans) ans.style.maxHeight = '0';
+                    }
+                });
+    
+                // Hide empty groups
+                document.querySelectorAll('.faq-accordion-group').forEach(group => {
+                    const visible = Array.from(group.querySelectorAll('.faq-item')).some(i => !i.classList.contains('faq-hidden'));
+                    group.style.display = visible ? '' : 'none';
+                });
+    
+                document.getElementById('faqNoResults').style.display = anyVisible ? 'none' : 'block';
+            });
+        </script>
+{% endblock extra_js %}

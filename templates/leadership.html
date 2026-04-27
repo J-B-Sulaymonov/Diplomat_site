@@ -1,0 +1,471 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Jamoamiz va Rahbariyat | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/leadership.css' %}?v=3">
+    <link rel="stylesheet" href="{% static 'css/department-details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/department-details.css' %}">
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+        <!-- Asosiy Meta Teglar -->
+        <meta name="description"
+            content="Diplomat Universityning kuchli akademik jamoasi, tajribali kafedra mudirlari, professor-o'qituvchilari hamda universitet rahbariyati bilan tanishing.">
+        <meta name="keywords"
+            content="Universitet jamoasi, rahbariyat, rektor, prorektor, professorlar, akademik jamoa, o'qituvchilar, kafedra mudirlari, bo'lim boshliqlari">
+        <meta name="author" content="Diplomat University">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="language" content="Uzbek">
+        <meta name="theme-color" content="#07006b">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+        <meta name="generator" content="Diplomat University Engine">
+    
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://diplomat.university/leadership.html">
+    
+        <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+        <meta property="og:type" content="profile">
+        <meta property="og:title" content="Jamoamiz va Rahbariyat | Diplomat University">
+        <meta property="og:description"
+            content="Diplomat Universityning kuchli akademik jamoasi va rahbariyati — universitet rivojini ta'minlovchi professional jamoa.">
+        <meta property="og:url" content="https://diplomat.university/leadership.html">
+        <meta property="og:site_name" content="Diplomat University">
+        <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="Leadership Team">
+        <meta property="og:locale" content="uz_UZ">
+    
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@diplomat_uni">
+        <meta name="twitter:creator" content="@diplomat_uni">
+        <meta name="twitter:title" content="Jamoamiz va Rahbariyat | Diplomat University">
+        <meta name="twitter:description"
+            content="Diplomat Universityning kuchli akademik jamoasi, tajribali professor-o'qituvchilari hamda universitet rahbariyati bilan tanishing.">
+        <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta name="twitter:image:alt" content="Diplomat University Jamoasi">
+    
+        <!-- JSON-LD (Schema.org) for AboutPage / Organization -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "Jamoamiz va Rahbariyat",
+          "description": "Diplomat Universityning kuchli akademik jamoasi va rahbariyati to'g'risida ma'lumot.",
+          "url": "https://diplomat.university/leadership.html",
+          "mainEntity": {
+            "@type": "EducationalOrganization",
+            "name": "Diplomat University",
+            "url": "https://diplomat.university/"
+          }
+        }
+        </script>
+{% endblock extra_head %}
+
+{% block content %}
+    <main>
+        <div class="container">
+                    <section class="admission-hero-elite leadership-hero" data-aos="zoom-in">
+                        <div class="page-hero-header-premium">
+                            <h1 class="title-premium">
+                                <span class="highlight-text-premium">RAHBARIYAT</span>
+                            </h1>
+                            <div class="premium-line-divider"></div>
+                        </div>
+                    </section>
+                </div>
+        
+                <section class="admission-body-wrapper">
+                    <div class="container">
+                        <div class="row">
+        
+                            <div class="col-lg-3 mb-5" data-aos="fade-right">
+                                <div class="sidebar-modern-sticky">
+                                    <div class="sidebar-header">
+                                        <i class="fas fa-sitemap"></i> TASHKILOT
+                                    </div>
+                                    <ul class="sidebar-list">
+                                        <li><a href="#" class="active" data-tab="tab-rahbariyat"><i class="fas fa-user-tie"></i>
+                                                Rahbariyat</a></li>
+                                        <li><a href="#" data-tab="tab-kadrlar"><i class="fas fa-chalkboard-teacher"></i>
+                                                Kafedralar</a></li>
+                                        <li><a href="#" data-tab="tab-bolimlar"><i class="fas fa-building"></i> Bo'limlar</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-9">
+        
+                                <!-- ========== TAB 1: RAHBARIYAT ========== -->
+                                <div id="tab-rahbariyat" class="tab-content-section active-tab">
+        
+                                    {% for leader in leaders %}
+                                    <div class="leader-card-geometric {% if not forloop.first %}mt-5{% endif %}" data-aos="fade-up" {% if not forloop.first %}data-aos-delay="{{ forloop.counter0|add:'0' }}00"{% endif %}>
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-5">
+                                                <div class="geo-image-container">
+                                                    <div class="geo-frame"></div>
+                                                    <div class="geo-image-mask">
+                                                        <img src="{{ leader.image.url }}" alt="{{ leader.full_name }}">
+                                                    </div>
+                                                    <div class="geo-badge">
+                                                        {% if leader.badge_icon %}<i class="{{ leader.badge_icon }}"></i>{% endif %}{{ leader.position }}
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-lg-7">
+                                                <div class="geo-content">
+                                                    <h2 class="geo-name">{{ leader.full_name }}</h2>
+                                                    <p class="geo-degree">{% if leader.degree %}{{ leader.degree }}{% endif %}</p>
+        
+                                                    <div class="geo-divider"></div>
+        
+                                                    <div class="geo-details">
+                                                        {% if leader.reception_time %}
+                                                        <div class="detail-item">
+                                                            <div class="icon-box"><i class="fa-regular fa-clock"></i></div>
+                                                            <div class="text-box">
+                                                                <span>Qabul vaqti:</span>
+                                                                <strong>{{ leader.reception_time }}</strong>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if leader.phone %}
+                                                        <div class="detail-item">
+                                                            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                                                            <div class="text-box">
+                                                                <span>Telefon:</span>
+                                                                <strong>{{ leader.phone }}</strong>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if leader.email %}
+                                                        <div class="detail-item">
+                                                            <div class="icon-box"><i class="fa-regular fa-envelope"></i></div>
+                                                            <div class="text-box">
+                                                                <span>E-mail:</span>
+                                                                <strong>{{ leader.email }}</strong>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+        
+                                                    <div class="geo-actions">
+                                                        <a href="#" class="btn-geo-main" data-bs-toggle="modal"
+                                                            data-bs-target="#modalLeader{{ leader.id }}">Biografiya</a>
+                                                        <div class="geo-socials">
+                                                            {% if leader.telegram_url %}<a href="{{ leader.telegram_url }}"><i class="fab fa-telegram-plane"></i></a>{% endif %}
+                                                            {% if leader.linkedin_url %}<a href="{{ leader.linkedin_url }}"><i class="fab fa-linkedin-in"></i></a>{% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+        
+                                </div><!-- /tab-rahbariyat -->
+        
+                                <!-- ========== TAB 2: KAFEDRALAR ========== -->
+                                <div id="tab-kadrlar" class="tab-content-section">
+                                    <div class="kadrlar-section-header" data-aos="fade-up">
+                                        <h2>Kafedralar</h2>
+                                        <div class="accent-line"></div>
+                                    </div>
+        
+                                    <div class="staff-3d-list">
+        
+                                {% for dept in kafedralar %}
+                                        <!-- Kafedra -->
+                                        <div class="staff-card-3d" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:forloop.counter0 }}00">
+                                            <div class="card-3d-inner">
+                                                <div class="card-3d-glow"></div>
+                                                <div class="card-3d-particles">
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                </div>
+                                                <div class="card-3d-avatar-side">
+                                                    <div class="avatar-3d-frame">
+                                                        <div class="avatar-3d-ring"></div>
+                                                        <div class="avatar-3d-ring avatar-3d-ring-2"></div>
+                                                        {% if dept.head_image %}
+                                                        <img src="{{ dept.head_image.url }}" alt="{{ dept.head_name }}">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="avatar-3d-status" style="text-align:center">
+                                                        {{ dept.head_name }}
+                                                        <br>{{ dept.head_position }}
+                                                    </div>
+                                                </div>
+                                                <div class="card-3d-info-side">
+                                                    <h3 class="card-3d-name">{{ dept.name }}</h3>
+                                                    <div class="card-3d-divider"></div>
+        
+                                                    <div class="staff-bio-container">
+                                                        <div class="staff-bio-text">
+                                                            {{ dept.description|safe }}
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="card-3d-actions">
+                                                        <button class="btn-3d-primary border-0" data-bs-toggle="collapse"
+                                                            data-bs-target="#staffKafedra{{ dept.id }}"><i class="fas fa-users"></i>
+                                                            {% trans "Batafsil" %}</button>
+                                                        <div class="card-3d-socials">
+                                                            {% if dept.phone %}<a href="tel:{{ dept.phone }}"><i class="fas fa-phone-alt"></i></a>{% endif %}
+                                                            {% if dept.email %}<a href="mailto:{{ dept.email }}"><i class="fas fa-envelope"></i></a>{% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <!-- Xodimlar ruyxati - Collapse -->
+                                        <div class="collapse mt-4" id="staffKafedra{{ dept.id }}">
+                                            <div class="row" id="dept-employees-grid-{{ dept.id }}">
+                                                {% for employee in dept.employees.all %}
+                                                <div class="col-12 employee-replica-wrapper" data-aos="fade-up"
+                                                    data-aos-delay="{{ forloop.counter0 }}00">
+                                                    <div class="dept-card-3d">
+                                                        <div class="dept-3d-inner">
+                                                            <div class="dept-3d-glow"></div>
+                                                            <div class="dept-3d-particles">
+                                                                <span></span><span></span><span></span><span></span><span></span>
+                                                            </div>
+                                                            <div class="dept-3d-icon-side">
+                                                                <div class="dept-3d-icon-frame">
+                                                                    <div class="dept-3d-ring"></div>
+                                                                    <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                                    {% if employee.image %}
+                                                                    <img src="{{ employee.image.url }}" alt="{{ employee.full_name }}" class="dept-3d-avatar-img">
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="dept-3d-info-side">
+                                                                <h3 class="dept-3d-name">{{ employee.full_name }}</h3>
+                                                                <p class="dept-3d-subtitle">{{ employee.position }}</p>
+                                                                <div class="dept-3d-divider"></div>
+        
+                                                                <div class="staff-bio-container">
+                                                                    <div class="staff-bio-text">
+                                                                        {{ employee.bio|safe }}
+                                                                    </div>
+                                                                </div>
+        
+                                                                <div class="card-3d-actions mt-3">
+                                                                    <div class="card-3d-socials ms-0">
+                                                                        {% if employee.phone %}<a href="tel:{{ employee.phone }}"><i class="fas fa-phone-alt"></i></a>{% endif %}
+                                                                        {% if employee.email %}<a href="mailto:{{ employee.email }}"><i class="fas fa-envelope"></i></a>{% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+        
+                                    </div>
+                                </div><!-- /tab-kadrlar -->
+        
+                                <!-- ========== TAB 3: BO'LIMLAR ========== -->
+                                <div id="tab-bolimlar" class="tab-content-section">
+                                    <div class="bolimlar-section-header" data-aos="fade-up">
+                                        <h2>Bo'limlar</h2>
+                                        <div class="accent-line"></div>
+                                    </div>
+        
+                                    <div class="dept-3d-list">
+        
+                                        {% for bolim in bolimlar %}
+                                        <!-- Bo'lim -->
+                                        <div class="dept-card-3d" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                                            <div class="dept-3d-inner">
+                                                <div class="dept-3d-glow"></div>
+                                                <div class="dept-3d-particles">
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                </div>
+                                                <div class="dept-3d-icon-side">
+                                                    <div class="dept-3d-icon-frame">
+                                                        <div class="dept-3d-ring"></div>
+                                                        <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                        {% if bolim.head_image %}
+                                                        <img src="{{ bolim.head_image.url }}" alt="{{ bolim.head_name }}"
+                                                            class="dept-3d-avatar-img">
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="dept-3d-info-side">
+                                                    <h3 class="dept-3d-name">{{ bolim.head_name }}</h3>
+                                                    <p class="dept-3d-subtitle">{{ bolim.head_position }}</p>
+                                                    <div class="dept-3d-divider"></div>
+                                                    <div class="staff-bio-container">
+                                                        <div class="staff-bio-text">
+                                                            {{ bolim.description|safe }}
+                                                        </div>
+                                                    </div>
+                                                    {% if bolim.phone or bolim.email %}
+                                                    <div class="card-3d-actions mt-3">
+                                                        <div class="card-3d-socials ms-0">
+                                                            {% if bolim.phone %}<a href="tel:{{ bolim.phone }}"><i class="fas fa-phone-alt"></i></a>{% endif %}
+                                                            {% if bolim.email %}<a href="mailto:{{ bolim.email }}"><i class="fas fa-envelope"></i></a>{% endif %}
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+        
+                                    </div>
+                                </div><!-- /tab-bolimlar -->
+        
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    </main>
+{% endblock content %}
+
+{% block extra_js %}
+    {% for leader in leaders %}
+    <div class="modal fade modal-premium" id="modalLeader{{ leader.id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-xl-custom modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-header-geo">
+                    <h5 class="modal-title">RAHBARIYAT</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body-premium">
+                    <div class="row gy-4">
+                        <div class="col-lg-4">
+                            <div class="modal-bio-img-container">
+                                <div class="modal-bio-img-wrapper">
+                                    <div class="modal-bio-img-frame"></div>
+                                    <img src="{{ leader.image.url }}" alt="{{ leader.full_name }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <span class="bio-status">{{ leader.position }}</span>
+                            <h2 class="bio-name-title">{{ leader.full_name }}</h2>
+
+                            {% if leader.bio_intro %}
+                            <div class="bio-intro-card">
+                                <p class="m-0">{{ leader.bio_intro }}</p>
+                            </div>
+                            {% endif %}
+
+                            {% if leader.bio_degree_text %}
+                            <h6 class="bio-section-title"><i class="fas fa-graduation-cap"></i> ILMIY DARAJA</h6>
+                            <p>{{ leader.bio_degree_text | safe }}</p>
+                            {% endif %}
+
+                            {% if leader.bio_research_text %}
+                            <h6 class="bio-section-title"><i class="fas fa-book"></i> ILMIY FAOLIYAT</h6>
+                            <p>{{ leader.bio_research_text | safe }}</p>
+                            {% endif %}
+
+                            {% if leader.bio_international_text %}
+                            <h6 class="bio-section-title"><i class="fas fa-globe"></i> XALQARO TAJRIBA</h6>
+                            <p>{{ leader.bio_international_text | safe }}</p>
+                            {% endif %}
+
+                            {% if leader.experiences.all %}
+                            <h6 class="bio-section-title"><i class="fas fa-briefcase"></i> MEHNAT FAOLIYATI</h6>
+                            <div class="experience-timeline">
+                                {% for exp in leader.experiences.all %}
+                                <div class="experience-item">
+                                    <span class="experience-date">{{ exp.date_range }}</span>
+                                    <p class="experience-text">{{ exp.description }}</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+        <!-- KAFEDRA MUDIRLARI MODALS -->
+    
+        <link rel="stylesheet" href="css/department-details.css">
+    <script>
+            // ========== TAB SWITCHING ==========
+            document.addEventListener('DOMContentLoaded', function () {
+                const sidebarLinks = document.querySelectorAll('.sidebar-list a[data-tab]');
+                const tabSections = document.querySelectorAll('.tab-content-section');
+    
+                // Saqlangan tabni tekshirish
+                const savedTabId = localStorage.getItem('activeLeadershipTab');
+                if (savedTabId) {
+                    const targetLink = document.querySelector('.sidebar-list a[data-tab="' + savedTabId + '"]');
+                    if (targetLink) {
+                        // Activate the saved tab
+                        sidebarLinks.forEach(function (l) { l.classList.remove('active'); });
+                        targetLink.classList.add('active');
+                        tabSections.forEach(function (tab) { tab.classList.remove('active-tab'); });
+                        const targetTab = document.getElementById(savedTabId);
+                        if (targetTab) {
+                            targetTab.classList.add('active-tab');
+                        }
+                    }
+                }
+
+                sidebarLinks.forEach(function (link) {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetTabId = this.getAttribute('data-tab');
+    
+                        // Tabni localStorage'ga saqlash
+                        localStorage.setItem('activeLeadershipTab', targetTabId);
+
+                        // Remove active from all links
+                        sidebarLinks.forEach(function (l) { l.classList.remove('active'); });
+                        // Add active to clicked link
+                        this.classList.add('active');
+    
+                        // Hide all tabs
+                        tabSections.forEach(function (tab) {
+                            tab.classList.remove('active-tab');
+                        });
+    
+                        // Show target tab
+                        const targetTab = document.getElementById(targetTabId);
+                        if (targetTab) {
+                            targetTab.classList.add('active-tab');
+                            // Re-init AOS for newly visible elements
+                            setTimeout(function () { AOS.refresh(); }, 100);
+                        }
+                    });
+                });
+            });
+    
+            // ========== DEPARTMENT ACCORDION ==========
+            function toggleDept(header) {
+                const card = header.closest('.dept-card-premium');
+                const isActive = card.classList.contains('active-dept');
+    
+                // Close all departments
+                document.querySelectorAll('.dept-card-premium').forEach(function (c) {
+                    c.classList.remove('active-dept');
+                });
+    
+                // Toggle clicked department
+                if (!isActive) {
+                    card.classList.add('active-dept');
+                }
+            }
+        </script>
+{% endblock extra_js %}

@@ -1,0 +1,176 @@
+/*
+=========================================
+NEGA AYNAN DIPLOMAT? - ULTRA PREMIUM STYLE
+(why-team.css)
+=========================================
+*/
+
+/* 1. SAHIFA FON VA UMUMIY SOZLAMALAR */
+body {
+    background-color: #f8faff;
+}
+
+/* 2. HERO SECTION */
+.why-hero-bg {
+    background: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070') no-repeat center center / cover !important;
+}
+
+/* FIX: Animatsiya matnini to'g'irlash */
+.highlight-text-premium::before {
+    content: 'DIPLOMAT?' !important;
+}
+
+/* 3. FEATURE CARDS (ULTRA PREMIUM) */
+.features-grid-wrapper {
+    padding: 20px 0;
+}
+
+.feature-card-elite {
+    background: #ffffff;
+    border-bottom: 6px solid #FFC107;
+    border-radius: 20px;
+    padding: 60px 30px 40px;
+    position: relative;
+    margin-top: 50px;
+    background: linear-gradient(165deg, #ffffff 60%, #fcf7e8 100%);
+    box-shadow: 0 15px 40px rgba(7, 0, 107, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+
+    /* --- MUHIM O'ZGARISH: --- */
+    /* overflow: hidden;  <-- BU QATORNI O'CHIRDIK YOKI VISIBLE QILDIK */
+    overflow: visible !important;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Hover effekti - Karta ko'tariladi va "yonadi" */
+.feature-card-elite:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 70px rgba(7, 0, 107, 0.15);
+    background: #ffffff;
+    border-bottom-color: #07006b;
+    /* Hoverda chiziq ko'k rangga o'tadi (effekt uchun) */
+}
+
+/* Ikonka (Suzib yuruvchi va aylanuvchi) */
+.feature-icon-box {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #07006b;
+    /* Ikonka atrofida oltin nur */
+    box-shadow: 0 10px 30px rgba(7, 0, 107, 0.1), 0 0 0 5px rgba(255, 193, 7, 0.2);
+    transition: all 0.5s ease;
+    z-index: 3;
+}
+
+.feature-card-elite:hover .feature-icon-box {
+    background: #07006b;
+    color: #FFC107;
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 20px 40px rgba(7, 0, 107, 0.3), 0 0 0 0 rgba(255, 193, 7, 0);
+}
+
+.feature-card-elite:hover .feature-icon-box i {
+    animation: bounceIcon 0.6s ease;
+}
+
+@keyframes bounceIcon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* Watermark (Orqa fondagi katta shaffof raqam) */
+.watermark-number {
+    position: absolute;
+
+    /* --- MUHIM O'ZGARISH: --- */
+    /* Oldin tashqarida edi (-20px), endi ichkariga olamiz */
+    bottom: 5px;
+    right: 15px;
+
+    font-family: 'Unbounded', sans-serif;
+    font-size: 6rem;
+    /* Biroz kichraytirdik, sig'ishi uchun */
+    font-weight: 900;
+    color: rgba(7, 0, 107, 0.04);
+    /* Sal ko'rinadiganroq qildik */
+    line-height: 1;
+    z-index: 0;
+    transition: all 0.5s ease;
+    user-select: none;
+    pointer-events: none;
+    /* Sichqoncha xalaqit bermasligi uchun */
+}
+
+.feature-card-elite:hover .watermark-number {
+    color: rgba(255, 193, 7, 0.1);
+    /* Hoverda xira sariq */
+    transform: translateX(-10px) translateY(-10px) scale(1.1);
+}
+
+/* Karta ichidagi matnlar */
+.f-card-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #07006b;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+}
+
+.f-card-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* Dekorativ chiziqcha */
+.f-divider {
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, #FFC107, #ffdb58);
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+    transition: width 0.4s;
+    position: relative;
+    z-index: 2;
+}
+
+.feature-card-elite:hover .f-divider {
+    width: 100px;
+    background: #07006b;
+}
+
+/* Video Wrapper */
+.video-section-wrapper {
+    margin-top: 50px;
+}

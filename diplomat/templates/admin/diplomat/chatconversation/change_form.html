@@ -1,0 +1,631 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* ============================================ */
+    /* TELEGRAM-STYLE ADMIN CHAT - SENIOR UI/UX     */
+    /* ============================================ */
+
+    .chat-admin-container {
+        display: flex;
+        height: calc(100vh - 57px);
+        background: #efeae2;
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: none;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* --- LEFT PANEL: User info --- */
+    .chat-user-panel {
+        width: 320px;
+        background: #ffffff;
+        border-right: 1px solid #e8e8e8;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-user-header {
+        padding: 24px 20px;
+        background: linear-gradient(135deg, #075e54, #128c7e);
+        border-bottom: none;
+    }
+
+    .chat-user-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: #fff;
+        font-weight: 700;
+        margin: 0 auto 12px;
+        text-transform: uppercase;
+    }
+
+    .chat-user-name {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+
+    .chat-user-status {
+        color: #5eb5f7;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .chat-user-details {
+        padding: 16px 20px;
+        flex-grow: 1;
+        overflow-y: auto;
+        background: #fff;
+    }
+
+    .chat-detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .chat-detail-item i {
+        color: #075e54;
+        font-size: 16px;
+        margin-top: 2px;
+        width: 20px;
+        text-align: center;
+    }
+
+    .chat-detail-label {
+        color: #999;
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+
+    .chat-detail-value {
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .chat-detail-value a {
+        color: #075e54;
+        text-decoration: none;
+    }
+
+    /* --- RIGHT PANEL: Messages --- */
+    .chat-messages-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: #efeae2;
+    }
+
+    .chat-messages-header {
+        padding: 14px 24px;
+        background: #075e54;
+        border-bottom: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .chat-messages-header h3 {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .chat-msg-count {
+        background: rgba(255,255,255,0.2);
+        color: #fff;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    /* Messages area */
+    .chat-messages-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background-color: #efeae2;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="p" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.8" fill="%23d6cfc5" opacity="0.4"/></pattern></defs><rect fill="url(%23p)" width="200" height="200"/></svg>');
+    }
+
+    .chat-msg {
+        max-width: 70%;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+        position: relative;
+        word-wrap: break-word;
+    }
+
+    .chat-msg.user-msg {
+        align-self: flex-start;
+        background: #ffffff;
+        color: #333;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .chat-msg.admin-msg {
+        align-self: flex-end;
+        background: #dcf8c6;
+        color: #333;
+        border-bottom-right-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .chat-msg-time {
+        display: block;
+        font-size: 11px;
+        color: #999;
+        margin-top: 4px;
+        text-align: right;
+    }
+
+    .chat-msg.admin-msg .chat-msg-time {
+        color: #7cb342;
+    }
+
+    .chat-msg-read {
+        color: #4fc3f7;
+        margin-left: 4px;
+        font-size: 11px;
+    }
+
+    /* Date separator */
+    .chat-date-sep {
+        text-align: center;
+        margin: 12px 0;
+    }
+
+    .chat-date-sep span {
+        background: #d5efe3;
+        color: #555;
+        padding: 4px 14px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    /* --- REPLY AREA --- */
+    .chat-reply-area {
+        padding: 12px 20px;
+        background: #f0f0f0;
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+    }
+
+    .chat-reply-input {
+        flex: 1;
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 20px;
+        padding: 12px 18px;
+        color: #333;
+        font-size: 14px;
+        resize: none;
+        outline: none;
+        font-family: inherit;
+        line-height: 1.4;
+    }
+
+    .chat-reply-input::placeholder {
+        color: #999;
+    }
+
+    .chat-reply-input:focus {
+        background: #fff;
+        border-color: #128c7e;
+    }
+
+    .chat-send-reply {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        background: #075e54;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        flex-shrink: 0;
+    }
+
+    .chat-send-reply:hover {
+        background: #128c7e;
+        transform: scale(1.05);
+    }
+
+    .chat-send-reply:active {
+        transform: scale(0.95);
+    }
+
+    /* Scrollbar */
+    .chat-messages-body::-webkit-scrollbar {
+        width: 6px;
+    }
+    .chat-messages-body::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .chat-messages-body::-webkit-scrollbar-thumb {
+        background: #c5c0b8;
+        border-radius: 3px;
+    }
+
+    /* Hide default django form */
+    #chatconversation_form {
+        display: none !important;
+    }
+    .submit-row {
+        display: none !important;
+    }
+
+    /* Hide admin breadcrumb, header, footer */
+    .content-header,
+    .app-content-header,
+    .app-footer,
+    footer.app-footer,
+    footer.main-footer,
+    div.content-header,
+    section.content-header {
+        display: none !important;
+    }
+
+    /* Navbar chat info */
+    .navbar-chat-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: 16px;
+        color: #6c757d;
+        font-size: 14px;
+    }
+    .navbar-chat-info .nav-user-avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .navbar-chat-info .nav-user-name {
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+    }
+    .navbar-chat-info .nav-user-phone {
+        color: #888;
+        font-size: 12px;
+    }
+    .navbar-chat-info .nav-breadcrumb {
+        color: #adb5bd;
+        font-size: 12px;
+    }
+    .navbar-chat-info .nav-breadcrumb a {
+        color: #6c757d;
+        text-decoration: none;
+    }
+    .navbar-chat-info .nav-breadcrumb a:hover {
+        color: #333;
+    }
+    .navbar-chat-info .nav-status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #2ecc71;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border: 2px solid #fff;
+    }
+    .navbar-chat-info .nav-avatar-wrap {
+        position: relative;
+    }
+
+    /* Status badge */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .status-badge.active {
+        background: rgba(46, 204, 113, 0.15);
+        color: #2ecc71;
+    }
+    .status-badge.inactive {
+        background: rgba(231, 76, 60, 0.15);
+        color: #e74c3c;
+    }
+
+    .typing-indicator {
+        display: none;
+        align-self: flex-start;
+        padding: 10px 14px;
+        background: #fff;
+        border-radius: 12px;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .typing-dots {
+        display: flex;
+        gap: 4px;
+    }
+    .typing-dots span {
+        width: 6px;
+        height: 6px;
+        background: #128c7e;
+        border-radius: 50%;
+        animation: typingBounce 1.4s infinite ease-in-out;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+        0%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-6px); }
+    }
+</style>
+
+<style>
+/* Safely scope chat layout rules *ONLY* when chat container is present */
+body:has(.chat-admin-container) .app-content-header,
+body:has(.chat-admin-container) footer.app-footer {
+    display: none !important;
+}
+
+body:has(.chat-admin-container) .app-main {
+    overflow: hidden !important;
+    height: calc(100vh - 57px) !important;
+}
+
+body:has(.chat-admin-container) .app-content {
+    overflow: hidden !important;
+    height: 100% !important;
+    padding: 0 !important;
+}
+
+body:has(.chat-admin-container) .app-content > .container-fluid,
+body:has(.chat-admin-container) .app-content > .container-fluid > .row {
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 3. Navbar ga breadcrumb qo'shish
+    const navbar = document.querySelector('#jazzy-navbar .container-fluid > ul:first-child');
+    if (navbar && !document.querySelector('.navbar-chat-info')) {
+        const chatInfo = document.createElement('li');
+        chatInfo.className = 'nav-item';
+        chatInfo.innerHTML = `
+            <div class="navbar-chat-info">
+                <div class="nav-breadcrumb">
+                    <a href="/admin/">Home</a> / <a href="/admin/diplomat/">Diplomat</a> / <a href="/admin/diplomat/chatconversation/">Chat suhbatlar</a>
+                </div>
+            </div>
+        `;
+        navbar.appendChild(chatInfo);
+    }
+});
+</script>
+
+<div class="chat-admin-container">
+    <!-- LEFT: User Info -->
+    <div class="chat-user-panel">
+        <div class="chat-user-header">
+            <div class="chat-user-avatar">{{ conversation.fullname|truncatechars:2 }}</div>
+            <div class="chat-user-name">{{ conversation.fullname }}</div>
+            <div class="chat-user-status">
+                {% if conversation.is_active %}
+                    <span class="status-badge active"><i class="fas fa-circle" style="font-size:8px"></i> Faol</span>
+                {% else %}
+                    <span class="status-badge inactive"><i class="fas fa-circle" style="font-size:8px"></i> Yopilgan</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="chat-user-details">
+            <div class="chat-detail-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <div class="chat-detail-label">Telefon</div>
+                    <div class="chat-detail-value"><a href="tel:{{ conversation.phone }}">{{ conversation.phone }}</a></div>
+                </div>
+            </div>
+            {% if conversation.email %}
+            <div class="chat-detail-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <div class="chat-detail-label">Email</div>
+                    <div class="chat-detail-value"><a href="mailto:{{ conversation.email }}">{{ conversation.email }}</a></div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="chat-detail-item">
+                <i class="fas fa-calendar-alt"></i>
+                <div>
+                    <div class="chat-detail-label">Boshlangan</div>
+                    <div class="chat-detail-value">{{ conversation.created_at|date:"d-M-Y, H:i" }}</div>
+                </div>
+            </div>
+            <div class="chat-detail-item">
+                <i class="fas fa-comments"></i>
+                <div>
+                    <div class="chat-detail-label">Jami xabarlar</div>
+                    <div class="chat-detail-value">{{ messages|length }} ta</div>
+                </div>
+            </div>
+            <div class="chat-detail-item">
+                <i class="fas fa-key"></i>
+                <div>
+                    <div class="chat-detail-label">Sessiya ID</div>
+                    <div class="chat-detail-value" style="font-size:11px; word-break:break-all; color:#5c6b7a">{{ conversation.session_key }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT: Messages -->
+    <div class="chat-messages-panel">
+        <div class="chat-messages-header">
+            <h3><i class="fas fa-comments" style="color:#5eb5f7; margin-right:8px"></i> Suhbat</h3>
+            <span class="chat-msg-count">{{ messages|length }} xabar</span>
+        </div>
+
+        <div class="chat-messages-body" id="chatMessagesBody">
+            {% load tz %}
+            {% for msg in messages %}
+                <div class="chat-msg {% if msg.is_from_admin %}admin-msg{% else %}user-msg{% endif %}">
+                    {{ msg.text }}
+                    <span class="chat-msg-time">
+                        {{ msg.created_at|date:"H:i" }}
+                        {% if msg.is_from_admin %}
+                            {% if msg.is_read %}
+                                <span class="chat-msg-read"><i class="fas fa-check-double"></i></span>
+                            {% else %}
+                                <span class="chat-msg-read" style="color:#5c6b7a"><i class="fas fa-check"></i></span>
+                            {% endif %}
+                        {% endif %}
+                    </span>
+                </div>
+            {% endfor %}
+
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-reply-area">
+            <textarea class="chat-reply-input" id="replyInput" placeholder="Javob yozing..." rows="1"></textarea>
+            <button class="chat-send-reply" id="sendReplyBtn" title="Yuborish">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const input = document.getElementById('replyInput');
+    const sendBtn = document.getElementById('sendReplyBtn');
+    const messagesBody = document.getElementById('chatMessagesBody');
+    const conversationId = '{{ conversation.id }}';
+
+    // Auto-scroll to bottom
+    messagesBody.scrollTop = messagesBody.scrollHeight;
+
+    // Auto-resize textarea
+    input.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    });
+
+    // Send reply
+    function sendReply() {
+        const text = input.value.trim();
+        if (!text) return;
+
+        // Show typing indicator
+        const typing = document.getElementById('typingIndicator');
+        typing.style.display = 'block';
+        messagesBody.scrollTop = messagesBody.scrollHeight;
+
+        // Send to server
+        fetch('/api/chat/admin-reply/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({
+                conversation_id: conversationId,
+                message: text
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            typing.style.display = 'none';
+            if (data.success) {
+                const now = new Date();
+                const time = now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+
+                const div = document.createElement('div');
+                div.className = 'chat-msg admin-msg';
+                div.innerHTML = `${text} <span class="chat-msg-time">${time} <span class="chat-msg-read" style="color:#5c6b7a"><i class="fas fa-check"></i></span></span>`;
+
+                messagesBody.insertBefore(div, typing);
+                messagesBody.scrollTop = messagesBody.scrollHeight;
+                input.value = '';
+                input.style.height = 'auto';
+
+                // Update count
+                const countEl = document.querySelector('.chat-msg-count');
+                const current = parseInt(countEl.textContent) || 0;
+                countEl.textContent = (current + 1) + ' xabar';
+            }
+        })
+        .catch(err => {
+            typing.style.display = 'none';
+            alert('Xatolik yuz berdi!');
+        });
+    }
+
+    sendBtn.addEventListener('click', sendReply);
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendReply();
+        }
+    });
+
+    // Poll for new user messages
+    let lastCount = {{ messages|length }};
+    setInterval(() => {
+        fetch(`/api/chat/messages/?session_key={{ conversation.session_key }}`)
+        .then(r => r.json())
+        .then(data => {
+            if (data.success && data.messages.length > lastCount) {
+                // New messages arrived - reload
+                location.reload();
+            }
+        });
+    }, 5000);
+});
+</script>
+{% endblock %}

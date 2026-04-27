@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Yangiliklar | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+
+    <style>
+        .highlight-text-premium::before {
+            content: 'YANGILIKLAR' !important;
+        }
+
+        /* MODERN NEWS CARD DESIGN - SENIOR UI/UX */
+        .modern-news-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(7, 0, 107, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modern-news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(7, 0, 107, 0.12);
+        }
+
+        .modern-nc-img-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modern-nc-image {
+            width: 100%;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: transform 0.6s ease;
+        }
+
+        .modern-news-card:hover .modern-nc-image {
+            transform: scale(1.08);
+        }
+
+        .modern-nc-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #07006b;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Kanit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modern-nc-content {
+            padding: 25px;
+            position: relative;
+            background: #fff;
+            z-index: 2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modern-nc-date {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .modern-nc-date i {
+            color: #FFC107;
+        }
+
+        .modern-nc-title {
+            font-size: 1.25rem;
+            font-family: 'Kanit', sans-serif;
+            color: #07006b;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .modern-nc-title:hover {
+            color: #FFC107;
+        }
+
+        .modern-nc-excerpt {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .modern-nc-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(7, 0, 107, 0.08);
+            padding-top: 18px;
+            margin-top: auto;
+        }
+
+        .modern-nc-author {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #07006b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modern-nc-author i {
+            color: #0d6efd;
+            font-size: 1rem;
+        }
+
+        .modern-nc-readmore {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #f8faff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #07006b;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            border: 1px solid rgba(7, 0, 107, 0.05);
+        }
+
+        .modern-news-card:hover .modern-nc-readmore {
+            background: #FFC107;
+            color: #fff;
+            transform: scale(1.1) rotate(-45deg);
+            border-color: #FFC107;
+        }
+    </style>
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA -->
+        <meta name="description" content="Diplomat University barcha so'nggi yangiliklari va tadbirlari bilan tanishing.">
+        <meta name="keywords" content="yangiliklar, universitet yangiliklari, xabarlar, tadbirlar, diplomat university">
+        <meta name="author" content="Diplomat University">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="language" content="Uzbek">
+        <meta name="theme-color" content="#07006b">
+    
+        <link rel="canonical" href="https://diplomat.university/news.html">
+    
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Yangiliklar | Diplomat University">
+        <meta property="og:description" content="Universitetning barcha yangiliklari va hayoti haqida xabardor bo'ling.">
+        <meta property="og:url" content="https://diplomat.university/news.html">
+        <meta property="og:site_name" content="Diplomat University">
+        <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta property="og:locale" content="uz_UZ">
+    
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Yangiliklar | Diplomat University">
+        <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+{% endblock extra_head %}
+
+{% block content %}
+    <main>
+        <div class="container">
+                    <section class="admission-hero-elite research-hero" data-aos="zoom-in">
+                        <div class="page-hero-header-premium">
+                            <h1 class="title-premium text-center">
+                                <span class="highlight-text-premium"
+                                    style=" -webkit-text-stroke: 2.5px #FFC107;">YANGILIKLAR</span>
+                            </h1>
+                            <div class="premium-line-divider"></div>
+                        </div>
+                    </section>
+                </div>
+        
+                <section class="news-section" style="margin-top: 50px; padding-bottom: 60px;">
+                    <div class="container">
+
+                        <div class="row">
+                            {% for article in news_list %}
+                            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                                <article class="modern-news-card">
+                                    <div class="modern-nc-img-wrapper">
+                                        {% if article.badge %}
+                                        <div class="modern-nc-badge"><i class="fas fa-circle me-1"
+                                                style="color:#FFC107;"></i> {{ article.badge }}</div>
+                                        {% endif %}
+                                        <div class="modern-nc-image"
+                                            style="background-image: url('{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
+                                        </div>
+                                    </div>
+                                    <div class="modern-nc-content">
+                                        <div class="modern-nc-date"><i class="far fa-calendar-alt"></i> {{ article.published_date|date:"d-M, Y" }}
+                                        </div>
+                                        <a href="#" class="modern-nc-title">{{ article.title }}</a>
+                                        <div class="modern-nc-excerpt">{{ article.excerpt|safe }}</div>
+                                        <div class="modern-nc-footer">
+                                            <div class="modern-nc-author"><i class="fas fa-user-circle"></i> {{ article.author }}</div>
+                                            <a href="#" class="modern-nc-readmore"><i
+                                                    class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            {% empty %}
+                            <div class="col-12 text-center text-muted my-5">
+                                <i class="fas fa-folder-open mb-3" style="font-size: 3rem; color: #ddd;"></i>
+                                <h5>{% trans "Hozircha yangiliklar kiritilmagan" %}</h5>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+    </main>
+{% endblock content %}

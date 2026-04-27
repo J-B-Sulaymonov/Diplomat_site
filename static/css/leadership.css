@@ -1,0 +1,1907 @@
+/*
+=========================================
+RAHBARIYAT SAHIFASI - GEOMETRIC PREMIUM STYLE
+=========================================
+*/
+
+/* 1. HERO MOSLASHTIRISH */
+.leadership-hero {
+    background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069') no-repeat center center / cover !important;
+}
+
+.highlight-text-premium::before {
+    content: 'RAHBARIYAT' !important;
+}
+
+/* 2. SIDEBAR MENU (Oddiy - Scroll bilan ketadi) */
+.sidebar-modern-sticky {
+    position: relative;
+    /* Sticky o'rniga Relative qo'yamiz */
+    /* top: 100px;  <-- BU QATORNI OLIB TASHLADIK */
+
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(7, 0, 107, 0.08);
+    overflow: hidden;
+    border: 1px solid rgba(7, 0, 107, 0.05);
+}
+
+.sidebar-header {
+    background: linear-gradient(135deg, #07006b 0%, #000f37 100%);
+    color: white;
+    padding: 20px 25px;
+    font-weight: 800;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.sidebar-list li {
+    padding: 0 10px;
+}
+
+.sidebar-list a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.sidebar-list a i {
+    width: 25px;
+    text-align: center;
+    color: #07006b;
+    transition: 0.3s;
+}
+
+.sidebar-list a:hover,
+.sidebar-list a.active {
+    background-color: #f0f4ff;
+    color: #07006b;
+    padding-left: 25px;
+}
+
+.sidebar-list a:hover i,
+.sidebar-list a.active i {
+    color: #FFC107;
+    transform: scale(1.2);
+}
+
+/* 3. GEOMETRIC PROFILE CARD (YANGI SHAKL) */
+.leader-card-geometric {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(7, 0, 107, 0.1);
+    border: 1px solid rgba(7, 0, 107, 0.05);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    position: relative;
+}
+
+.leader-card-geometric::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #07006b, #FFC107, #FF8F00);
+    border-radius: 30px 30px 0 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.leader-card-geometric:hover::before {
+    opacity: 1;
+}
+
+.leader-card-geometric:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(7, 0, 107, 0.14), 0 0 0 1px rgba(255, 193, 7, 0.15);
+    border-color: rgba(255, 193, 7, 0.2);
+}
+
+/* --- RASM BLOKI (ENG MUHIM QISM) --- */
+.geo-image-container {
+    position: relative;
+    height: 420px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 1. Asosiy Rasm (Kesilgan Shakl) */
+.geo-image-mask {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+    overflow: hidden;
+
+    /* SHAKL: Pastki o'ng burchak kesilgan */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+    border-radius: 20px 20px 0 20px;
+    /* Faqat 3 ta burchak yumaloq */
+}
+
+.geo-image-mask img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.6s ease;
+}
+
+.leader-card-geometric:hover .geo-image-mask img {
+    transform: scale(1.08);
+}
+
+/* 2. Orqa Ramka (Dekorativ) */
+.geo-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #07006b;
+    z-index: 1;
+
+    /* Ramka ham xuddi shunday kesilgan, lekin biroz siljigan */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+    border-radius: 20px 20px 0 20px;
+    opacity: 0.2;
+    transition: all 0.4s ease;
+}
+
+.leader-card-geometric:hover .geo-frame {
+    top: -5px;
+    left: -5px;
+    /* Hoverda ramka "ajralib" chiqadi */
+    border-color: #FFC107;
+    opacity: 1;
+}
+
+/* 3. Badge (Rektor/Prorektor) */
+.geo-badge {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: #FFC107;
+    color: #07006b;
+    padding: 8px 20px;
+    font-weight: 800;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.8rem;
+    z-index: 3;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: 5px 5px 25px rgba(255, 193, 7, 0.4);
+    }
+}
+
+/* --- MA'LUMOT QISMI --- */
+.geo-content {
+    padding: 20px 30px;
+}
+
+.geo-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #07006b;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.geo-degree {
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+.geo-divider {
+    height: 4px;
+    width: 80px;
+    background: linear-gradient(90deg, #FFC107, #FF8F00);
+    margin: 20px 0;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.leader-card-geometric:hover .geo-divider {
+    width: 140px;
+}
+
+/* Kontaktlar */
+.geo-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-box {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, rgba(255, 143, 0, 0.08), rgba(255, 193, 7, 0.1));
+    color: #FF8F00;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 143, 0, 0.08);
+}
+
+.leader-card-geometric:hover .icon-box {
+    background: linear-gradient(135deg, #FF8F00, #FFC107);
+    color: #fff;
+    transform: rotate(10deg) scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 143, 0, 0.25);
+}
+
+.text-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-box span {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.text-box strong {
+    font-size: 1rem;
+    color: #222;
+}
+
+/* Tugmalar */
+.geo-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-geo-main {
+    background: #07006b;
+    color: #fff;
+    padding: 12px 35px;
+    font-weight: 700;
+    text-decoration: none;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    /* Tugma ham kesilgan */
+    transition: 0.3s;
+}
+
+.btn-geo-main:hover {
+    background: #FFC107;
+    color: #07006b;
+    padding-right: 45px;
+}
+
+.geo-socials a {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(7, 0, 107, 0.1);
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #07006b;
+    margin-right: 5px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.geo-socials a:hover {
+    background: #07006b;
+    color: #FFC107;
+    border-color: #07006b;
+    transform: translateY(-4px) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(7, 0, 107, 0.25);
+}
+
+/* Mobil Moslashuv */
+@media (max-width: 991px) {
+    .geo-image-container {
+        height: 350px;
+    }
+
+    .leader-card-geometric {
+        text-align: center;
+    }
+
+    .detail-item {
+        justify-content: center;
+    }
+
+    .text-box {
+        align-items: center;
+    }
+
+    .geo-divider {
+        margin: 20px auto;
+    }
+
+    .geo-actions {
+        justify-content: center;
+    }
+}
+
+/* --- PREMIUM MODAL STYLE --- */
+.modal-premium {
+    backdrop-filter: blur(15px) saturate(180%);
+    background-color: rgba(7, 0, 107, 0.1);
+}
+
+.modal-premium .modal-content {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.modal-header-geo {
+    background: linear-gradient(135deg, #07006b 0%, #000f37 100%);
+    padding: 30px 40px;
+    border: none;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+}
+
+.modal-header-geo .modal-title {
+    color: #FFC107;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+}
+
+.modal-header-geo .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.8;
+}
+
+.modal-body-premium {
+    padding: 40px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Scrollbar styling */
+.modal-body-premium::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body-premium::-webkit-scrollbar-thumb {
+    background: #07006b;
+    border-radius: 10px;
+}
+
+.bio-section-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.1rem;
+    color: #07006b;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #FFC107;
+    width: fit-content;
+    padding-bottom: 5px;
+}
+
+.experience-timeline {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px dashed rgba(7, 0, 107, 0.2);
+}
+
+.experience-item {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: #FFC107;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.experience-date {
+    font-weight: 800;
+    color: #07006b;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.experience-text {
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.bio-intro-card {
+    background: #f4f7ff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border-left: 5px solid #07006b;
+}
+
+/* Modal kengligini boshqarish */
+@media (min-width: 1200px) {
+    .modal-xl-custom {
+        max-width: 1140px;
+        /* Standart XL dan biroz kengroq */
+    }
+}
+
+/* Modal ichidagi rasm uslubi */
+.modal-bio-img-container {
+    position: sticky;
+    top: 0;
+}
+
+.modal-bio-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-radius: 30px;
+    overflow: hidden;
+    /* Geometrik kesish */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+    box-shadow: 0 15px 35px rgba(7, 0, 107, 0.2);
+}
+
+.modal-bio-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.modal-bio-img-frame {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid rgba(255, 193, 7, 0.5);
+    border-radius: 20px;
+    z-index: 2;
+    pointer-events: none;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+}
+
+/* Modal body ichidagi tekstni tekislash */
+.modal-body-premium {
+    padding: 50px !important;
+}
+
+.bio-name-title {
+    font-family: 'Unbounded', sans-serif;
+    color: #07006b;
+    font-weight: 900;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.bio-status {
+    color: #FFC107;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    display: block;
+}
+
+/* PDF Karta uchun maxsus stillar */
+.cert-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: #07006b;
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+.cert-header-info i {
+    font-size: 2rem;
+    color: #FFC107;
+}
+
+.cert-header-info h5 {
+    margin: 0;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.1rem;
+}
+
+.cert-header-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.status-badge {
+    background: #28a745;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.4);
+}
+
+.cert-frame-pdf {
+    height: 850px;
+    /* Kompyuterda o'qishga qulay balandlik */
+    background: #525659;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.cert-footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #f8f9fa;
+    border-radius: 0 0 15px 15px;
+}
+
+.cert-footer-actions p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.btn-download-minimal {
+    color: #07006b;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    border: 2px solid #07006b;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-download-minimal:hover {
+    background: #07006b;
+    color: white;
+}
+
+/* Mobil qurilmalar uchun moslashuv */
+@media (max-width: 768px) {
+    .cert-frame-pdf {
+        height: 500px;
+    }
+
+    .cert-footer-actions {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   TAB TIZIMI (Rahbariyat / Kadrlar / Bo'limlar)
+   ========================================= */
+.tab-content-section {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tab-content-section.active-tab {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: tabFadeIn 0.6s ease forwards;
+}
+
+@keyframes tabFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   KAFEDRALAR SECTION — 3D PREMIUM CARDS
+   ========================================= */
+
+.kadrlar-section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.kadrlar-section-header h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #07006b;
+    margin-bottom: 10px;
+}
+
+.kadrlar-section-header .accent-line {
+    height: 4px;
+    width: 100px;
+    background: linear-gradient(90deg, #FFC107, #07006b);
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.staff-3d-list {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    perspective: 1200px;
+}
+
+/* ===== 3D Card Container ===== */
+.staff-card-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.staff-card-3d:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
+}
+
+.card-3d-inner {
+    display: flex;
+    align-items: stretch;
+    background: linear-gradient(145deg, #ffffff 0%, #f8faff 50%, #f0f4ff 100%);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+        0 10px 40px rgba(7, 0, 107, 0.08),
+        0 2px 10px rgba(7, 0, 107, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(7, 0, 107, 0.06);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.staff-card-3d:hover .card-3d-inner {
+    box-shadow:
+        0 30px 80px rgba(7, 0, 107, 0.15),
+        0 15px 35px rgba(255, 143, 0, 0.08),
+        0 0 0 1px rgba(255, 143, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(255, 143, 0, 0.25);
+}
+
+/* ===== Glow Effect ===== */
+.card-3d-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(255, 143, 0, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(7, 0, 107, 0.04) 0%, transparent 40%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.staff-card-3d:hover .card-3d-glow {
+    opacity: 1;
+}
+
+/* ===== Floating Particles ===== */
+.card-3d-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.card-3d-particles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(135deg, #FF8F00, #FFC107);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.staff-card-3d:hover .card-3d-particles span {
+    opacity: 0.4;
+    animation: float3dParticle 3s ease-in-out infinite;
+}
+
+.card-3d-particles span:nth-child(1) {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.card-3d-particles span:nth-child(2) {
+    top: 70%;
+    left: 5%;
+    animation-delay: 0.6s;
+}
+
+.card-3d-particles span:nth-child(3) {
+    top: 25%;
+    right: 15%;
+    animation-delay: 1.2s;
+}
+
+.card-3d-particles span:nth-child(4) {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 1.8s;
+}
+
+.card-3d-particles span:nth-child(5) {
+    top: 50%;
+    left: 40%;
+    animation-delay: 0.9s;
+}
+
+@keyframes float3dParticle {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(10px, -15px) scale(1.3);
+    }
+
+    50% {
+        transform: translate(-5px, -25px) scale(0.8);
+    }
+
+    75% {
+        transform: translate(15px, -10px) scale(1.1);
+    }
+}
+
+/* ===== Avatar Side ===== */
+.card-3d-avatar-side {
+    width: 280px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+    background: linear-gradient(160deg, rgba(7, 0, 107, 0.03) 0%, rgba(255, 143, 0, 0.04) 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.card-3d-avatar-side::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(7, 0, 107, 0.1), transparent);
+}
+
+/* ===== 3D Avatar Frame ===== */
+.avatar-3d-frame {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-3d-frame img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 30px rgba(7, 0, 107, 0.12);
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.staff-card-3d:hover .avatar-3d-frame img {
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(255, 143, 0, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+}
+
+/* Animated Rings */
+.avatar-3d-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #FF8F00;
+    border-right-color: rgba(255, 143, 0, 0.3);
+    animation: ring3dSpin 4s linear infinite;
+    z-index: 1;
+}
+
+.avatar-3d-ring-2 {
+    inset: -12px;
+    border-top-color: #07006b;
+    border-right-color: rgba(7, 0, 107, 0.2);
+    animation: ring3dSpin 6s linear infinite reverse;
+}
+
+@keyframes ring3dSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Status Badge */
+.avatar-3d-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #61594f, #c1b797);
+    color: #fff;
+    padding: 5px 16px;
+    border-radius: 50px;
+    font-size: 0.70rem;
+    font-weight: 700;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(255, 143, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.avatar-3d-status i {
+    font-size: 10px;
+}
+
+/* ===== Info Side ===== */
+.card-3d-info-side {
+    flex: 1;
+    padding: 35px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Rank Badge */
+.card-3d-rank {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(255, 143, 0, 0.1), rgba(7, 0, 107, 0.05));
+    color: #e65100;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 143, 0, 0.15);
+}
+
+.card-3d-rank i {
+    color: #FF8F00;
+    font-size: 14px;
+}
+
+/* Name */
+.card-3d-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #07006b;
+    margin-bottom: 6px;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+}
+
+/* Title */
+.card-3d-title {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+/* Divider */
+.card-3d-divider {
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(90deg, #FF8F00, #FFC107);
+    border-radius: 10px;
+    margin-bottom: 18px;
+    transition: width 0.4s ease;
+}
+
+.staff-card-3d:hover .card-3d-divider {
+    width: 120px;
+}
+
+/* Detail Items */
+.card-3d-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.detail-3d-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform 0.3s ease;
+}
+
+.staff-card-3d:hover .detail-3d-item {
+    transform: translateX(5px);
+}
+
+.detail-3d-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(255, 143, 0, 0.08), rgba(255, 193, 7, 0.1));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF8F00;
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 143, 0, 0.08);
+}
+
+.staff-card-3d:hover .detail-3d-icon {
+    background: linear-gradient(135deg, #FF8F00, #FFC107);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 143, 0, 0.25);
+    transform: rotate(5deg) scale(1.05);
+}
+
+.detail-3d-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-3d-text span {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.detail-3d-text strong {
+    font-size: 0.9rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* ===== Bio Text Styles ===== */
+.staff-bio-container {
+    margin-top: 15px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(7, 0, 107, 0.15);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.staff-bio-container::before {
+    content: none;
+    /* quote icon removed */
+}
+
+.staff-bio-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #4b5563;
+    text-align: justify;
+}
+
+.staff-bio-text p {
+    margin-bottom: 12px;
+}
+
+.staff-bio-text p:last-child {
+    margin-bottom: 0;
+}
+
+.staff-bio-text strong {
+    color: #07006b;
+    font-weight: 700;
+}
+
+/* Actions */
+.card-3d-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btn-3d-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #07006b 0%, #1a1a8e 100%);
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(7, 0, 107, 0.2);
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+}
+
+.btn-3d-primary:hover {
+    background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);
+    color: #07006b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.35);
+}
+
+.btn-3d-primary i {
+    font-size: 13px;
+}
+
+/* Socials */
+.card-3d-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.card-3d-socials a {
+    width: 38px;
+    height: 38px;
+    border: 2px solid rgba(7, 0, 107, 0.1);
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #07006b;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    font-size: 15px;
+}
+
+.card-3d-socials a:hover {
+    background: linear-gradient(135deg, #07006b, #1a237e);
+    color: #FFC107;
+    border-color: #07006b;
+    transform: translateY(-4px) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(7, 0, 107, 0.3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .card-3d-inner {
+        flex-direction: column;
+    }
+
+    .card-3d-avatar-side {
+        width: 100%;
+        min-width: unset;
+        padding: 30px 20px;
+    }
+
+    .card-3d-avatar-side::after {
+        display: none;
+    }
+
+    .card-3d-info-side {
+        padding: 25px 20px;
+    }
+
+    .card-3d-name {
+        font-size: 1.1rem;
+    }
+
+    .card-3d-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .staff-card-3d:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* =========================================
+   BO'LIMLAR SECTION — 3D PREMIUM CARDS
+   ========================================= */
+
+.bolimlar-section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.bolimlar-section-header h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #07006b;
+    margin-bottom: 10px;
+}
+
+.bolimlar-section-header .accent-line {
+    height: 4px;
+    width: 100px;
+    background: linear-gradient(90deg, #FF8F00, #FFC107);
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.dept-3d-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    perspective: 1200px;
+}
+
+/* ===== Dept 3D Card ===== */
+.dept-card-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dept-card-3d:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(1deg);
+}
+
+.dept-3d-inner {
+    display: flex;
+    align-items: stretch;
+    background: linear-gradient(145deg, #ffffff 0%, #fffcf5 50%, #fff8e8 100%);
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+        0 10px 40px rgba(7, 0, 107, 0.08),
+        0 2px 10px rgba(255, 143, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 143, 0, 0.08);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dept-card-3d:hover .dept-3d-inner {
+    box-shadow:
+        0 30px 80px rgba(7, 0, 107, 0.12),
+        0 15px 35px rgba(255, 143, 0, 0.1),
+        0 0 0 1px rgba(255, 143, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(255, 143, 0, 0.3);
+}
+
+/* ===== Dept Glow ===== */
+.dept-3d-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(255, 143, 0, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 193, 7, 0.04) 0%, transparent 40%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.dept-card-3d:hover .dept-3d-glow {
+    opacity: 1;
+}
+
+/* ===== Dept Particles ===== */
+.dept-3d-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.dept-3d-particles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(135deg, #FF8F00, #FFC107);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.dept-card-3d:hover .dept-3d-particles span {
+    opacity: 0.4;
+    animation: deptFloat3d 3s ease-in-out infinite;
+}
+
+.dept-3d-particles span:nth-child(1) {
+    top: 10%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.dept-3d-particles span:nth-child(2) {
+    top: 65%;
+    left: 5%;
+    animation-delay: 0.5s;
+}
+
+.dept-3d-particles span:nth-child(3) {
+    top: 20%;
+    right: 12%;
+    animation-delay: 1s;
+}
+
+.dept-3d-particles span:nth-child(4) {
+    bottom: 15%;
+    right: 8%;
+    animation-delay: 1.5s;
+}
+
+.dept-3d-particles span:nth-child(5) {
+    top: 45%;
+    left: 35%;
+    animation-delay: 0.8s;
+}
+
+@keyframes deptFloat3d {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(12px, -18px) scale(1.3);
+    }
+
+    50% {
+        transform: translate(-8px, -28px) scale(0.8);
+    }
+
+    75% {
+        transform: translate(18px, -12px) scale(1.1);
+    }
+}
+
+/* ===== Icon Side (Left) ===== */
+.dept-3d-icon-side {
+    width: 280px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+    background: linear-gradient(160deg, rgba(255, 143, 0, 0.04) 0%, rgba(255, 193, 7, 0.06) 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.dept-3d-icon-side::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 143, 0, 0.15), transparent);
+}
+
+/* Icon Frame */
+.dept-3d-icon-frame {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dept-3d-avatar-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 30px rgba(255, 143, 0, 0.15);
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.dept-card-3d:hover .dept-3d-avatar-img {
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(255, 143, 0, 0.25);
+    border-color: rgba(255, 193, 7, 0.4);
+}
+
+/* Dept Animated Rings */
+.dept-3d-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #FF8F00;
+    border-right-color: rgba(255, 143, 0, 0.3);
+    animation: deptRingSpin 4s linear infinite;
+    z-index: 1;
+}
+
+.dept-3d-ring-2 {
+    inset: -12px;
+    border-top-color: #07006b;
+    border-right-color: rgba(7, 0, 107, 0.2);
+    animation: deptRingSpin 6s linear infinite reverse;
+}
+
+@keyframes deptRingSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Dept Badge */
+.dept-3d-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #FF8F00, #FFC107);
+    color: #fff;
+    padding: 5px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(255, 143, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.dept-3d-badge i {
+    font-size: 10px;
+}
+
+/* ===== Info Side (Right) ===== */
+.dept-3d-info-side {
+    flex: 1;
+    padding: 30px 35px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Rank Tag */
+.dept-3d-rank {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(255, 143, 0, 0.1), rgba(7, 0, 107, 0.05));
+    color: #e65100;
+    padding: 5px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 143, 0, 0.15);
+}
+
+.dept-3d-rank i {
+    color: #FF8F00;
+    font-size: 13px;
+}
+
+/* Dept Name */
+.dept-3d-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #07006b;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+}
+
+/* Subtitle */
+.dept-3d-subtitle {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+/* Divider */
+.dept-3d-divider {
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(90deg, #FF8F00, #FFC107);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: width 0.4s ease;
+}
+
+.dept-card-3d:hover .dept-3d-divider {
+    width: 120px;
+}
+
+/* Head Mini-Card */
+.dept-3d-head {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, rgba(255, 143, 0, 0.05), rgba(7, 0, 107, 0.03));
+    padding: 14px 18px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 143, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.dept-card-3d:hover .dept-3d-head {
+    border-color: rgba(255, 143, 0, 0.25);
+    background: linear-gradient(135deg, rgba(255, 143, 0, 0.08), rgba(7, 0, 107, 0.04));
+    transform: translateX(4px);
+}
+
+.dept-3d-head img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 3px solid #FFC107;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+
+.dept-card-3d:hover .dept-3d-head img {
+    border-color: #FF8F00;
+    box-shadow: 0 4px 15px rgba(255, 143, 0, 0.25);
+}
+
+.dept-3d-head-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.dept-3d-head-info strong {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #07006b;
+    line-height: 1.3;
+}
+
+.dept-3d-head-info span {
+    font-size: 0.75rem;
+    color: #FF8F00;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Dept Contacts */
+.dept-3d-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dept-3d-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dept-card-3d:hover .dept-3d-contact-item {
+    transform: translateX(5px);
+}
+
+.dept-3d-contact-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, rgba(255, 143, 0, 0.08), rgba(255, 193, 7, 0.1));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF8F00;
+    font-size: 13px;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 143, 0, 0.08);
+}
+
+.dept-card-3d:hover .dept-3d-contact-icon {
+    background: linear-gradient(135deg, #FF8F00, #FFC107);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 143, 0, 0.25);
+    transform: rotate(5deg) scale(1.05);
+}
+
+.dept-3d-contact-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.dept-3d-contact-text span {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.dept-3d-contact-text strong {
+    font-size: 0.85rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* ===== Bo'limlar Responsive ===== */
+@media (max-width: 768px) {
+    .dept-3d-inner {
+        flex-direction: column;
+    }
+
+    .dept-3d-icon-side {
+        width: 100%;
+        min-width: unset;
+        padding: 25px 20px;
+    }
+
+    .dept-3d-icon-side::after {
+        display: none;
+    }
+
+    .dept-3d-info-side {
+        padding: 20px;
+    }
+
+    .dept-3d-name {
+        font-size: 1.05rem;
+    }
+
+    .dept-card-3d:hover {
+        transform: translateY(-5px);
+    }
+
+    .dept-3d-head {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .kadrlar-section-header h2,
+    .bolimlar-section-header h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* =========================================
+   LAYOUT: SIDEBAR O'NGGA, CONTENT CHAPGA
+   ========================================= */
+
+/* Desktop: Sidebar o'ng tomonga, content chap tomonga */
+@media (min-width: 992px) {
+    .admission-body-wrapper .row > .col-lg-3 {
+        order: 2;
+    }
+    .admission-body-wrapper .row > .col-lg-9 {
+        order: 1;
+    }
+}
+
+/* =========================================
+   XODIMLAR RO'YXATI — KAFEDRA ICHIDAGI
+   COLLAPSE SECTION FARQLASH
+   ========================================= */
+
+/* Collapse wrapper — umumiy stili */
+.staff-3d-list > .collapse,
+.staff-3d-list > .collapsing {
+    margin-left: 30px;
+    margin-right: 10px;
+    padding: 25px 20px 15px 20px;
+    background: linear-gradient(135deg, rgba(240, 248, 255, 0.7) 0%, rgba(245, 250, 255, 0.5) 100%);
+    border-left: 4px solid #1e88e5;
+    border-radius: 0 20px 20px 4px;
+    position: relative;
+    box-shadow: inset 0 2px 10px rgba(30, 136, 229, 0.04);
+}
+
+/* Section yorliq — "Kafedra xodimlari" */
+.staff-3d-list > .collapse::before,
+.staff-3d-list > .collapsing::before {
+    content: '\f0c0  Kafedra xodimlari';
+    font-family: 'Font Awesome 5 Free', 'Unbounded', sans-serif;
+    font-weight: 900;
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    background: linear-gradient(135deg, #1565c0, #1e88e5);
+    color: #fff;
+    padding: 5px 18px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.25);
+    z-index: 5;
+}
+
+/* Xodimlar ichidagi kartalar — kichikroq va och rangda */
+.staff-3d-list > .collapse .dept-card-3d,
+.staff-3d-list > .collapsing .dept-card-3d {
+    margin-bottom: 16px;
+}
+
+.staff-3d-list > .collapse .dept-3d-inner,
+.staff-3d-list > .collapsing .dept-3d-inner {
+    background: linear-gradient(145deg, #ffffff 0%, #f0f7ff 50%, #e8f4fd 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(30, 136, 229, 0.1);
+    box-shadow:
+        0 4px 18px rgba(30, 136, 229, 0.06),
+        0 1px 4px rgba(0, 0, 0, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.staff-3d-list > .collapse .dept-card-3d:hover .dept-3d-inner,
+.staff-3d-list > .collapsing .dept-card-3d:hover .dept-3d-inner {
+    box-shadow:
+        0 12px 35px rgba(30, 136, 229, 0.12),
+        0 0 0 1px rgba(30, 136, 229, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(30, 136, 229, 0.2);
+}
+
+/* Xodim kartasi — kichikroq rasm */
+.staff-3d-list > .collapse .dept-3d-icon-side,
+.staff-3d-list > .collapsing .dept-3d-icon-side {
+    width: 280px;
+    min-width: 280px;
+    padding: 30px 25px;
+    background: linear-gradient(160deg, rgba(30, 136, 229, 0.03) 0%, rgba(66, 165, 245, 0.05) 100%);
+}
+
+.staff-3d-list > .collapse .dept-3d-icon-side::after,
+.staff-3d-list > .collapsing .dept-3d-icon-side::after {
+    background: linear-gradient(to bottom, transparent, rgba(30, 136, 229, 0.12), transparent);
+}
+
+.staff-3d-list > .collapse .dept-3d-icon-frame,
+.staff-3d-list > .collapsing .dept-3d-icon-frame {
+    width: 180px;
+    height: 180px;
+}
+
+.staff-3d-list > .collapse .dept-3d-avatar-img,
+.staff-3d-list > .collapsing .dept-3d-avatar-img {
+    width: 160px;
+    height: 160px;
+    box-shadow: 0 6px 20px rgba(30, 136, 229, 0.12);
+}
+
+.staff-3d-list > .collapse .dept-card-3d:hover .dept-3d-avatar-img,
+.staff-3d-list > .collapsing .dept-card-3d:hover .dept-3d-avatar-img {
+    box-shadow: 0 8px 28px rgba(30, 136, 229, 0.2);
+    border-color: rgba(30, 136, 229, 0.3);
+}
+
+/* Ring ranglari — ko'k ton */
+.staff-3d-list > .collapse .dept-3d-ring,
+.staff-3d-list > .collapsing .dept-3d-ring {
+    border-top-color: #1e88e5;
+    border-right-color: rgba(30, 136, 229, 0.3);
+}
+
+.staff-3d-list > .collapse .dept-3d-ring-2,
+.staff-3d-list > .collapsing .dept-3d-ring-2 {
+    border-top-color: #1565c0;
+    border-right-color: rgba(21, 101, 192, 0.2);
+}
+
+/* Particles — ko'k ton */
+.staff-3d-list > .collapse .dept-3d-particles span,
+.staff-3d-list > .collapsing .dept-3d-particles span {
+    background: linear-gradient(135deg, #1e88e5, #42a5f5);
+}
+
+/* Glow — ko'k ton */
+.staff-3d-list > .collapse .dept-3d-glow,
+.staff-3d-list > .collapsing .dept-3d-glow {
+    background: radial-gradient(circle at 30% 50%, rgba(30, 136, 229, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(21, 101, 192, 0.04) 0%, transparent 40%);
+}
+
+/* Divider — ko'k ton */
+.staff-3d-list > .collapse .dept-3d-divider,
+.staff-3d-list > .collapsing .dept-3d-divider {
+    background: linear-gradient(90deg, #1e88e5, #42a5f5);
+}
+
+/* Kichikroq font */
+.staff-3d-list > .collapse .dept-3d-name,
+.staff-3d-list > .collapsing .dept-3d-name {
+    font-size: 1.05rem;
+    color: #1a237e;
+}
+
+.staff-3d-list > .collapse .dept-3d-subtitle,
+.staff-3d-list > .collapsing .dept-3d-subtitle {
+    font-size: 0.82rem;
+}
+
+.staff-3d-list > .collapse .dept-3d-info-side,
+.staff-3d-list > .collapsing .dept-3d-info-side {
+    padding: 22px 28px;
+}
+
+/* Social ikonalar — ko'k ton */
+.staff-3d-list > .collapse .card-3d-socials a,
+.staff-3d-list > .collapsing .card-3d-socials a {
+    border-color: rgba(30, 136, 229, 0.15);
+    color: #1565c0;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.staff-3d-list > .collapse .card-3d-socials a:hover,
+.staff-3d-list > .collapsing .card-3d-socials a:hover {
+    background: linear-gradient(135deg, #1565c0, #1e88e5);
+    color: #fff;
+    border-color: #1565c0;
+}
+
+/* Bio container — ko'k */
+.staff-3d-list > .collapse .staff-bio-container,
+.staff-3d-list > .collapsing .staff-bio-container {
+    border-top-color: rgba(30, 136, 229, 0.15);
+}
+
+.staff-3d-list > .collapse .staff-bio-text,
+.staff-3d-list > .collapsing .staff-bio-text {
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+/* Hover — smooth ko'k */
+.staff-3d-list > .collapse .dept-card-3d:hover,
+.staff-3d-list > .collapsing .dept-card-3d:hover {
+    transform: translateY(-4px) rotateX(1deg);
+}
+
+.staff-3d-list > .collapse .dept-card-3d:hover .dept-3d-divider,
+.staff-3d-list > .collapsing .dept-card-3d:hover .dept-3d-divider {
+    width: 90px;
+}
+
+/* ===== Responsive — Xodimlar ===== */
+@media (max-width: 991px) {
+    .staff-3d-list > .collapse,
+    .staff-3d-list > .collapsing {
+        margin-left: 15px;
+        margin-right: 5px;
+        padding: 20px 12px 10px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .staff-3d-list > .collapse,
+    .staff-3d-list > .collapsing {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 18px 10px 10px 10px;
+        border-radius: 0 16px 16px 4px;
+    }
+
+    .staff-3d-list > .collapse .dept-3d-icon-side,
+    .staff-3d-list > .collapsing .dept-3d-icon-side {
+        width: 100%;
+        min-width: unset;
+        padding: 20px 15px;
+    }
+
+    .staff-3d-list > .collapse .dept-3d-icon-frame,
+    .staff-3d-list > .collapsing .dept-3d-icon-frame {
+        width: 100px;
+        height: 100px;
+    }
+
+    .staff-3d-list > .collapse .dept-3d-avatar-img,
+    .staff-3d-list > .collapsing .dept-3d-avatar-img {
+        width: 80px;
+        height: 80px;
+    }
+}

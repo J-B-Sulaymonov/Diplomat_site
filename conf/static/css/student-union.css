@@ -1,0 +1,458 @@
+/*
+=========================================
+TALABALAR UYUSHMASI - ELITE MASTER STYLE (FINAL)
+=========================================
+*/
+
+/* 1. GLOBAL COLORS & FONTS */
+:root {
+    --primary-blue: #07006b;
+    --accent-gold: #FFC107;
+    --text-dark: #1a1a1a;
+}
+
+/* Hero Matn Fix */
+.highlight-text-premium::before {
+    content: 'ITTIFOQI' !important;
+}
+
+/* 2. BACKGROUND ANIMATION (SUZIB YURUVCHI SHAKLLAR) */
+.floating-shapes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.shape-1 {
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 193, 7, 0.15);
+    top: -10%;
+    right: -20%;
+    animation: floatBg 20s infinite alternate;
+}
+
+.shape-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(7, 0, 107, 0.1);
+    bottom: 5%;
+    left: -10%;
+    animation: floatBg 25s infinite alternate-reverse;
+}
+
+@keyframes floatBg {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(40px, 50px);
+    }
+}
+
+/* =================================================
+   3. KENGASH TARKIBI (LEVITATSIYA EFFEKTI)
+   Kartalar har xil tezlikda tepadan-pastga suzadi
+================================================= */
+
+@keyframes verticalFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Har xil tezlik va kechikishlar uchun klasslar */
+.float-fast {
+    animation: verticalFloat 4s ease-in-out infinite;
+}
+
+.float-medium {
+    animation: verticalFloat 5s ease-in-out infinite 0.5s;
+}
+
+.float-slow {
+    animation: verticalFloat 6s ease-in-out infinite 1s;
+}
+
+.float-reverse {
+    animation: verticalFloat 5.5s ease-in-out infinite reverse;
+}
+
+.union-role-card-premium {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(7, 0, 107, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Hover effektlari */
+.union-role-card-premium:hover {
+    box-shadow: 0 25px 60px rgba(7, 0, 107, 0.2);
+    border-color: #FFC107;
+    background: linear-gradient(180deg, #fff 0%, #fffbf0 100%);
+}
+
+/* Ikonka */
+.role-icon-box {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #07006b;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(7, 0, 107, 0.15);
+    border: 1px solid rgba(7, 0, 107, 0.05);
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.union-role-card-premium:hover .role-icon-box {
+    background: #07006b;
+    color: #FFC107;
+    transform: scale(1.1) rotate(360deg);
+}
+
+.role-card-title {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #333;
+    text-transform: uppercase;
+    margin: 0;
+    transition: color 0.3s;
+}
+
+.union-role-card-premium:hover .role-card-title {
+    color: #07006b;
+}
+
+/* =================================================
+   4. JAMOANI "SOCHNIY" QILISH (ELITE TEAM CARDS)
+================================================= */
+
+.team-section-wrapper {
+    padding-top: 50px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+/* Karta Konteyneri */
+.elite-team-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.85);
+    /* Shaffoflik */
+    backdrop-filter: blur(20px);
+    /* Shisha effekti */
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(7, 0, 107, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    margin-bottom: 70px;
+    /* Oraliq */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Desktopda yonma-yon */
+@media (min-width: 992px) {
+    .elite-team-card {
+        flex-direction: row;
+        align-items: stretch;
+        min-height: 420px;
+    }
+
+    .elite-team-card.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Hover Effekti - Karta ko'tariladi va Oltin nur sochadi */
+.elite-team-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 40px 90px rgba(7, 0, 107, 0.25);
+    border-color: rgba(255, 193, 7, 0.6);
+}
+
+/* Rasm Qismi */
+.etc-image-box {
+    width: 100%;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+    /* Burchaklarni kesish (Diagonal dizayn) */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@media (min-width: 992px) {
+    .etc-image-box {
+        width: 45%;
+    }
+
+    /* Qiya kesish effekti */
+    .elite-team-card:not(.reverse) .etc-image-box {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+    }
+
+    .elite-team-card.reverse .etc-image-box {
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+.etc-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.elite-team-card:hover .etc-image-box img {
+    transform: scale(1.1);
+    /* Rasm yaqinlashadi */
+}
+
+/* Rasm ustidagi overlay */
+.etc-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(7, 0, 107, 0.8) 0%, transparent 60%);
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.elite-team-card:hover .etc-overlay {
+    opacity: 0.4;
+}
+
+/* Info Qismi (Matnlar) */
+.etc-info-box {
+    width: 100%;
+    padding: 60px 50px;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f7ff 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (min-width: 992px) {
+    .etc-info-box {
+        width: 55%;
+    }
+}
+
+/* ORQA FON IKONKASI (Raqam o'rniga) */
+.bg-icon-decor {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    font-size: 12rem;
+    /* Juda katta ikonka */
+    color: rgba(7, 0, 107, 0.03);
+    /* Juda xira */
+    z-index: 0;
+    pointer-events: none;
+    transition: all 0.6s ease;
+}
+
+.elite-team-card:hover .bg-icon-decor {
+    color: rgba(255, 193, 7, 0.15);
+    /* Hoverda oltin rang */
+    transform: translateY(-50%) rotate(15deg) scale(1.1);
+}
+
+/* "Bayroqcha" (Flag Badge) - Lavozim uchun */
+.flag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #07006b, #000b55);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(7, 0, 107, 0.3);
+}
+
+.flag-badge i {
+    color: #FFC107;
+}
+
+/* Ism va Familiya */
+.etc-name-group {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 25px;
+}
+
+.etc-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #07006b;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.etc-surname {
+    font-size: 2.2rem;
+    color: #FFC107;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 5px;
+    text-shadow: 2px 2px 0px rgba(7, 0, 107, 0.05);
+}
+
+/* Dekorativ Chiziq */
+.gold-divider {
+    width: 60px;
+    height: 6px;
+    background: linear-gradient(90deg, #FFC107, transparent);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    transition: width 0.4s;
+}
+
+.elite-team-card:hover .gold-divider {
+    width: 150px;
+}
+
+/* Bio Matn */
+.etc-bio {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    position: relative;
+    z-index: 2;
+    border-left: 3px solid rgba(7, 0, 107, 0.2);
+    padding-left: 20px;
+}
+
+/* Mobil Moslashuv */
+@media (max-width: 768px) {
+    .elite-team-card {
+        margin-bottom: 40px;
+    }
+
+    .etc-info-box {
+        padding: 40px 25px;
+    }
+
+    .bg-icon-decor {
+        font-size: 8rem;
+        top: 20px;
+        right: 20px;
+        transform: none;
+    }
+
+    .etc-name {
+        font-size: 1.8rem;
+    }
+
+    .etc-surname {
+        font-size: 1.3rem;
+    }
+
+    .etc-image-box {
+        clip-path: none !important;
+        min-height: 300px;
+    }
+}
+
+/* =========================================
+   5 UESTUNLI MAXSUS GRID (Desktop uchun)
+   ========================================= */
+
+@media (min-width: 992px) {
+    .row-cols-custom-5 {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .row-cols-custom-5 .col-custom {
+        flex: 0 0 20%;
+        /* 100% / 5 = 20% */
+        max-width: 20%;
+        padding: 10px;
+        /* Oradagi masofa */
+    }
+}
+
+/* Tabletlar uchun (3 ta ustun) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .row-cols-custom-5 .col-custom {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        padding: 10px;
+    }
+}
+
+/* Mobil uchun (2 ta ustun) */
+@media (max-width: 767px) {
+    .row-cols-custom-5 .col-custom {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 8px;
+    }
+}
+
+/* Kartalarni ixchamlashtirish (yuqori specificity bilan) */
+.row-cols-custom-5 .union-role-card-premium {
+    padding: 25px 15px;
+    min-height: 240px;
+}
+
+.row-cols-custom-5 .role-icon-box {
+    width: 65px;
+    height: 65px;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.row-cols-custom-5 .role-card-title {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}

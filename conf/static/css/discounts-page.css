@@ -1,0 +1,1042 @@
+/*
+=========================================
+KONTRAKT VA CHEGIRMALAR - PREMIUM ELITE
+=========================================
+*/
+
+/* 1. HERO MOSLASHTIRISH */
+.discount-hero {
+    background: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070') no-repeat center center / cover !important;
+}
+
+/* Sarlavha animatsiyasini o'zgartirish */
+.highlight-text-premium::before {
+    content: 'CHEGIRMALAR' !important;
+}
+
+/* =========================================
+   2. YANGILANGAN NARX KARTASI (PREMIUM INVOICE)
+   ========================================= */
+
+/* Karta joylashuvi (Overlap fix) */
+.price-card-container {
+    margin-top: -60px;
+    /* Hero section ustiga biroz chiqadi, lekin yopishib qolmaydi */
+    position: relative;
+    z-index: 20;
+    margin-bottom: 80px;
+}
+
+/* Asosiy Karta Dizayni */
+.tuition-premium-card {
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 50px;
+    box-shadow: 0 30px 70px rgba(7, 0, 107, 0.15);
+    /* Chuqur soya */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Oltin burchak bezaklari */
+.corner-decoration {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 4px solid #FFC107;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.corner-decoration.top-left {
+    top: -20px;
+    left: -20px;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 30px 0 0 0;
+}
+
+.corner-decoration.bottom-right {
+    bottom: -20px;
+    right: -20px;
+    border-left: none;
+    border-top: none;
+    border-radius: 0 0 30px 0;
+}
+
+/* --- CHAP TOMON (NARX) --- */
+.border-right-dashed {
+    border-right: 2px dashed #eee;
+    position: relative;
+    z-index: 1;
+}
+
+.price-header-badge {
+    display: inline-block;
+    background: #eef2ff;
+    color: #07006b;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.main-price-wrapper {
+    color: #07006b;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.currency-symbol {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFC107;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.main-price-text {
+    display: inline-block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin: 0;
+}
+
+.price-subtext {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.payment-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    /* Mobil uchun */
+    flex-wrap: wrap;
+}
+
+@media (min-width: 992px) {
+    .payment-options {
+        justify-content: flex-start;
+    }
+}
+
+.p-option {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 600;
+    background: #fff8e1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.p-option i {
+    color: #f57f17;
+}
+
+/* Tugma */
+.btn-download-schedule {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #07006b;
+    color: #fff;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(7, 0, 107, 0.2);
+}
+
+.btn-download-schedule:hover {
+    background: #FFC107;
+    color: #07006b;
+    transform: translateY(-3px);
+}
+
+/* --- O'NG TOMON (DETAIL) --- */
+.includes-title {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #222;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border-left: 4px solid #FFC107;
+    padding-left: 15px;
+}
+
+.includes-desc {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* Grid ro'yxat */
+.features-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.f-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.f-icon {
+    width: 35px;
+    height: 35px;
+    background: #f0f4ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #07006b;
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.f-item:hover .f-icon {
+    background: #07006b;
+    color: #fff;
+}
+
+.f-item span {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* =========================================
+   3. CHEGIRMA KARTALARI (PREMIUM VOUCHER)
+   ========================================= */
+
+.discount-card-elite {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(7, 0, 107, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    z-index: 1;
+}
+
+/* Karta tepasidagi rangli chiziq */
+.discount-card-elite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #07006b;
+    transition: 0.3s;
+}
+
+/* Hover effekti */
+.discount-card-elite:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 60px rgba(7, 0, 107, 0.15);
+    border-color: #FFC107;
+}
+
+.discount-card-elite:hover::before {
+    background: #FFC107;
+    height: 8px;
+}
+
+/* --- FOIZ BELGISI (BADGE) --- */
+.discount-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(7, 0, 107, 0.1);
+    color: #07006b;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.discount-card-elite:hover .discount-badge {
+    background: #07006b;
+    color: #FFC107;
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* O'rtadagi karta (Featured) uchun oltin badge */
+.discount-card-elite.featured-card .discount-badge {
+    background: #fff8e1;
+    color: #ff8f00;
+    border: 1px solid #FFC107;
+}
+
+/* --- IKONKA --- */
+.card-icon-box {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #f8faff, #eef2f6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #07006b;
+    margin-bottom: 25px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.discount-card-elite:hover .card-icon-box {
+    background: #07006b;
+    color: #FFC107;
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 25px rgba(7, 0, 107, 0.3);
+}
+
+/* --- MATNLAR --- */
+.d-card-title {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.d-card-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* --- CHIZIQ --- */
+.d-card-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    margin-bottom: 20px;
+}
+
+/* --- RO'YXAT (FEATURES) --- */
+.d-card-features {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.d-card-features li {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.d-card-features i {
+    color: #28a745;
+    margin-top: 3px;
+    font-size: 1rem;
+}
+
+.discount-card-elite:hover .d-card-features li {
+    color: #000;
+}
+
+/* --- GLOW EFFECT --- */
+.glow-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.discount-card-elite:hover .glow-effect {
+    opacity: 1;
+    transform: rotate(45deg);
+}
+
+/* 4. BANK LOGOLARI GRIDI */
+.bank-logos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.bank-item {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    transition: 0.3s;
+    height: 100px;
+}
+
+.bank-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #FFC107;
+}
+
+.bank-item img {
+    max-width: 100%;
+    max-height: 50px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.bank-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* MOBIL MOSLASHUV */
+@media (max-width: 991px) {
+    .tuition-premium-card {
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .border-right-dashed {
+        border-right: none;
+        border-bottom: 2px dashed #eee;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+
+    .features-grid-2 {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .main-price-text {
+        font-size: 3rem;
+    }
+
+    .ps-lg-5 {
+        padding-left: 0 !important;
+    }
+
+    .discount-card-elite {
+        padding: 30px 20px;
+    }
+
+    .d-card-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* =========================================
+   YANGILANGAN TA'LIM KREDITLARI QISMI
+   ========================================= */
+
+.loan-section-premium {
+    background: #fff;
+    border: 1px solid rgba(7, 0, 107, 0.05);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Badge (Davlat Dasturi) */
+.loan-badge {
+    display: inline-block;
+    background: #e3f2fd;
+    color: #0d47a1;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.loan-intro-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: #555;
+}
+
+/* 1. Imtiyoz Kartalari */
+.loan-benefit-card {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.loan-benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(7, 0, 107, 0.1);
+    border-color: #FFC107;
+}
+
+.lb-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #07006b, #1a237e);
+    color: #FFC107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 20px;
+    box-shadow: 0 5px 15px rgba(7, 0, 107, 0.2);
+}
+
+.loan-benefit-card h5 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.1rem;
+    color: #07006b;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.loan-benefit-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 2. Hujjatlar va Banklar Bloki */
+.bg-light-rounded {
+    background: #f8faff;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.loan-subtitle {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.loan-docs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.loan-docs-list li {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.loan-docs-list i {
+    color: #28a745;
+    margin-top: 4px;
+}
+
+/* 3. Banklar Gridi */
+.bank-logos-grid-tight {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 ta ustun */
+    gap: 10px;
+}
+
+.bank-box {
+    background: #fff;
+    border-radius: 10px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.bank-box:hover {
+    border-color: #FFC107;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.bank-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.bank-box:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Mobil Moslashuv */
+@media (max-width: 768px) {
+    .bank-logos-grid-tight {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Yangi Narxlar Ro'yxati Stili */
+.pricing-main-title {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    color: #07006b;
+    margin-top: 10px;
+}
+
+.category-subtitle {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #FFC107;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pricing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pricing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8faff;
+    border-radius: 12px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.pricing-item:hover {
+    background: #ffffff;
+    border-color: #FFC107;
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(7, 0, 107, 0.05);
+}
+
+.pricing-item .p-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    max-width: 70%;
+}
+
+.pricing-item .p-value {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #07006b;
+    white-space: nowrap;
+}
+
+.pricing-item .p-value span {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+/* Magistratura uchun maxsus rang */
+.master-list .pricing-item {
+    background: #fff8e1;
+}
+
+.pricing-item.special-item {
+    border-left: 4px solid #07006b;
+}
+
+.payment-info-box {
+    background: #07006b;
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+}
+
+.payment-info-box .p-option {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+}
+
+@media (max-width: 991px) {
+    .border-right-dashed {
+        border-right: none;
+        border-bottom: 2px dashed #eee;
+        padding-bottom: 30px;
+    }
+}
+
+/* Payment Steps Timeline */
+.payment-steps-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+    padding-top: 20px;
+}
+
+/* Gorizontal chiziq (faqat desktop uchun) */
+@media (min-width: 992px) {
+    .payment-steps-container::before {
+        content: '';
+        position: absolute;
+        top: 45px;
+        left: 10%;
+        right: 10%;
+        height: 0;
+        border-top: 2px dashed #dee2e6;
+        z-index: 1;
+    }
+}
+
+.p-step-item {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.p-step-dot {
+    width: 50px;
+    height: 50px;
+    background: #07006b;
+    color: #FFC107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin: 0 auto 15px;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(7, 0, 107, 0.2);
+    font-family: 'Unbounded', sans-serif;
+}
+
+.p-step-content {
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.p-step-item:hover .p-step-content {
+    border-color: #FFC107;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.p-step-percent {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #07006b;
+    margin-bottom: 5px;
+}
+
+.p-step-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.p-step-date {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 600;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.schedule-info-note {
+    background: #eef2ff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: #07006b;
+    display: inline-block;
+}
+
+/* Mobil moslashuv */
+@media (max-width: 991px) {
+    .payment-steps-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .payment-steps-container {
+        grid-template-columns: 1fr;
+    }
+
+    .p-step-item {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 20px;
+    }
+
+    .p-step-dot {
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .p-step-content {
+        flex-grow: 1;
+    }
+}
+
+/* --- YANGILANGAN PREMIUM NARXLAR JADVALI --- */
+.pricing-category-block {
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+}
+
+.pricing-category-block:last-child {
+    margin-bottom: 0;
+}
+
+.category-header-premium {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px 25px;
+    background: linear-gradient(90deg, #07006b 0%, #1a237e 100%);
+    border-radius: 15px;
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(7, 0, 107, 0.15);
+}
+
+.category-header-premium i {
+    font-size: 1.8rem;
+    color: #FFC107;
+}
+
+.category-header-premium h4 {
+    margin: 0;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.pricing-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 20px;
+}
+
+.pricing-item-premium {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 25px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(7, 0, 107, 0.08);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+}
+
+.pricing-item-premium:hover {
+    transform: translateX(10px);
+    border-color: #FFC107;
+    box-shadow: 0 10px 25px rgba(7, 0, 107, 0.1);
+}
+
+.p-left-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 70%;
+}
+
+.p-icon-box {
+    width: 45px;
+    height: 45px;
+    background: #f0f4ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #07006b;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.pricing-item-premium:hover .p-icon-box {
+    background: #FFC107;
+    color: #07006b;
+}
+
+.p-name-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.4;
+}
+
+.p-right-content {
+    text-align: right;
+}
+
+.p-amount {
+    display: block;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #07006b;
+}
+
+.p-currency {
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+/* Magistratura uchun maxsus ranglar */
+.master-block .category-header-premium {
+    background: linear-gradient(90deg, #1a1a1a 0%, #333 100%);
+}
+
+.master-block .pricing-item-premium {
+    background: #fffcf0;
+}
+
+/* Mobil moslashuv */
+@media (max-width: 991px) {
+    .pricing-grid-premium {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-item-premium {
+        padding: 15px;
+    }
+
+    .p-name-text {
+        font-size: 0.9rem;
+    }
+
+    .p-amount {
+        font-size: 1rem;
+    }
+}
+
+/* --- MODERN GLASS PAYMENT INFO --- */
+.payment-glass-wrapper {
+    background: rgba(255, 255, 255, 0.4);
+    /* Shaffof oq fon */
+    backdrop-filter: blur(15px);
+    /* Orqa fonni xiralashtirish */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(7, 0, 107, 0.1);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(7, 0, 107, 0.05);
+}
+
+.p-option-premium {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 280px;
+}
+
+.p-option-premium:hover {
+    transform: translateY(-5px);
+    border-color: #FFC107;
+    box-shadow: 0 10px 25px rgba(7, 0, 107, 0.08);
+}
+
+.p-opt-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #07006b 0%, #1a237e 100%);
+    color: #FFC107;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.p-opt-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #07006b;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.p-opt-subtext {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+/* Mobil moslashuv */
+@media (max-width: 768px) {
+    .payment-glass-wrapper {
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    .p-option-premium {
+        min-width: 100%;
+    }
+}

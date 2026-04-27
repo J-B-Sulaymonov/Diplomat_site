@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Yoshlar ittifoqi va Talabalar hayoti | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/student-union.css' %}">
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+    <!-- Asosiy Meta Teglar -->
+    <meta name="description"
+        content="Diplomat University Yoshlar ittifoqi faoliyati: loyihalar, tadbirlar, to'garaklar va faol talabalik hayoti bilan tanishing. Yoshlar va liderlik birlashmasi.">
+    <meta name="keywords"
+        content="Yoshlar ittifoqi, talabalar ittifoqi, talabalar hayoti, universitet tadbirlari, faol yoshlar, to'garaklar, volontyorlik, liderlik, jamoat ishlari">
+    <meta name="author" content="Diplomat University">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="Uzbek">
+    <meta name="theme-color" content="#07006b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+    <meta name="generator" content="Diplomat University Engine">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://diplomat.university/student-union.html">
+
+    <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Yoshlar ittifoqi va Talabalar hayoti | Diplomat University">
+    <meta property="og:description"
+        content="Diplomat University Yoshlar ittifoqi faoliyati: loyihalar, tadbirlar, to'garaklar va faol talabalik hayoti bilan tanishing.">
+    <meta property="og:url" content="https://diplomat.university/student-union.html">
+    <meta property="og:site_name" content="Diplomat University">
+    <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Student Union Banner">
+    <meta property="og:locale" content="uz_UZ">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@diplomat_uni">
+    <meta name="twitter:creator" content="@diplomat_uni">
+    <meta name="twitter:title" content="Yoshlar ittifoqi va Talabalar hayoti | Diplomat University">
+    <meta name="twitter:description"
+        content="Yoshlar va yetakchilik uchun barchasi bitta maskanda! Talabalar qanday yutuqlarga ishtirok etishini bilib oling.">
+    <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta name="twitter:image:alt" content="Diplomat University Yoshlar Ittifoqi">
+
+    <!-- JSON-LD (Schema.org) for Organization / NGO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NGO",
+      "name": "Diplomat University Yoshlar Ittifoqi",
+      "description": "Talabalar manfaatlarini himoya qilish, ularning tashabbuslarini qo'llab-quvvatlash va yetakchilik salohiyatini oshirish jamiyati.",
+      "url": "https://diplomat.university/student-union.html",
+      "parentOrganization": {
+        "@type": "EducationalOrganization",
+        "name": "Diplomat University",
+        "url": "https://diplomat.university/"
+      }
+    }
+    </script>
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA YAKUNI -->
+{% endblock extra_head %}
+
+{% block content %}
+    <main style="position: relative; overflow: hidden;">
+
+        <div class="floating-shapes-container">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+        </div>
+
+        <div class="container">
+            <section class="admission-hero-elite"
+                style="background: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070') no-repeat center center / cover !important;"
+                data-aos="zoom-in">
+                <div class="page-hero-header-premium">
+                    <h1 class="title-premium">
+                        YOSHLAR <br>
+                        <span class="highlight-text-premium" style="-webkit-text-stroke: 2.5px #FFC107;">ITTIFOQI</span>
+                    </h1>
+                    <div class="premium-line-divider"></div>
+                </div>
+            </section>
+        </div>
+
+        <section class="admission-body-wrapper" style="position: relative; z-index: 2;">
+            <div class="container">
+
+                <div class="content-card hero-overlap-card vaw-card-design" data-aos="fade-up"
+                    style="margin-top: 20px;">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 mx-auto text-center">
+
+                            <h2 class="vaw-title">ITTIFOQ <span class="gradient-text">HAQIDA</span></h2>
+                            <div class="title-underline mx-auto"></div>
+                            <p class="vaw-text">
+                                Universitetning faol va tashabbuskor talabalari Yoshlar ittifoqi kengashiga saylanadi.
+                                Kengashning asosiy vazifasi — talabalar manfaatlarini himoya qilish, tashabbuslarini
+                                qo'llab-quvvatlash hamda ularning universitet hayotidagi ishtirokini kuchaytirish.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 justify-content-center mb-5 row-cols-custom-5" style="padding-bottom: 50px;">
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-fast">
+                            <div class="role-icon-box"><i class="fa-solid fa-crown"></i></div>
+                            <h4 class="role-card-title">Yoshlar <br /> yetakchisi</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-medium">
+                            <div class="role-icon-box"><i class="fa-solid fa-star-of-life"></i></div>
+                            <h4 class="role-card-title">Besh tashabbus loyihalari koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-slow">
+                            <div class="role-icon-box"><i class="fa-solid fa-medal"></i></div>
+                            <h4 class="role-card-title">Harbiy-vatanparvarlik loyihalari koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-reverse">
+                            <div class="role-icon-box"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                            <h4 class="role-card-title">Yoshlar daftari va metsenatlik dasturlari koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-medium">
+                            <div class="role-icon-box"><i class="fa-solid fa-rocket"></i></div>
+                            <h4 class="role-card-title">Tadbirkorlik va innovatsion loyihalar koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-fast">
+                            <div class="role-icon-box"><i class="fa-solid fa-brain"></i></div>
+                            <h4 class="role-card-title">Intellektual loyihalar koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-reverse">
+                            <div class="role-icon-box"><i class="fa-solid fa-venus"></i></div>
+                            <h4 class="role-card-title">Talaba qizlar koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-slow">
+                            <div class="role-icon-box"><i class="fa-solid fa-handshake-angle"></i></div>
+                            <h4 class="role-card-title">Volontyorlik loyihalari koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-slow">
+                            <div class="role-icon-box"><i class="fa-solid fa-book-open"></i></div>
+                            <h4 class="role-card-title">Ma'naviy-ma'rifiy loyihalar koordinatori</h4>
+                        </div>
+                    </div>
+                    <div class="col-custom">
+                        <div class="union-role-card-premium float-slow">
+                            <div class="role-icon-box"><i class="fa-solid fa-camera-retro"></i></div>
+                            <h4 class="role-card-title">Talabalar media guruhi rahbari</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mb-5" style="margin-top: 80px;">
+                    <h2 class="title-premium-section">
+                        KENGASH <span class="gradient-text">TARKIBI</span>
+                    </h2>
+                    <div class="premium-divider-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star big-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="team-section-wrapper">
+
+                    {% for member in council_members %}
+                    <div class="elite-team-card {% if forloop.counter|divisibleby:2 %}reverse{% endif %}" data-aos="fade-up">
+                        <div class="etc-image-box">
+                            <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                            <div class="etc-overlay"></div>
+                        </div>
+                        <div class="etc-info-box">
+                            {% if member.bg_icon %}
+                            <div class="bg-icon-decor"><i class="{{ member.bg_icon }}"></i></div>
+                            {% endif %}
+                            <div class="flag-badge">
+                                {% if member.badge_icon %}<i class="{{ member.badge_icon }}"></i> {% endif %}{{ member.position }}
+                            </div>
+
+                            <div class="etc-name-group">
+                                <h3 class="etc-name">{{ member.name }}</h3>
+                                <span class="etc-surname">{{ member.surname }}</span>
+                            </div>
+                            {% if member.motto %}
+                            <h4 style="color:#07006b">{{ member.motto }}</h4>
+                            {% endif %}
+                            <div class="gold-divider"></div>
+
+                            <p class="etc-bio">
+                                {{ member.bio }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+{% endblock content %}

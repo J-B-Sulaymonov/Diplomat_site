@@ -1,0 +1,659 @@
+{% load static %}
+{% load i18n %}
+{% block header %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:'uz' }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Diplomat University | Xalqaro Ta'lim va Innovatsiyalar Markazi{% endblock title %}</title>
+
+    <!-- PRECONNECTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+    <!-- Asosiy Meta Teglar -->
+    <meta name="description"
+        content="Diplomat University - O'zbekistondagi zamonaviy ta'lim, ilm-fan va innovatsiyalar uyg'unlashgan, raqobatbardosh kadrlarni tayyorlovchi xalqaro aql markazi. Ta'lim va kelajagingiz sari ilk qadamni tashlang.">
+    <meta name="keywords"
+        content="Diplomat University, xalqaro ta'lim, Toshkent universiteti, o'qishga kirish, bakalavriat, magistratura, O'zbekiston, ta'lim muassasasi, innovatsiyalar, biznes, raqamli iqtisodiyot">
+    <meta name="author" content="Diplomat University">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="Uzbek">
+    <meta name="theme-color" content="#07006b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+    <meta name="generator" content="Diplomat University Engine">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://diplomat.university/">
+
+    <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Diplomat University | Xalqaro Ta'lim va Innovatsiyalar Markazi">
+    <meta property="og:description"
+        content="Diplomat University - O'zbekistondagi zamonaviy ta'lim, ilm-fan va innovatsiyalar uyg'unlashgan, raqobatbardosh kadrlarni tayyorlovchi xalqaro aql markazi.">
+    <meta property="og:url" content="https://diplomat.university/">
+    <meta property="og:site_name" content="Diplomat University">
+    <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Diplomat University Banner">
+    <meta property="og:locale" content="uz_UZ">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@diplomat_uni">
+    <meta name="twitter:creator" content="@diplomat_uni">
+    <meta name="twitter:title" content="Diplomat University | Xalqaro Ta'lim va Innovatsiyalar Markazi">
+    <meta name="twitter:description"
+        content="Diplomat University - O'zbekistondagi zamonaviy ta'lim, ilm-fan va innovatsiyalar uyg'unlashgan xalqaro universitet.">
+    <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta name="twitter:image:alt" content="Diplomat University Logo">
+
+    <!-- JSON-LD (Schema.org) for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://diplomat.university/#organization",
+          "name": "Diplomat University",
+          "url": "https://diplomat.university/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg",
+            "width": "200",
+            "height": "60"
+          },
+          "description": "Diplomat University - O'zbekistondagi zamonaviy ta'lim va innovatsiyalarni birlashtirgan xalqaro aql markazi.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Sayilgoh ko'chasi, 1-uy",
+            "addressLocality": "Tashkent",
+            "addressCountry": "UZ"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+998-88-124-88-88",
+            "contactType": "Admissions Office",
+            "areaServed": "UZ",
+            "availableLanguage": ["Uzbek", "Russian", "English"]
+          },
+          "sameAs": [
+            "https://www.facebook.com/diplomat.university",
+            "https://www.instagram.com/diplomat.university",
+            "https://t.me/diplomat_university",
+            "https://www.youtube.com/@diplomat.university"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://diplomat.university/#website",
+          "url": "https://diplomat.university/",
+          "name": "Diplomat University",
+          "publisher": {
+            "@id": "https://diplomat.university/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://diplomat.university/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "inLanguage": "uz-UZ"
+        }
+      ]
+    }
+    </script>
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA YAKUNI -->
+
+    {% block extra_head %}{% endblock extra_head %}
+
+</head>
+
+<body>
+    <header class="header-custom-bg">
+        <div class="top-bar-area">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div class="top-contact">
+                        <a href="tel:+998881248888"><i class="fas fa-phone-alt"></i> +998 88 124-88-88</a>
+                        <span class="divider">|</span>
+                        <a href="mailto:info@diplomat.university" class="d-none d-md-inline-block"><i
+                                class="fas fa-envelope"></i> info@diplomat.university</a>
+                    </div>
+
+                    <div class="top-right d-flex align-items-center">
+
+                        <div class="top-socials">
+                            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+
+                        <div class="top-lang-dropdown dropdown">
+                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% if LANGUAGE_CODE == 'en' %}
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="EN" width="20" class="me-1"> EN
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                <img src="https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg" alt="RU" width="20" class="me-1"> RU
+                                {% else %}
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Uzbekistan.svg/20px-Flag_of_Uzbekistan.svg.png" alt="UZ" width="20" class="me-1"> UZ
+                                {% endif %}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="{% url 'set-language' 'uz' %}"><img
+                                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Uzbekistan.svg/20px-Flag_of_Uzbekistan.svg.png"
+                                            width="20" class="me-2"> O'zbekcha</a></li>
+                                <li><a class="dropdown-item" href="{% url 'set-language' 'en' %}"><img
+                                            src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"
+                                            width="20" class="me-2"> English</a></li>
+                                <li><a class="dropdown-item" href="{% url 'set-language' 'ru' %}"><img
+                                            src="https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg"
+                                            width="20" class="me-2"> Русский</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg"
+                        alt="Diplomat University Logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                O'quv dasturlari <i class="fas fa-chevron-down"></i>
+                            </a>
+                                <ul class="dropdown-menu">
+                                    {% for degree in menu_degrees %}
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item d-flex justify-content-between align-items-center"
+                                            href="#">
+                                            {{ degree.title }}
+                                            <i class="fas fa-chevron-right ms-2" style="font-size: 0.7rem;"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            {% for prog in degree.program_set.all %}
+                                            <li><a class="dropdown-item" href="{% url 'program_detail' prog.slug %}">
+                                                {{ prog.title }}</a></li>
+                                            {% empty %}
+                                            <li><a class="dropdown-item disabled" href="#">Tez orada...</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Qabul <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'admission_page' %}">Hujjatlarni topshirish
+                                        jarayoni</a></li>
+                                <li><a class="dropdown-item" href="{% url 'discounts_page' %}">Kontrakt narxi va
+                                        chegirmalar</a></li>
+                                <li><a class="dropdown-item" href="{% url 'why_team' %}">Nega aynan Diplomat
+                                        University?</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Talabalar hayoti <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item" href="#">Talabalar hayoti</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'resources' %}">Axborot resurs
+                                                markazi</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'internships' %}">Talabalar amaliyot
+                                        dasturi</a></li>
+                                <li><a class="dropdown-item" href="{% url 'student_union' %}">Yoshlar ittifoqi</a></li>
+                                <li><a class="dropdown-item" href="{% url 'infrastructure' %}">Smart kampus</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Diplomat haqida <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'research' %}">Tadqiqotlar</a></li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item" href="{% url 'leadership' %}">Jamoamiz</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'legal' %}">Me’yoriy-huquqiy hujjatlar</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'rules' %}">Ichki qoidalar</a></li>
+                                <li><a class="dropdown-item" href="{% url 'news' %}">Yangiliklar</a></li>
+                                <li><a class="dropdown-item" href="{% url 'analytics' %}">Tahliliy materiallar</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://library.diplomat.university/"
+                                target="_blank">Kutubxona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+                        </li>
+
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    {% endblock header%}
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+
+    {% block footer %}
+    <footer class="premium-footers">
+        <div class="footer-bg-overlay"></div>
+        <div class="footer-glow-point"></div>
+
+
+        <div class="container relative-z">
+
+            <div class="row gy-4">
+                <div class="col-lg-3 col-md-12">
+                    <div class="footer-brand-box" data-aos="fade-right">
+                        <img src="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg"
+                            alt="Diplomat University Logo" class="footer-premium-logo">
+
+                        <div class="social-pulse-wrapper">
+                            <a href="#" class="social-btn pulse-gold" aria-label="Telegram"><i
+                                    class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="social-btn pulse-pink" aria-label="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-btn pulse-blue" aria-label="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-btn pulse-red" aria-label="YouTube"><i
+                                    class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h5 class="footer-title">Diplomat haqida</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'leadership' %}">Rahbariyat va jamoamiz</a></li>
+                        <li><a href="{% url 'research' %}">Ilmiy tadqiqotlar</a></li>
+                        <li><a href="{% url 'legal' %}">Me'yoriy hujjatlar</a></li>
+                        <li><a href="{% url 'rules' %}">Ichki qoidalar</a></li>
+                        <li><a href="{% url 'infrastructure' %}">Smart kampus</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h5 class="footer-title">Qabul va ta'lim</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'admission_page' %}">Hujjat topshirish</a></li>
+                        <li><a href="{% url 'discounts_page' %}">Kontrakt va chegirmalar</a></li>
+                        <li><a href="{% url 'bussines' %}">Bakalavriat</a></li>
+                        <li><a href="{% url 'masters' %}">Magistratura</a></li>
+                        <li><a href="{% url 'why_team' %}">Nima uchun Diplomat?</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h5 class="footer-title">Talabalar hayoti</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'internships' %}">Amaliyot dasturi</a></li>
+                        <li><a href="{% url 'student_union' %}">Yoshlar ittifoqi</a></li>
+                        <li><a href="{% url 'resources' %}">Resurs markazi</a></li>
+                        <li><a href="https://library.diplomat.university/" target="_blank">Kutubxona</a></li>
+                        <li><a href="{% url 'shop' %}">Universitet do'koni</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="contact-glass-card" data-aos="fade-left">
+                        <h5 class="footer-title text-white mb-4">Bog'lanish</h5>
+
+                        <div class="contact-row">
+                            <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <span>Toshkent sh, Sayilgoh ko'chasi, 1-uy.</span>
+                        </div>
+
+                        <div class="contact-row">
+                            <div class="c-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <a href="tel:+998881248888">+998 88 124-88-88</a>
+                                <a href="tel:+998881268888">+998 88 126-88-88</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-row">
+                            <div class="c-icon"><i class="fas fa-envelope"></i></div>
+                            <a href="mailto:info@diplomat.university">info@diplomat.university</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer-line">
+
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="copyright-text">&copy; 2025 Diplomat University. Barcha huquqlar himoyalangan.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="policy-link">Maxfiylik siyosati</a>
+                        <span class="separator">|</span>
+                        <a href="#" class="policy-link">Foydalanish shartlari</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="dip-chat-widget">
+        <button id="chat-toggle-btn" class="chat-launcher">
+            <i class="fas fa-comment-dots open-icon"></i>
+            <i class="fas fa-times close-icon"></i>
+            <span class="chat-notification-dot">1</span>
+        </button>
+
+        <div id="chat-window" class="chat-window">
+
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="operator-avatar">
+                        <img src="https://img.freepik.com/free-icon/user_318-159711.jpg" alt="Operator">
+                        <span class="status-dot"></span>
+                    </div>
+                    <div>
+                        <h5 class="operator-name">Qabul bo'limi</h5>
+                        <span class="operator-status">Aloqa markazi</span>
+                    </div>
+                </div>
+                <button id="chat-close-mini" class="chat-close-btn"><i class="fas fa-chevron-down"></i></button>
+            </div>
+
+            <div id="chat-screen-form" class="chat-screen active-screen">
+                <div class="form-intro">
+                    Assalomu alaykum! Savollaringizga javob berishimiz uchun o'zingizni tanishtiring.
+                </div>
+                <form id="pre-chat-form">
+                    <div class="form-group">
+                        <input type="text" id="user-fullname" placeholder="Ism va Familiyangiz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" id="user-phone" placeholder="Telefon (+998...)" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="user-email" placeholder="Emailingiz (ixtiyoriy)">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="user-first-message" rows="3" placeholder="Xabaringizni yozing..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn-start-chat">CHATNI BOSHLASH</button>
+                </form>
+                <div class="chat-footer-brand">Diplomat University Support</div>
+            </div>
+
+            <div id="chat-screen-main" class="chat-screen" style="display: none;">
+                <div id="chat-messages" class="chat-messages">
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Yozishda davom eting...">
+                    <button id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="chat-footer-brand">Diplomat University Support</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // ELEMENTLARNI OLISH
+            const chatBtn = document.getElementById('chat-toggle-btn');
+            const chatWindow = document.getElementById('chat-window');
+            const closeMini = document.getElementById('chat-close-mini');
+            const notificationDot = document.querySelector('.chat-notification-dot');
+
+            // Ekranlar
+            const screenForm = document.getElementById('chat-screen-form');
+            const screenMain = document.getElementById('chat-screen-main');
+            const preChatForm = document.getElementById('pre-chat-form');
+
+            // Chat elementlari
+            const messagesContainer = document.getElementById('chat-messages');
+            const chatInput = document.getElementById('chat-input');
+            const sendBtn = document.getElementById('chat-send-btn');
+
+            // Session
+            let sessionKey = localStorage.getItem('dip_chat_session');
+            let pollingInterval = null;
+            let lastMessageCount = 0;
+
+            // 1. CHATNI OCHISH/YOPISH
+            function toggleChat() {
+                chatWindow.classList.toggle('open');
+                chatBtn.classList.toggle('active');
+                if (chatWindow.classList.contains('open')) {
+                    notificationDot.style.display = 'none';
+                }
+            }
+
+            chatBtn.addEventListener('click', toggleChat);
+            closeMini.addEventListener('click', toggleChat);
+
+            // Agar oldingi sessiya bo'lsa — to'g'ridan-to'g'ri chatga o'tish
+            if (sessionKey) {
+                screenForm.style.display = 'none';
+                screenMain.style.display = 'flex';
+                loadMessages();
+                startPolling();
+            }
+
+            // 2. FORMANI YUBORISH VA CHATNI BOSHLASH
+            preChatForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const fullname = document.getElementById('user-fullname').value.trim();
+                const phone = document.getElementById('user-phone').value.trim();
+                const email = document.getElementById('user-email').value.trim();
+                const firstMsg = document.getElementById('user-first-message').value.trim();
+
+                if (!fullname || !phone || !firstMsg) return;
+
+                // API ga yuborish
+                fetch('/api/chat/start/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fullname: fullname,
+                        phone: phone,
+                        email: email,
+                        message: firstMsg
+                    })
+                })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        sessionKey = data.session_key;
+                        localStorage.setItem('dip_chat_session', sessionKey);
+
+                        // Ekranni almashtirish
+                        screenForm.style.display = 'none';
+                        screenMain.style.display = 'flex';
+
+                        // Xabarni ko'rsatish
+                        addMessage(firstMsg, 'sent');
+
+                        const firstName = fullname.split(' ')[0];
+                        setTimeout(() => {
+                            addMessage(`Assalomu alaykum, ${firstName}! Murojaatingiz qabul qilindi. Operatorlarimiz tez orada javob berishadi.`, 'received');
+                        }, 800);
+
+                        // Pollingni boshlash
+                        startPolling();
+                    }
+                })
+                .catch(err => console.error('Chat xatosi:', err));
+            });
+
+            // 3. XABAR YUBORISH
+            function sendMessage() {
+                const text = chatInput.value.trim();
+                if (text === "" || !sessionKey) return;
+
+                addMessage(text, 'sent');
+                chatInput.value = '';
+
+                fetch('/api/chat/send/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        session_key: sessionKey,
+                        message: text
+                    })
+                })
+                .then(r => r.json())
+                .catch(err => console.error('Xabar yuborishda xato:', err));
+            }
+
+            // 4. XABARNI HTMLGA QO'SHISH
+            function addMessage(text, type) {
+                const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const div = document.createElement('div');
+                div.className = `message-bubble ${type}`;
+                div.innerHTML = `${text} <span class="msg-time">${time}</span>`;
+
+                messagesContainer.appendChild(div);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            // 5. SERVERDAN XABARLARNI YUKLASH
+            function loadMessages() {
+                if (!sessionKey) return;
+
+                fetch(`/api/chat/messages/?session_key=${sessionKey}`)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        // Yangi xabar kelganini tekshirish
+                        if (data.messages.length > lastMessageCount && lastMessageCount > 0) {
+                            // Yangi admin xabari keldi — bildirishnoma
+                            if (!chatWindow.classList.contains('open')) {
+                                notificationDot.style.display = 'flex';
+                            }
+                        }
+
+                        // Faqat yangi xabarlarni ko'rsatish
+                        if (data.messages.length !== lastMessageCount) {
+                            messagesContainer.innerHTML = '';
+                            data.messages.forEach(msg => {
+                                const type = msg.is_from_admin ? 'received' : 'sent';
+                                const date = new Date(msg.created_at);
+                                const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                const div = document.createElement('div');
+                                div.className = `message-bubble ${type}`;
+                                div.innerHTML = `${msg.text} <span class="msg-time">${time}</span>`;
+                                messagesContainer.appendChild(div);
+                            });
+                            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                            lastMessageCount = data.messages.length;
+                        }
+                    }
+                })
+                .catch(err => console.error('Xabarlarni yuklashda xato:', err));
+            }
+
+            // 6. POLLING — har 5 sekundda yangi xabarlarni tekshirish
+            function startPolling() {
+                if (pollingInterval) clearInterval(pollingInterval);
+                pollingInterval = setInterval(loadMessages, 5000);
+            }
+
+            // Hodisalar
+            sendBtn.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') sendMessage();
+            });
+
+        });
+    </script>
+
+
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+
+</html>
+{% endblock footer %}

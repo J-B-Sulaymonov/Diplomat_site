@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Kontrakt narxi va chegirmalar | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/discounts-page.css' %}">
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+        <!-- Asosiy Meta Teglar -->
+        <meta name="description"
+            content="Diplomat Universityda o'qish uchun to'lov-kontrakt miqdorlari, bakalavriat va magistratura narxlari hamda iqtidorli talabalar uchun maxsus chegirmalar haqida ma'lumot.">
+        <meta name="keywords"
+            content="kontrakt narxi, universitet kontrakti, o'qish puli, talabalar uchun chegirmalar, Diplomat University chegirma, ta'lim granti, ta'lim krediti, o'quv shartnomasi">
+        <meta name="author" content="Diplomat University">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="language" content="Uzbek">
+        <meta name="theme-color" content="#07006b">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+        <meta name="generator" content="Diplomat University Engine">
+    
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://diplomat.university/discounts-page.html">
+    
+        <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Kontrakt narxi va chegirmalar | Diplomat University">
+        <meta property="og:description"
+            content="Diplomat University o'quv dasturlari narxlari, to'lov grafigi va grant dasturlari qoidalari to'g'risida axborot tarmog'i.">
+        <meta property="og:url" content="https://diplomat.university/discounts-page.html">
+        <meta property="og:site_name" content="Diplomat University">
+        <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="Kontrakt narxi grafik ko'rinishida">
+        <meta property="og:locale" content="uz_UZ">
+    
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@diplomat_uni">
+        <meta name="twitter:creator" content="@diplomat_uni">
+        <meta name="twitter:title" content="Kontrakt narxi va chegirmalar | Diplomat University">
+        <meta name="twitter:description"
+            content="To'lov-kontrakt miqdorlari, ta'lim krediti rasmiylashtirish jarayoni va maxsus yoshlar chegirmalari.">
+        <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta name="twitter:image:alt" content="University Chegirmalar">
+    
+        <!-- JSON-LD (Schema.org) for WebPage / EducationalOrganization -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Kontrakt narxi va chegirmalar",
+          "description": "Bakalavriat va magistratura yo'nalishlari uchun tasdiqlangan kontrakt miqdorlari, shuningdek muddatidan oldingi to'lov uchun turli chegirmalar to'g'risida ishonchli ma'lumot.",
+          "url": "https://diplomat.university/discounts-page.html",
+          "publisher": {
+            "@type": "EducationalOrganization",
+            "name": "Diplomat University",
+            "url": "https://diplomat.university/"
+          }
+        }
+        </script>
+{% endblock extra_head %}
+
+{% block content %}
+    <main>
+        <div class="container">
+                    <section class="admission-hero-elite discount-hero" data-aos="zoom-in">
+                        <div class="page-hero-header-premium">
+                            <h1 class="title-premium">
+                                KONTRAKT NARXI VA <br>
+                                <span class="highlight-text-premium">CHEGIRMALAR</span>
+                            </h1>
+                            <div class="premium-line-divider"></div>
+                        </div>
+                    </section>
+                </div>
+        
+                <section class="admission-body-wrapper" style="padding:60px">
+        
+                    <div class="container price-card-container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12" data-aos="fade-up">
+        
+                                <div class="tuition-premium-card">
+                                    <div class="corner-decoration top-left"></div>
+                                    <div class="corner-decoration bottom-right"></div>
+        
+
+                                    <div class="row">
+
+                                        {% for degree in degrees %}
+                                        <div class="col-12 pricing-category-block {% if not forloop.first %}master-block{% endif %}">
+                                            <div class="category-header-premium">
+                                                {% if forloop.first %}
+                                                <i class="fas fa-graduation-cap"></i>
+                                                {% else %}
+                                                <i class="fas fa-award"></i>
+                                                {% endif %}
+                                                <h4>{{ degree.title|upper }}</h4>
+                                            </div>
+        
+                                            <div class="pricing-grid-premium">
+                                                {% for program in degree.program_set.all %}
+                                                <div class="pricing-item-premium">
+                                                    <div class="p-left-content">
+                                                        <div class="p-icon-box"><i class="{{ program.icon|default:'fas fa-book' }}"></i></div>
+                                                        <span class="p-name-text">{{ program.title }}</span>
+                                                    </div>
+                                                    <div class="p-right-content">
+                                                        <span class="p-amount">{{ program.formatted_contract_price }}</span>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+        
+        
+        
+                                        <div class="col-12 mt-5 pt-4 border-top">
+                                            <div style="text-align:center">
+                                                <h4 class="category-subtitle mb-4 text-center"><i
+                                                        class="fas fa-calendar-alt"></i> TO'LOV GRAFIGI</h4>
+                                            </div>
+                                            <div class="payment-steps-container">
+                                                <div class="p-step-item">
+                                                    <div class="p-step-dot">1</div>
+                                                    <div class="p-step-content">
+                                                        <div class="p-step-percent">25%</div>
+                                                        <div class="p-step-label">1-bosqich</div>
+                                                        <div class="p-step-date">1-oktyabrgacha</div>
+                                                    </div>
+                                                </div>
+                                                <div class="p-step-item">
+                                                    <div class="p-step-dot">2</div>
+                                                    <div class="p-step-content">
+                                                        <div class="p-step-percent">50%</div>
+                                                        <div class="p-step-label">2-bosqich</div>
+                                                        <div class="p-step-date">1-yanvargacha</div>
+                                                    </div>
+                                                </div>
+                                                <div class="p-step-item">
+                                                    <div class="p-step-dot">3</div>
+                                                    <div class="p-step-content">
+                                                        <div class="p-step-percent">75%</div>
+                                                        <div class="p-step-label">3-bosqich</div>
+                                                        <div class="p-step-date">1-martgacha</div>
+                                                    </div>
+                                                </div>
+                                                <div class="p-step-item">
+                                                    <div class="p-step-dot">4</div>
+                                                    <div class="p-step-content">
+                                                        <div class="p-step-percent">100%</div>
+                                                        <div class="p-step-label">4-bosqich</div>
+                                                        <div class="p-step-date">1-maygacha</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="container">
+                        <div class="row mt-5">
+                            <div class="col-12 text-center mb-5" data-aos="fade-up">
+                                <h2 class="title-kanit-main">CHEGIRMALAR</h2>
+                                <div class="divider-gold-center"></div>
+        
+                            </div>
+                        </div>
+        
+                        <div class="row g-4 justify-content-center">
+        
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="discount-card-elite featured-card">
+                                    <div class="discount-badge gold-badge">-20%</div>
+                                    <div class="card-icon-box">
+                                        <i class="fa-solid fa-dove"></i>
+                                    </div>
+                                    <h4 class="d-card-title">Early pay bonus </h4>
+                                    <p class="d-card-desc">
+                                        Kontraktning birinchi 50% qismini 25-sentyabrgacha to'lagan talabalarga
+                                    </p>
+                                    <div class="d-card-divider"></div>
+                                    <ul class="d-card-features">
+                                        <li><i class="fas fa-check-circle"></i>O'quv yili oldidan</li>
+        
+                                        <li><i class="fas fa-check-circle"></i> 1-kurslar uchun</li>
+                                    </ul>
+                                    <div class="glow-effect"></div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="discount-card-elite featured-card">
+                                    <div class="discount-badge gold-badge">-25%</div>
+                                    <div class="card-icon-box">
+                                        <i class="fa-solid fa-wallet"></i>
+                                    </div>
+                                    <h4 class="d-card-title">Iqtidor</h4>
+                                    <p class="d-card-desc">
+                                        O'zlashtirish ko'rsatkichi eng yuqori talabalarga
+                                    </p>
+                                    <div class="d-card-divider"></div>
+                                    <ul class="d-card-features">
+                                        <li><i class="fas fa-check-circle"></i> Barcha kurslar uchun</li>
+                                        <li><i class="fas fa-check-circle"></i> Har semestr yakunida</li>
+                                    </ul>
+                                    <div class="glow-effect"></div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="discount-card-elite featured-card">
+                                    <div class="discount-badge gold-badge">-15%</div>
+                                    <div class="card-icon-box">
+                                        <i class="fa-solid fa-users"></i>
+                                    </div>
+                                    <h4 class="d-card-title">Faollik</h4>
+                                    <p class="d-card-desc">
+                                        Universitet hayotida faol ishtirok etgan talabalarga
+                                    </p>
+                                    <div class="d-card-divider"></div>
+                                    <ul class="d-card-features">
+                                        <li><i class="fas fa-check-circle"></i> Barcha kurslar uchun</li>
+                                        <li><i class="fas fa-check-circle"></i> Har semestr yakunida</li>
+                                    </ul>
+                                    <div class="glow-effect"></div>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                        <div class="premium-main-card loan-section-premium" data-aos="fade-up" style="margin-top: 80px;">
+        
+                            <div class="row">
+                                <div class="col-lg-12 text-center mb-5">
+                                    <h2 class="title-kanit-main">TA’LIM KREDITI</h2>
+                                    <div class="divider-gold-center"></div>
+        
+                                </div>
+                            </div>
+        
+                            <div class="row g-4 mb-5 justify-content-center">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="loan-benefit-card">
+                                        <div class="lb-icon"><i class="fas fa-calendar-alt"></i></div>
+                                        <h5>7 yilgacha</h5>
+                                        <p>O‘qish davrida asosiy qarzni to‘lash talab etilmaydi.</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="loan-benefit-card">
+                                        <div class="lb-icon"><i class="fas fa-percent"></i></div>
+                                        <h5>XOTIN-QIZLAR UCHUN — 0%</h5>
+                                        <p>Foiz to‘lovlari davlat tomonidan qoplab beriladi.</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="loan-benefit-card">
+                                        <div class="lb-icon"><i class="fas fa-user-shield"></i></div>
+                                        <h5>ISHONCHLI KAFOLAT</h5>
+                                        <p>Doimiy daromadga ega bo‘lgan yaqin qarindoshlar (ota-ona, aka-uka va boshqalar)
+                                            rasmiy kafil bo‘lishi mumkin. </p>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="row align-items-center bg-light-rounded p-4">
+                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                    <h4 class="loan-subtitle"><i class="fas fa-file-invoice mb-2 text-warning"></i> KERAKLI
+                                        HUJJATLAR:</h4>
+                                    <ul class="loan-docs-list">
+                                        <li><i class="fas fa-check-circle"></i> To'lov-kontrakt shartnomasi</li>
+                                        <li><i class="fas fa-check-circle"></i> Talaba va kafilning pasport nusxasi</li>
+                                        <li><i class="fas fa-check-circle"></i> Kafilning daromadlari to'g'risida ma'lumotnoma
+                                        </li>
+                                        <li><i class="fas fa-check-circle"></i> Talabaning shaxsiy arizasi</li>
+                                    </ul>
+                                </div>
+        
+                                <div class="col-lg-6">
+                                    <h4 class="loan-subtitle text-center mb-3">HAMKOR BANKLAR:</h4>
+                                    <div class="bank-logos-grid-tight">
+                                        <div class="bank-box"><img
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFgDdQKSVo3iEIZGnHBPLSMlUZ_sV3B0Y8vg&s"
+                                                alt="SQB"></div>
+                                        <div class="bank-box"><img src="https://cbu.uz/upload/iblock/15d/ofb.png" alt="OFB">
+                                        </div>
+        
+        
+                                        <div class="bank-box"><img src="https://xb.uz/_next/static/media/logo.9f2ead73.svg"
+                                                alt="Xalq Banki"></div>
+                                        <div class="bank-box"><img
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThG4VGlmTSZ99pIpY8hknZ8r10qFPbTKgQ1XUAwqjJv4_yRJl78EsiSDfX6by1QqeXbFc&usqp=CAU"
+                                                alt="Asaka Bank"></div>
+                                        <div class="bank-box"><img src="https://uba.uz/upload/iblock/dea/agro.jpg"
+                                                alt="Agrobank"></div>
+                                        <div class="bank-box"><img
+                                                src="https://ipotekabank.uz/local/templates/ipotekatmpl/images/bank_logo.CNPl83kA.png"
+                                                alt="Ipoteka"></div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                    </div>
+                </section>
+    </main>
+{% endblock content %}

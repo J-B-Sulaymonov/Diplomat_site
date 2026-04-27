@@ -1,0 +1,419 @@
+/* =========================================
+   DEPARTMENT DETAILS - ULTRA MODERN & REPLICA
+   ========================================= */
+
+:root {
+    --diplomat-navy: #07006b;
+    --diplomat-gold: #FFC107;
+    --diplomat-gold-dark: #FF8F00;
+}
+
+body {
+    background-color: #f4f7fc;
+    background-image: none;
+    /* Reset from previous fancy bg */
+}
+
+/* 1. HERO - CLEAN & SIMPLE (To let cards shine) */
+.dept-hero-elite {
+    padding: 60px 0 40px;
+    text-align: center;
+}
+
+.dept-hero-title h1 {
+    color: var(--diplomat-navy);
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.dept-hero-line {
+    width: 100px;
+    height: 4px;
+    background: var(--diplomat-gold);
+    margin: 20px auto;
+    border-radius: 4px;
+}
+
+/* 2. HEAD CARD - ULTRA MODERN GLASS (The "Different" One) */
+.head-modern-glass {
+    position: relative;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(7, 0, 107, 0.15);
+    overflow: hidden;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (min-width: 992px) {
+    .head-modern-glass {
+        flex-direction: row;
+        align-items: center;
+        min-height: auto;
+    }
+}
+
+/* Decorative Background */
+.head-modern-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: radial-gradient(circle at 10% 20%, rgba(255, 193, 7, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(7, 0, 107, 0.05) 0%, transparent 40%);
+}
+
+.head-modern-visual {
+    flex: 0 0 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+    border-right: none;
+    padding: 30px 30px 0 30px;
+}
+
+@media (min-width: 992px) {
+    .head-modern-visual {
+        flex: 0 0 350px;
+        padding: 40px;
+        /* Space for the frame */
+    }
+}
+
+/* Ensure images inside geo-mask fit */
+.geo-image-mask img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+}
+
+/* HOVER EFFECTS (Match Leadership) */
+.head-modern-glass:hover .geo-frame {
+    top: -10px;
+    left: -10px;
+    border-color: #FFC107;
+    opacity: 1;
+}
+
+.head-modern-glass:hover .geo-image-mask img {
+    transform: scale(1.08);
+}
+
+/* Inner overflow for the image and rings */
+.head-image-animated-wrapper {
+    overflow: hidden;
+}
+
+/* 1. Primary Rotating Gradient (Outer Ring) */
+.head-image-animated-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg,
+            transparent 0deg,
+            transparent 90deg,
+            #FFC107 180deg,
+            #FF8F00 270deg,
+            transparent 360deg);
+    animation: rotateBorder 4s linear infinite;
+    z-index: 0;
+}
+
+/* 2. Secondary Reverse Ring (Inner Ring Effect) */
+.head-rect-ring {
+    position: absolute;
+    inset: 3px;
+    border-radius: 22px;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.head-rect-ring::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 180deg,
+            transparent 0deg,
+            transparent 90deg,
+            #07006b 180deg,
+            #0A1535 270deg,
+            transparent 360deg);
+    animation: rotateBorder 6s linear infinite reverse;
+}
+
+/* Mask for Rings to create lines */
+.head-image-animated-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    /* Matches padding */
+    background: #fff;
+    border-radius: 20px;
+    z-index: 0;
+}
+
+/* 3. Particles (Rahbariyat Style) */
+.head-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    /* On top of white mask, behind image? No, image is z-1 */
+}
+
+/* Image needs to sit on top of mask but below particles?
+   Actually particles are usually background.
+   Let's put particles BEHIND image but ON TOP of white mask. */
+
+.head-particles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #FF8F00, #FFC107);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatParticle 3s infinite ease-in-out;
+}
+
+.head-particles span:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.head-particles span:nth-child(2) {
+    top: 20%;
+    right: 20%;
+    animation-delay: 0.5s;
+}
+
+.head-particles span:nth-child(3) {
+    bottom: 10%;
+    left: 30%;
+    animation-delay: 1s;
+}
+
+.head-particles span:nth-child(4) {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 1.5s;
+}
+
+.head-particles span:nth-child(5) {
+    top: 50%;
+    left: 50%;
+    animation-delay: 2s;
+}
+
+@keyframes floatParticle {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.head-modern-visual img {
+    /* RESET previous styles */
+    position: relative;
+    z-index: 5;
+    /* Sit above the mask */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 20px;
+    border: none;
+    box-shadow: none;
+    background: #fff;
+    /* Ensure it covers anything behind transparent parts */
+}
+
+/* Keyframes for breathing glow */
+@keyframes breathe {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        border-color: #fff;
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 20px 45px rgba(255, 193, 7, 0.3);
+        /* Gold Glow */
+        border-color: #fff;
+        /* Keep border white or slight tint */
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        border-color: #fff;
+    }
+}
+
+/* Floating "Kafedra Mudiri" Label - REMOVED */
+
+.head-modern-content {
+    flex: 1;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.head-modern-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--diplomat-navy);
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.head-modern-role {
+    font-size: 1.1rem;
+    color: var(--diplomat-gold-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.head-modern-divider {
+    width: 60px;
+    height: 3px;
+    background: #eee;
+    margin-bottom: 25px;
+}
+
+.head-modern-bio {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Contact Grid */
+.head-contact-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.head-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 12px 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.head-contact-item:hover {
+    border-color: var(--diplomat-navy);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.head-contact-icon {
+    color: var(--diplomat-gold-dark);
+    font-size: 1.2rem;
+}
+
+/* 3. EMPLOYEES - REPLICA OF "BO'LIMLAR" */
+/* We rely on leadership.css classes (.dept-card-3d) */
+/* We just add a wrapper to ensure spacing */
+
+.employee-replica-wrapper {
+    margin-bottom: 30px;
+}
+
+/* Ensure the replicated cards look good on full width or grid */
+/* By default .dept-card-3d in leadership.css might be block. */
+/* We will just use them as is. */
+
+/* Small override to ensure content in replicated cards fits if text is long */
+.dept-3d-info-side {
+    max-width: 100%;
+    /* Ensure it doesn't overflow */
+}
+
+/* 4. ABOUT DEPARTMENT SECTION (New) */
+.dept-about-section {
+    background: #fff;
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(5, 10, 31, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.dept-about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--diplomat-gold);
+}
+
+.dept-about-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.5rem;
+    color: var(--diplomat-navy);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dept-about-title i {
+    color: var(--diplomat-gold);
+    font-size: 1.2rem;
+}
+
+.dept-about-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+}

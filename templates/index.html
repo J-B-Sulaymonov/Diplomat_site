@@ -1,0 +1,1331 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block extra_head %}
+<style>
+/* MODERN NEWS CARD DESIGN - SENIOR UI/UX */
+        .modern-news-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(7, 0, 107, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modern-news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(7, 0, 107, 0.12);
+        }
+
+        .modern-nc-img-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modern-nc-image {
+            width: 100%;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: transform 0.6s ease;
+        }
+
+        .modern-news-card:hover .modern-nc-image {
+            transform: scale(1.08);
+        }
+
+        .modern-nc-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #07006b;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Kanit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modern-nc-content {
+            padding: 25px;
+            position: relative;
+            background: #fff;
+            z-index: 2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modern-nc-date {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .modern-nc-date i {
+            color: #FFC107;
+        }
+
+        .modern-nc-title {
+            font-size: 1.25rem;
+            font-family: 'Kanit', sans-serif;
+            color: #07006b;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .modern-nc-title:hover {
+            color: #FFC107;
+        }
+
+        .modern-nc-excerpt {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .modern-nc-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(7, 0, 107, 0.08);
+            padding-top: 18px;
+            margin-top: auto;
+        }
+
+        .modern-nc-author {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #07006b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modern-nc-author i {
+            color: #0d6efd;
+            font-size: 1rem;
+        }
+
+        .modern-nc-readmore {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #f8faff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #07006b;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            border: 1px solid rgba(7, 0, 107, 0.05);
+        }
+
+        .modern-news-card:hover .modern-nc-readmore {
+            background: #FFC107;
+            color: #fff;
+            transform: scale(1.1) rotate(-45deg);
+            border-color: #FFC107;
+        }
+    
+</style>
+{% endblock extra_head %}
+{% block content %}
+ <main>
+        <div id="heroCarousel" class="carousel slide">
+
+            <div class="carousel-indicators">
+                {% for slide in sliders %}
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                {% empty %}
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                {% endfor %}
+            </div>
+
+            <div class="carousel-inner">
+                {% for slide in sliders %}
+                {% if slide.style == 'style_1' %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %} video-slide" data-bs-interval="false">
+                    <video class="carousel-video-bg" autoplay muted playsinline
+                        poster="{% if slide.video_poster %}{{ slide.video_poster.url }}{% else %}https://i.postimg.cc/W1kZJgrn/3.jpg{% endif %}" id="sliderVideo">
+                        {% if slide.background_video %}
+                        <source src="{{ slide.background_video.url }}" type="video/mp4">
+                        {% else %}
+                        <source src="{% static 'slayder/Slider1.mp4' %}" type="video/mp4">
+                        {% endif %}
+                    </video>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="hero-content-v1">
+                                {% if slide.badge_text %}
+                                <div class="hero-badge animate-slide-down">
+                                    <span class="pulsing-dot"></span> {{ slide.badge_text }}
+                                </div>
+                                {% endif %}
+                                <h1 class="hero-title animate-text-reveal">
+                                    {{ slide.title_part_1 }} <span class="highlight-text">{{ slide.title_part_2 }}</span><br>
+                                    {{ slide.title_part_3 }}
+                                </h1>
+                                <div class="hero-divider animate-width"></div>
+                                <p class="hero-description animate-fade-up">
+                                    {{ slide.description }}
+                                </p>
+                                <div class="hero-btns animate-fade-up-delay">
+                                    <a href="#" class="btn-ariza btn-glow"
+                                        onclick="openModal('modal-slider-{{ slide.id }}'); return false;">{{ slide.button_text }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% elif slide.style == 'style_2' %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+                    <div class="kenburns-wrapper">
+                        <img src="{% if slide.background_image %}{{ slide.background_image.url }}{% else %}{% static 'images/slider3.png' %}{% endif %}" class="d-block w-100" alt="Slider {{ forloop.counter }}">
+                        <div class="overlay-cyber"></div>
+                    </div>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8">
+                                    <div class="cyber-content">
+                                        {% if slide.badge_text %}
+                                        <div class="cyber-badge">
+                                            <span class="blinking-cursor">_</span> {{ slide.badge_text }}
+                                        </div>
+                                        {% endif %}
+                                        <h1 class="cyber-title">
+                                            {{ slide.title_part_1 }} <br>
+                                            <span class="glitch-text" data-text="{{ slide.title_part_2 }}">{{ slide.title_part_2 }}</span>
+                                        </h1>
+                                        <p class="cyber-desc">
+                                            {{ slide.description }}
+                                        </p>
+                                        <div class="cyber-btn-group">
+                                            <a href="#" class="btn-tech"
+                                        onclick="openModal('modal-slider-{{ slide.id }}'); return false;">{{ slide.button_text }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% elif slide.style == 'style_3' %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+                    <div class="kenburns-wrapper">
+                        <img src="{% if slide.background_image %}{{ slide.background_image.url }}{% else %}https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070{% endif %}"
+                            class="d-block w-100" alt="Slider {{ forloop.counter }}">
+                        <div class="overlay-prestige"></div>
+                    </div>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8 text-start">
+                                    <div class="prestige-content">
+                                        {% if slide.badge_text %}
+                                        <div class="badge-animated">
+                                            <span class="badge-icon" style="color: #00f2ff;"><i
+                                                    class="fas fa-lightbulb"></i></span>
+                                            <span class="badge-text">{{ slide.badge_text }}</span>
+                                        </div>
+                                        {% endif %}
+                                        <h1 class="prestige-title">
+                                            <span class="reveal-text-accent" style="color:white">{{ slide.title_part_1 }}</span>
+                                            <span class="reveal-text-gold dynamic-fill">{{ slide.title_part_2 }}</span>
+                                        </h1>
+                                        <p class="prestige-desc" style="border-left-color: #00f2ff;">
+                                            {{ slide.description }}
+                                        </p>
+                                        <div class="executive-btns">
+                                            <a href="#" class="btn-prestige-primary apply-btn-style"
+                                        onclick="openModal('modal-slider-{{ slide.id }}'); return false;">{{ slide.button_text }} <i class="fas fa-rocket ms-2"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 d-none d-lg-block">
+                                    {% if slide.features.first %}
+                                    <div class="floating-card single-card-adjust">
+                                        <div class="glass-stat-box center-box"
+                                            style="border-top: 5px solid #FFC107; border-left: none;">
+                                            <i class="{{ slide.features.first.icon|default:'fas fa-hand-holding-usd' }} fa-3x mb-3"
+                                                style="color: #FFC107; display: block; text-align: center;"></i>
+                                            <h3 style="color: #fff; text-align: center;">{{ slide.features.first.title }}</h3>
+                                            <p style="text-align: center;">{{ slide.features.first.description }}</p>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% elif slide.style == 'style_4' %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+                    <div class="kenburns-wrapper">
+                        <img src="{% if slide.background_image %}{{ slide.background_image.url }}{% else %}{% static 'images/elyurt.jpg' %}{% endif %}" class="d-block w-100" alt="Slider {{ forloop.counter }}">
+                        <div class="overlay-animated-gradient"></div>
+                    </div>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 text-start">
+                                    <div class="executive-content">
+                                        {% if slide.badge_text %}
+                                        <div class="badge-glow">
+                                            <i class="fas fa-star text-warning"></i> {{ slide.badge_text }}
+                                        </div>
+                                        {% endif %}
+                                        <h1 class="vibrant-title-large">
+                                            {{ slide.title_part_1 }} <br>
+                                            {{ slide.title_part_2 }} <br>
+                                            <span class="text-gradient-gold">{{ slide.title_part_3 }}</span>
+                                        </h1>
+                                        <p class="executive-desc">
+                                            {{ slide.description }}
+                                        </p>
+                                        <div class="executive-btns">
+                                            <a href="#" class="btn-join"
+                                        onclick="openModal('modal-slider-{{ slide.id }}'); return false;">{{ slide.button_text }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-lg-block">
+                                    <div class="pillars-container">
+                                        {% for feature in slide.features.all|slice:":3" %}
+                                        <div class="pillar-card {% if forloop.counter == 1 %}gradient-card-blue float-1{% elif forloop.counter == 2 %}gradient-card-gold float-2 active-glow{% else %}gradient-card-purple float-3{% endif %}">
+                                            <div class="pillar-icon"><i class="{{ feature.icon }}"></i></div>
+                                            <div class="pillar-text">
+                                                <h5>{{ feature.title }}</h5>
+                                                <span>{{ feature.description }}</span>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% empty %}
+                <div class="carousel-item active video-slide" data-bs-interval="false">
+                    <video class="carousel-video-bg" autoplay muted playsinline
+                        poster="https://i.postimg.cc/W1kZJgrn/3.jpg" id="sliderVideo">
+                        <source src="{% static 'slayder/Slider1.mp4' %}" type="video/mp4">
+                    </video>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="hero-content-v1">
+                                <div class="hero-badge animate-slide-down">
+                                    <span class="pulsing-dot"></span> ??? ??? ???
+                                </div>
+                                <h1 class="hero-title animate-text-reveal">
+                                    GLOBAL <span class="highlight-text">BILIM</span><br>
+                                    EKOTIZIMI
+                                </h1>
+                                <div class="hero-divider animate-width"></div>
+                                <p class="hero-description animate-fade-up">
+                                    Bilim yaratish, almashish hamda innovatsiyalarni qo‘llab-quvvatlovchi xalqaro
+                                    hamkorlik muhiti
+                                </p>
+                                <div class="hero-btns animate-fade-up-delay">
+                                    <a href="#" class="btn-ariza btn-glow"
+                                        onclick="openModal('modal-slider-1'); return false;">BATAFSIL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" data-bs-interval="5000">
+                    <div class="kenburns-wrapper">
+                        <img src="{% static 'images/slider3.png' %}" class="d-block w-100" alt="Digital Economy World">
+                        <div class="overlay-cyber"></div>
+                    </div>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8">
+                                    <div class="cyber-content">
+                                        <div class="cyber-badge">
+                                            <span class="blinking-cursor">_</span> RAQAMLI KELAJAK
+                                        </div>
+                                        <h1 class="cyber-title">
+                                            UNIVERSITET <br>
+                                            <span class="glitch-text" data-text="4.0">4.0</span>
+                                        </h1>
+                                        <p class="cyber-desc">
+                                            Raqamli transformatsiya, innovatsiya, ilmiy tadqiqotlar va sanoat bilan
+                                            chuqur integratsiyalashgan ta’lim modeli
+                                        </p>
+                                        <div class="cyber-btn-group">
+                                            <a href="#" class="btn-tech"
+                                                onclick="openModal('modal-slider-2'); return false;">BATAFSIL</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" data-bs-interval="5000">
+                    <div class="kenburns-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070"
+                            class="d-block w-100" alt="Startup Accelerator Hub">
+                        <div class="overlay-prestige"></div>
+                    </div>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8 text-start">
+                                    <div class="prestige-content">
+                                        <div class="badge-animated">
+                                            <span class="badge-icon" style="color: #00f2ff;"><i
+                                                    class="fas fa-lightbulb"></i></span>
+                                            <span class="badge-text">UNIVERSITET STARTAP DASTURI</span>
+                                        </div>
+                                        <h1 class="prestige-title">
+                                            <span class="reveal-text-accent" style="color:white">G'OYALAR</span>
+                                            <span class="reveal-text-gold dynamic-fill">AKSELERATORI</span>
+                                        </h1>
+                                        <p class="prestige-desc" style="border-left-color: #00f2ff;">
+                                            Innovatsion fikrlarni tezkor rivojlantirib, ularni amaliy, barqaror hamda
+                                            bozorga tayyor loyihalarga aylantiruvchi maskan
+                                        </p>
+                                        <div class="executive-btns">
+                                            <a href="#" class="btn-prestige-primary apply-btn-style"
+                                                data-bs-toggle="modal" data-bs-target="#modalSlide3"
+                                                onclick="openModal('modal-slider-3'); return false;">
+                                                BATAFSIL <i class="fas fa-rocket ms-2"></i>
+                                            </a>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 d-none d-lg-block">
+                                    <div class="floating-card single-card-adjust">
+                                        <div class="glass-stat-box center-box"
+                                            style="border-top: 5px solid #FFC107; border-left: none;">
+                                            <i class="fas fa-hand-holding-usd fa-3x mb-3"
+                                                style="color: #FFC107; display: block; text-align: center;"></i>
+                                            <h3 style="color: #fff; text-align: center;">IMKONIYAT</h3>
+                                            <p style="text-align: center;">Yangi g‘oyalar uchun o‘sish, sinov va
+                                                rivojlanish muhiti</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" data-bs-interval="5000">
+                    <div class="kenburns-wrapper">
+                        <img src="{% static 'images/elyurt.jpg' %}" class="d-block w-100" alt="Leadership School">
+                        <div class="overlay-animated-gradient"></div>
+                    </div>
+
+                    <div class="carousel-caption hero-wrapper-fixed">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 text-start">
+                                    <div class="executive-content">
+                                        <div class="badge-glow">
+                                            <i class="fas fa-star text-warning"></i> Yuksalish
+                                        </div>
+                                        <h1 class="vibrant-title-large">
+                                            KELAJAK <br>
+                                            YETAKCHILARI <br>
+                                            <span class="text-gradient-gold">MAKTABI</span>
+                                        </h1>
+                                        <p class="executive-desc">
+                                            Strategik fikrlovchi, mas’uliyatli, innovatsion va global raqobatbardosh
+                                            liderlarni tayyorlovchi aql markazi
+                                        </p>
+                                        <div class="executive-btns">
+                                            <a href="#" class="btn-join"
+                                                onclick="openModal('modal-slider-4'); return false;">BATAFSIL</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-lg-block">
+                                    <div class="pillars-container">
+                                        <div class="pillar-card gradient-card-blue float-1">
+                                            <div class="pillar-icon"><i class="fas fa-microphone-alt"></i></div>
+                                            <div class="pillar-text">
+                                                <h5>NOTIQLIK</h5>
+                                                <span>San'ati va Nutq</span>
+                                            </div>
+                                        </div>
+                                        <div class="pillar-card gradient-card-gold float-2 active-glow">
+                                            <div class="pillar-icon"><i class="fas fa-chess-king"></i></div>
+                                            <div class="pillar-text">
+                                                <h5>STRATEGIK</h5>
+                                                <span>Boshqaruv</span>
+                                            </div>
+                                        </div>
+                                        <div class="pillar-card gradient-card-purple float-3">
+                                            <div class="pillar-icon"><i class="fas fa-brain"></i></div>
+                                            <div class="pillar-text">
+                                                <h5>LIDERLIK</h5>
+                                                <span>Psixologiyasi</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+        </div>
+
+
+        <section class="programs-section-bg">
+            <div class="container">
+
+                <div class="content-card hero-overlap-card vaw-card-design" data-aos="fade-up">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 text-lg-start text-center p-lg-4">
+
+                            <h2 class="vaw-title">
+                                XUSH KELIBSIZ!
+                            </h2>
+
+                            <div class="title-underline"></div>
+
+                            <p class="vaw-text">
+                                Zamonaviy ta’lim, ilm-fan va innovatsiyalar uyg‘unlashgan, keng dunyoqarashga ega va
+                                raqobatbardosh kadrlarni tayyorlovchi <br /><span class="highlight-gold">Aql
+                                    markazi.</span>
+                            </p>
+
+                            <ul class="vaw-features">
+                                <li><i class="fas fa-lightbulb"></i> Innovatsion ta'lim</li>
+                                <li><i class="fas fa-users"></i> Kuchli akademik jamoa</li>
+                                <li><i class="fas fa-globe"></i> Global hamkorlik</li>
+                                <li><i class="fas fa-briefcase"></i> Karyera istiqbollari</li>
+                            </ul>
+
+                            <div class="vaw-buttons">
+                                <a href="#" class="btn-vaw-primary"
+                                    onclick="openModal('modal-about-university'); return false;">
+                                    Batafsil <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@diplomat.university" target="_blank"
+                                    class="btn-vaw-play-text">
+                                    <span class="play-icon-small"><i class="fas fa-play"></i></span> Videoni ko'rish
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mt-5 mt-lg-0">
+                            <div class="vaw-image-wrapper">
+                                <img src="https://i.postimg.cc/W1kZJgrn/3.jpg" alt="Diplomat University Kampusi"
+                                    class="vaw-main-img">
+
+                                <div class="gold-border-effect"></div>
+
+                                <a href="https://www.youtube.com/@diplomat.university" target="_blank"
+                                    class="vaw-play-btn">
+                                    <i class="fas fa-play"></i>
+                                    <div class="ripple-effect"></div>
+                                </a>
+
+                                <div class="float-stat-card">
+                                    <div class="icon-box"><i class="fas fa-file-contract"></i></div>
+                                    <div class="text-box">
+                                        <a href="{% static 'images/litsenziya/litsenziya.pdf' %}"> <strong>Litsenziya</strong>
+                                            <span>N# 1234567</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-mini-stats-row">
+
+                        <div class="mini-stat-item">
+                            <div class="d-flex align-items-center">
+                                <h3 class="mini-counter" data-target="2000">0</h3>
+                                <span class="mini-plus">+</span>
+                            </div>
+                            <p>Talabalar soni</p>
+                        </div>
+
+                        <div class="mini-stat-divider"></div>
+                        <div class="mini-stat-item">
+                            <div class="d-flex align-items-center">
+                                <h3 class="mini-counter" data-target="120">0</h3>
+                                <span class="mini-plus">+</span>
+                            </div>
+                            <p>Professor-o'qituvchilar</p>
+                        </div>
+
+                        <div class="mini-stat-divider"></div>
+                        <div class="mini-stat-item">
+                            <div class="d-flex align-items-center">
+                                <h3 class="mini-counter" data-target="15">0</h3>
+                                <span class="mini-plus">+</span>
+                            </div>
+                            <p>Yo'nalishlar</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="content-card text-center success-section-wrapper" style="margin-top: 40px;"
+                    data-aos="fade-up">
+                    <h2 class="section-title">MUVAFFAQIYAT OMILLARI</h2>
+                    <hr class="section-divider">
+
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <div class="row g-3">
+                                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                                    <div class="success-box">
+                                        <div class="sb-icon">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                        <div class="sb-content">
+                                            <h5>Innovatsion inkubator</h5>
+                                            <p>Talabalarning startap va ijtimoiy loyihalarini qo‘llab-quvvatlash.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+                                    <div class="success-box">
+                                        <div class="sb-icon">
+                                            <i class="fas fa-rocket"></i>
+                                        </div>
+                                        <div class="sb-content">
+                                            <h5>Global career track</h5>
+                                            <p>Xalqaro bozorga yo‘naltirilgan kasbiy tayyorgarlik.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
+                                    <div class="success-box">
+                                        <div class="sb-icon">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="sb-content">
+                                            <h5>Raqamli ko‘nikmalar akademiyasi</h5>
+                                            <p>Sun’iy intellekt, data-analitika, kiberxavfsizlik va IT ko‘nikmalarini
+                                                o‘rgatish.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" data-aos="fade-right" data-aos-delay="400">
+                                    <div class="success-box">
+                                        <div class="sb-icon">
+                                            <i class="fas fa-city"></i>
+                                        </div>
+                                        <div class="sb-content">
+                                            <h5>Soft skills & leadership lab</h5>
+                                            <p>Yetakchilik, muloqot, tanqidiy fikrlash va jamoada ishlash bo‘yicha
+                                                maxsus laboratoriya.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" data-aos="fade-right" data-aos-delay="500">
+                                    <div class="success-box">
+                                        <div class="sb-icon">
+                                            <i class="fas fa-briefcase"></i>
+                                        </div>
+                                        <div class="sb-content">
+                                            <h5>Xalqaro hamkorlik platformasi</h5>
+                                            <p>Chet el universitetlari va tashkilotlar bilan qo‘shma kurslar, seminarlar
+                                                va almashinuv dasturlari.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" data-aos="fade-right" data-aos-delay="600">
+                                    <div class="success-box">
+                                        <div class="sb-icon">
+                                            <i class="fas fa-chalkboard-teacher"></i>
+                                        </div>
+                                        <div class="sb-content">
+                                            <h5>Eco-smart kampus</h5>
+                                            <p>Yashil texnologiyalar, raqamli yechimlar va barqaror rivojlanish
+                                                tamoyillari asosidagi zamonaviy ta’lim maydoni.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 mt-4 mt-lg-0" data-aos="fade-left" data-aos-delay="300">
+                            <div class="success-image-container">
+                                <img src="{% static 'images/muvaffaqiyat1.png' %}" alt="Diplomat Talabalari" class="success-main-img">
+
+                                <div class="floating-stat">
+                                    <div class="fs-icon"><i class="fas fa-check-double"></i></div>
+                                    <div class="fs-text">
+                                        <strong>98%</strong>
+                                        <span>Ish bilan bandlik</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-card text-center" data-aos="fade-up">
+                    <h2 class="section-title">EKSPERTLAR MINBARI</h2>
+                    <hr class="section-divider">
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="premium-card">
+                                <div class="premium-overlay"></div>
+                                <div class="premium-header">
+                                    <div class="p-icon-box">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <span class="p-tag">Tahlil</span>
+                                </div>
+                                <h5 class="premium-title">Diplomat nigohi</h5>
+                                <p class="premium-desc">Xalqaro munosabatlar, iqtisodiyot va zamonaviy diplomatiya
+                                    bo'yicha tahliliy material.</p>
+                                <div class="premium-footer">
+                                    <a href="#" class="p-arrow-btn"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="premium-card">
+                                <div class="premium-overlay"></div>
+                                <div class="premium-header">
+                                    <div class="p-icon-box">
+                                        <i class="fas fa-podcast"></i>
+                                    </div>
+                                    <span class="p-tag">Ko'rsatuv</span>
+                                </div>
+                                <h5 class="premium-title">Diplomat podcast</h5>
+                                <p class="premium-desc">Xalqaro maydondagi geosiyosiy o'zgarishlar va diplomatik
+                                    munosabatlar haqida ekspert fikri.</p>
+                                <div class="premium-footer">
+                                    <a href="#" class="p-arrow-btn"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="premium-card">
+                                <div class="premium-overlay"></div>
+                                <div class="premium-header">
+                                    <div class="p-icon-box">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <span class="p-tag">Jurnal</span>
+                                </div>
+                                <h5 class="premium-title">Diplomat xabarlari</h5>
+                                <p class="premium-desc">Professor-o'qituvchilar va talabalarning ilmiy tadqiqotlari
+                                    platformasi.</p>
+                                <div class="premium-footer">
+                                    <a href="#" class="p-arrow-btn"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <section class="news-section">
+            <div class="container">
+
+                <div class="text-center">
+                    <h2 class="section-title" data-aos="fade-up">Tahliliy materiallar</h2>
+                    <hr class="section-divider mx-auto" data-aos="fade-up">
+                </div>
+
+                <div class="row">
+                    {% for article in latest_analytics %}
+                    <div class="col-md-12" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                        <div class="news-item">
+                            <div class="row g-0">
+                                <div class="col-lg-4">
+                                    <div class="news-image-wrapper">
+                                        <div class="news-image"
+                                            style="background-image: url('{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="news-content">
+                                        <h3 class="news-title">
+                                            <a href="#">
+                                                {% if article.badge %}<i class="fas fa-star" style="color: #ffc107;"></i>{% endif %}
+                                                {{ article.title }}
+                                            </a>
+                                        </h3>
+                                        <div class="news-meta">
+                                            <span><i class="fas fa-calendar-alt"></i> {{ article.published_date|date:"d-M, Y" }}</span>
+                                            <span><i class="fas fa-eye"></i> {{ article.views_count }} {% trans "ko'rilgan" %}</span>
+                                        </div>
+                                        <p class="news-excerpt">
+                                            {{ article.excerpt|safe }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12 text-center text-muted my-5">
+                        <i class="fas fa-folder-open mb-3" style="font-size: 3rem; color: #ddd;"></i>
+                        <h5>{% trans "Hozircha tahliliy materiallar kiritilmagan" %}</h5>
+                    </div>
+                    {% endfor %}
+
+                    {% if latest_analytics %}
+                    <div style="text-align:center" data-aos="fade-up" data-aos-delay="400">
+                        <a href="{% url 'analytics' %}" class="btn btn-primary-custom">{% trans "Batafsil" %}</a>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </section>
+        <section class="instagram-section">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title" data-aos="fade-up">So'ngi yangiliklar</h2>
+                    <hr class="section-divider mx-auto" data-aos="fade-up">
+                </div>
+
+                <div class="row">
+                    {% for article in latest_news %}
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}00">
+                        <article class="modern-news-card">
+                            <div class="modern-nc-img-wrapper">
+                                {% if article.badge %}
+                                <div class="modern-nc-badge"><i class="fas fa-circle me-1"
+                                        style="color:#FFC107;"></i> {{ article.badge }}</div>
+                                {% endif %}
+                                <div class="modern-nc-image"
+                                    style="background-image: url('{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
+                                </div>
+                            </div>
+                            <div class="modern-nc-content">
+                                <div class="modern-nc-date"><i class="far fa-calendar-alt"></i> {{ article.published_date|date:"d-M, Y" }}
+                                </div>
+                                <a href="#" class="modern-nc-title">{{ article.title }}</a>
+                                <div class="modern-nc-excerpt">{{ article.excerpt|safe }}</div>
+                                <div class="modern-nc-footer">
+                                    <div class="modern-nc-author"><i class="fas fa-user-circle"></i> {{ article.author }}</div>
+                                    <a href="#" class="modern-nc-readmore"><i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% empty %}
+                    <div class="col-12 text-center text-muted my-5">
+                        <i class="fas fa-folder-open mb-3" style="font-size: 3rem; color: #ddd;"></i>
+                        <h5>{% trans "Hozircha yangiliklar kiritilmagan" %}</h5>
+                    </div>
+                    {% endfor %}
+
+                    {% if latest_news %}
+                    <div style="text-align:center; padding-top:30px" data-aos="fade-up" data-aos-delay="400">
+                        <a href="{% url 'news' %}" class="btn btn-primary-custom">{% trans "Barcha yangiliklar" %}</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <section class="partners-elite-section">
+            <div class="container text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Hamkorlar</h2>
+                <hr class="section-divider">
+            </div>
+
+            <div class="elite-wrapper">
+                <div class="marquee-row scroll-left">
+                     <div class="marquee-content">
+                        {% for partner in partners %}
+                        <div class="elite-card">
+                            <img src="{% if partner.image %}{{ partner.image.url }}{% endif %}" alt="{{ partner.title|default:'Partner' }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="marquee-row scroll-right mt-4">
+                    <div class="marquee-content">
+                        {% for partner in partners %}
+                        <div class="elite-card"><img src="{% if partner.image %}{{ partner.image.url }}{% endif %}" alt="{{ partner.title|default:'Partner' }}"></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // 1. AOS animatsiyasini yoqish
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+
+            // 2. Slayder va Video mantiqlari
+            var myCarouselElement = document.getElementById('heroCarousel');
+            var video = document.getElementById('sliderVideo');
+
+            if (myCarouselElement && video) {
+
+                // Slayderni ishga tushiramiz (Standart interval 5000)
+                var carousel = new bootstrap.Carousel(myCarouselElement, {
+                    interval: 5000,
+                    pause: false
+                });
+
+                // 1. VIDEO TUGAGANDA -> KEYINGI SLAYDGA O'TISH
+                video.addEventListener('ended', function () {
+                    carousel.next();
+                });
+
+                // 2. Slayd o'zgarishini kuzatish
+                myCarouselElement.addEventListener('slide.bs.carousel', function (e) {
+                    // Agar 1-slaydga (index 0) qaytib kelsa -> Videoni boshidan o'yna
+                    if (e.to === 0) {
+                        video.currentTime = 0;
+                        video.play();
+                    }
+                    // Boshqa slaydga o'tsa -> Videoni to'xtat
+                    else {
+                        video.pause();
+                    }
+                });
+
+                // Sahifa yuklanganda video o'ynashini ta'minlash
+                video.play().catch(function (e) {
+                    console.log("Autoplay bloklandi, foydalanuvchi harakati kerak.");
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // MINI STATISTIKA COUNTER (XATOSIZ ISHLASHI UCHUN)
+            const runMiniCounter = () => {
+                const counters = document.querySelectorAll('.mini-counter');
+                const speed = 80; // Tezlik (qancha kichik bo'lsa, shuncha tez sanaydi)
+
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        // data-target dan maqsadli raqamni olish
+                        const target = +counter.getAttribute('data-target');
+                        // Hozirgi turgan raqamni olish
+                        const count = +counter.innerText.replace(/\D/g, '') || 0;
+
+                        // Qadam kattaligi
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            // Math.ceil bilan yaxlitlaymiz va yangilaymiz
+                            counter.innerText = Math.ceil(count + inc);
+                            // Qayta chaqiramiz
+                            setTimeout(updateCount, 20);
+                        } else {
+                            // Oxirgi manzilga yetganda aniq raqamni qo'yamiz
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            };
+
+            // Ekranda ko'ringanda ishga tushirish (Intersection Observer)
+            let welcomeCard = document.querySelector('.vaw-card-design');
+
+            if (welcomeCard) {
+                let observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            runMiniCounter();
+                            observer.unobserve(entry.target); // Faqat bir marta ishlasin
+                        }
+                    });
+                }, { threshold: 0.2 }); // 20% ko'ringanda ishga tushadi
+
+                observer.observe(welcomeCard);
+            } else {
+                // Agar observer ishlamasa, darhol ishga tushirib yuborish (xavfsizlik uchun)
+                runMiniCounter();
+            }
+        });
+    </script>
+    {% for slide in sliders %}
+    {% if slide.modal_items.all %}
+    <div id="modal-slider-{{ slide.id }}" class="premium-modal-overlay">
+        <div class="premium-modal-glass">
+            <button class="modal-close-btn" onclick="closeModal('modal-slider-{{ slide.id }}')">&times;</button>
+            <div class="modal-header-content">
+                <h2 class="modal-title">{{ slide.title_part_1 }} 
+                    {% if slide.title_part_2 %}
+                        <span class="{% if slide.style == 'style_1' %}text-gold{% elif slide.style == 'style_2' %}text-cyan{% elif slide.style == 'style_3' %}text-gold{% elif slide.style == 'style_4' %}text-gradient{% else %}text-gold{% endif %}">{{ slide.title_part_2 }}</span>
+                    {% endif %}
+                </h2>
+            </div>
+            <div class="modal-scroll-body">
+                <div class="modal-cards-grid">
+                    {% for item in slide.modal_items.all %}
+                    <div class="glass-info-card {% if slide.style == 'style_2' %}border-cyan{% elif slide.style == 'style_3' %}border-gold{% elif slide.style == 'style_4' %}border-purple{% endif %}" style="animation-delay: 0.{{ forloop.counter }}s;">
+                        <div class="card-icon {% if slide.style == 'style_2' %}cyan-icon{% elif slide.style == 'style_3' %}gold-icon{% elif slide.style == 'style_4' %}purple-icon{% endif %}"><i class="{{ item.icon }}"></i></div>
+                        <h3>{{ item.title|safe }}</h3>
+                        <p>{{ item.description|safe }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    {% if not sliders %}
+    <div id="modal-slider-1" class="premium-modal-overlay">
+        <div class="premium-modal-glass">
+            <button class="modal-close-btn" onclick="closeModal('modal-slider-1')">&times;</button>
+            <div class="modal-header-content">
+                <h2 class="modal-title">GLOBAL BILIM <span class="text-gold">EKOTIZIMI</span></h2>
+                <p class="modal-subtitle">Chegarasiz ta’lim va innovatsion muhit</p>
+            </div>
+            <div class="modal-scroll-body">
+                <div class="modal-cards-grid">
+                    <div class="glass-info-card" style="animation-delay: 0.1s;">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Bilim ishlab chiqarish (Knowledge Production)</h3>
+                        <p>Fundamental va amaliy tadqiqotlar, R&D (Research and Development),
+                            fan–texnologiya–innovatsiya (STI) integratsiyasi orqali yangilik va texnologiyalar yaratish.
+                        </p>
+                    </div>
+                    <div class="glass-info-card" style="animation-delay: 0.2s;">
+                        <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Bilim diffuziyasi va transferi</h3>
+                        <p>Akademik tarmoqlar, ochiqlik (open science), raqamli platformalar orqali global miqyosda
+                            tajriba almashish hamda o‘z so‘ziga ega bo‘lish.</p>
+                    </div>
+                    <div class="glass-info-card" style="animation-delay: 0.3s;">
+                        <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+                        <h3>Inson kapitali va kompetensiyalar ekotizimi</h3>
+                        <p>Uzluksiz ta’lim (lifelong learning), akademik mobillik va kadrlar salohiyatini oshirish
+                            orqali yuqori malakali, innovatsion fikrlovchi inson resurslari shakllantirish.</p>
+                    </div>
+                    <div class="glass-info-card" style="animation-delay: 0.4s;">
+                        <div class="card-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Innovatsion iqtisodiyot va barqaror rivojlanish</h3>
+                        <p>Bilimga asoslangan iqtisodiyot (knowledge-based economy) sharoitida raqobatbardoshlikni
+                            oshirish, barqaror ijtimoiy-iqtisodiy rivojlanishni ta’minlash.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-slider-2" class="premium-modal-overlay">
+        <div class="premium-modal-glass">
+            <button class="modal-close-btn" onclick="closeModal('modal-slider-2')">&times;</button>
+            <div class="modal-header-content">
+                <h2 class="modal-title">UNIVERSITET <span class="text-cyan">4.0</span></h2>
+                <p class="modal-subtitle">Raqamli kelajak va zamonaviy ta'lim</p>
+            </div>
+            <div class="modal-scroll-body">
+                <div class="modal-cards-grid">
+                    <div class="glass-info-card border-cyan" style="animation-delay: 0.1s;">
+                        <div class="card-icon cyan-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Raqamli transformatsiya va aqlli ta’lim muhiti</h3>
+                        <p>Sun’iy intellekt, Big Data, Learning Analytics, EdTech platformalar va gibrid ta’lim
+                            modellari asosida shaxsga yo‘naltirilgan, moslashuvchan o‘quv ekotizimi shakllantirish.</p>
+                    </div>
+                    <div class="glass-info-card border-cyan" style="animation-delay: 0.2s;">
+                        <div class="card-icon cyan-icon"><i class="fas fa-atom"></i></div>
+                        <h3>Ilm–innovatsiya–ishlab chiqarish integratsiyasi</h3>
+                        <p>Universitet ilmiy tadqiqotlar, startaplar, texnologiya transferi va sanoat hamkorligi orqali
+                            innovatsiyalarni tijoratlashtirish (Triple/Quadruple Helix Model).</p>
+                    </div>
+                    <div class="glass-info-card border-cyan" style="animation-delay: 0.3s;">
+                        <div class="card-icon cyan-icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>Inson kapitali va kelajak kompetensiyalari</h3>
+                        <p>Tanqidiy fikrlash, raqamli savodxonlik, kreativlik, uzluksiz ta’lim tamoyillari asosida
+                            global mehnat bozoriga mos kadrlarni tayyorlash (Future Skills & Human Capital).</p>
+                    </div>
+                    <div class="glass-info-card border-cyan" style="animation-delay: 0.4s;">
+                        <div class="card-icon cyan-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3>Global bog‘liqlik va barqaror rivojlanish</h3>
+                        <p>Xalqaro akademik hamkorlik, ochiqlik (Open Science), ESG va BMT Barqaror rivojlanish
+                            maqsadlari (SDGs) bilan uyg‘unlikda universitet jamiyat uchun bilim va ijtimoiy ta’sir
+                            yaratuvchi institutga aylantirish.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-slider-3" class="premium-modal-overlay">
+        <div class="premium-modal-glass">
+            <button class="modal-close-btn" onclick="closeModal('modal-slider-3')">&times;</button>
+            <div class="modal-header-content">
+                <h2 class="modal-title">G'OYALAR <span class="text-gold">AKSELERATORI</span></h2>
+                <p class="modal-subtitle">Startaplar va Investitsiya Dasturi</p>
+            </div>
+            <div class="modal-scroll-body">
+                <div class="modal-cards-grid">
+                    <div class="glass-info-card border-gold" style="animation-delay: 0.1s;">
+                        <div class="card-icon gold-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Innovatsion g‘oyalarni aniqlash va inkubatsiya qilish</h3>
+                        <p>Dizayn fikrlash (Design Thinking), Startupni parvarish qilish (lean startup) va muammoli
+                            ta’lim metodologiyalari asosida talabalar va tadqiqotchilarning g‘oyalari shakllantirish,
+                            sinovdan o‘tkazish va rivojlantirish.</p>
+                    </div>
+                    <div class="glass-info-card border-gold" style="animation-delay: 0.2s;">
+                        <div class="card-icon gold-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Ilmni tijoratlashtirish va texnologiya transferi</h3>
+                        <p>Tadqiqot natijalarini MVP (Minimum Viable Product), spin-off va startaplarga aylantirish
+                            orqali bilimdan iqtisodiy qiymat yaratish mexanizmlari yo‘lga qo‘yish.</p>
+                    </div>
+                    <div class="glass-info-card border-gold" style="animation-delay: 0.3s;">
+                        <div class="card-icon gold-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>Mentorlik, tarmoq va resurslar ekotizimi</h3>
+                        <p>Akademik mentorlar, sanoat ekspertlari, investorlar va venchur fondlar ishtirokida ko‘p
+                            tomonlama (multi-stakeholder) innovatsion muhitni shakllantirish.</p>
+                    </div>
+                    <div class="glass-info-card border-gold" style="animation-delay: 0.4s;">
+                        <div class="card-icon gold-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Inson kapitali va tadbirkorlik ko‘nikmalari</h3>
+                        <p>Kreativ tafakkur, risk-menejment, raqamli va biznes kompetensiyalarni rivojlantirish orqali
+                            talaba va yosh olimlarda tadbirkorlik madaniyati va innovatsion liderlik shakllantirish.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-slider-4" class="premium-modal-overlay">
+        <div class="premium-modal-glass">
+            <button class="modal-close-btn" onclick="closeModal('modal-slider-4')">&times;</button>
+            <div class="modal-header-content">
+                <h2 class="modal-title">KELAJAK <span class="text-gradient">YETAKCHILARI</span></h2>
+                <p class="modal-subtitle">Siyosat, Biznes va Diplomatiya</p>
+            </div>
+            <div class="modal-scroll-body">
+                <div class="modal-cards-grid">
+                    <div class="glass-info-card border-purple" style="animation-delay: 0.1s;">
+                        <div class="card-icon purple-icon"><i class="fas fa-chess"></i></div>
+                        <h3>Moslashuvchan bilim va strategik tafakkur</h3>
+                        <p>Global boshqaruv (global governance), geosiyosat, raqamli iqtisodiyot, siyosiy tahlil va
+                            strategik menejment yo‘nalishlarida tizimli fikrlash, siyosiy va iqtisodiy jarayonlarni
+                            kompleks tahlil qilish hamda qaror qabul qilish ko‘nikmalarini shakllantirish.</p>
+                    </div>
+                    <div class="glass-info-card border-purple" style="animation-delay: 0.2s;">
+                        <div class="card-icon purple-icon"><i class="fas fa-user-tie"></i></div>
+                        <h3>Yetakchilik va boshqaruv ko‘nikmalari</h3>
+                        <p>Asosli tahlil, xalq diplomatiyasi, korporativ boshqaruv, loyiha va risk-menejment
+                            yondashuvlari orqali davlat boshqaruvi, biznes va xalqaro tashkilotlar uchun raqobatbardosh
+                            yetakchilarni tayyorlash.</p>
+                    </div>
+                    <div class="glass-info-card border-purple" style="animation-delay: 0.3s;">
+                        <div class="card-icon purple-icon"><i class="fas fa-fingerprint"></i></div>
+                        <h3>Raqamli transformatsiya va texnologik savodxonlik</h3>
+                        <p>Sun’iy intellekt, GovTech, FinTech, kiberxavfsizlik va raqamli diplomatiya ga oid bilimlar
+                            orqali Yetakchilarning texnologik ko‘nikmalarini mustahkamlash.</p>
+                    </div>
+                    <div class="glass-info-card border-purple" style="animation-delay: 0.4s;">
+                        <div class="card-icon purple-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>IT va menejment integratsiyasi</h3>
+                        <p>IT va menejment integratsiyasi asosida innovatsion va moslashuvchan liderlar modelini
+                            shakllantirish.</p>
+                    </div>
+                    <div class="glass-info-card border-purple" style="animation-delay: 0.5s;">
+                        <div class="card-icon purple-icon"><i class="fas fa-globe-americas"></i></div>
+                        <h3>Global bog‘liqlik va axloq normalari</h3>
+                        <p>Xalqaro akademik hamkorlik, BMT Barqaror rivojlanish maqsadlari (SDGs) hamda etik boshqaruv
+                            tamoyillari asosida ijtimoiy mas’uliyatli, global miqyosda fikrlovchi siyosatchilar va
+                            biznes yetakchilarini tarbiyalash.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div id="modal-about-university" class="premium-modal-overlay">
+        <div class="premium-modal-glass" style="max-width: 900px; height: auto; max-height: 90vh;">
+            <button class="modal-close-btn" onclick="closeModal('modal-about-university')">&times;</button>
+
+            <div class="modal-header-content" style="background: transparent;">
+                <div class="welcome-badge" style="margin-bottom: 10px;">
+                    <i class="fas fa-history"></i> TARIXGA NAZAR
+                </div>
+
+            </div>
+
+            <div class="modal-scroll-body" style="background: transparent; padding-top: 0;">
+                <div class="glass-info-card border-gold"
+                    style="border-left: none; border-top: 5px solid #FFC107; background: rgba(255,255,255,0.7);">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <p class="vaw-text"
+                                style="text-align: justify; color: #1a1a1a; font-size: 1.1rem; line-height: 1.8;">
+                                <span class="highlight-gold" style="font-size: 1.1rem; font-weight: 800;">Diplomat
+                                    Universityni</span> tashkil etish g‘oyasi ilk bor <strong
+                                    style="color: #07006b;">2020-yilda</strong> paydo bo‘lgan. Ushbu tashabbus zamonaviy
+                                ta’lim tizimini rivojlantirish, xalqaro standartlarga mos, raqobatbardosh va chet
+                                tillarini chuqur biladigan mutaxassislarni tayyorlovchi ehtiyojidan kelib chiqqan.
+                            </p>
+
+                            <div class="my-4"
+                                style="border-left: 3px dashed #FFC107; padding-left: 20px; margin-left: 10px;">
+                                <p class="vaw-text" style="margin-bottom: 20px;">
+                                    Universitet yaratish g‘oyasining shakllanishida <strong
+                                        style="color: #07006b;">2017-yilda</strong> tashkil etilgan <strong
+                                        style="color: #0d6efd;">Diplomat International School</strong> xususiy maktabi
+                                    muhim bosqich bo‘ldi. Mazkur maktab qisqa muddatda sifatli ta’lim beruvchi muassasa
+                                    sifatida tanilib, zamonaviy pedagogik yondashuvlarni amalda qo‘llash tajribasini
+                                    to‘pladi.
+                                </p>
+                                <p class="vaw-text">
+                                    <strong style="color: #07006b;">2020-yilda</strong> ushbu maktabning ikkinchi
+                                    filiali ochilishi ham ta’lim tizimini kengaytirish va yanada ko‘proq yoshlarni
+                                    sifatli ta’lim bilan qamrab olish imkonini berdi. Shu asosda, 2020-yilda ilgari
+                                    surilgan universitet tashkil etish g‘oyasi <strong
+                                        style="color: #07006b;">2021-yildan</strong> boshlab amaliy bosqichga o‘tdi.
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-4"
+                                style="background: linear-gradient(135deg, rgba(7,0,107,0.05) 0%, rgba(41,98,255,0.05) 100%); border: 1px solid rgba(7,0,107,0.1);">
+                                <p class="vaw-text" style="margin-bottom: 0; font-weight: 600; color: #07006b;">
+                                    Bugungi kunda Diplomat University xalqaro tajriba va ilg‘or standartlarga asoslangan
+                                    o‘quv dasturlari, tajribali professor-o‘qituvchilar, diplomatlar ishtiroki hamda
+                                    talabalarni global mehnat bozoriga tayyorlashga qaratilgan strategiyasi bilan
+                                    ajralib turadi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="glass-stat-box"
+                            style="width: 100%; background: rgba(255,255,255,0.8); border-left: 4px solid #07006b;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">2017</h3>
+                            <p style="color: #666; font-size: 0.8rem;">Maktab tashkil etilishi</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-stat-box"
+                            style="width: 100%; background: rgba(255,255,255,0.8); border-left: 4px solid #FFC107;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">2020</h3>
+                            <p style="color: #666; font-size: 0.8rem;">Universitet g'oyasi</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-stat-box"
+                            style="width: 100%; background: rgba(255,255,255,0.8); border-left: 4px solid #00d2ff;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">2021</h3>
+                            <p style="color: #666; font-size: 0.8rem;">Amaliy faoliyat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Modalni ochish funksiyasi
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Orqa fonni qotirib qo'yish
+            }
+        }
+
+        // Modalni yopish funksiyasi
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Scrollni qayta yoqish
+            }
+        }
+
+        // Modal tashqarisiga bosilganda yopish
+        window.onclick = function (event) {
+            if (event.target.classList.contains('premium-modal-overlay')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+{% endblock content %}

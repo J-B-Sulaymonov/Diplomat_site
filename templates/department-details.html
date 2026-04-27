@@ -1,0 +1,479 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Fakultet va Kafedra ma'lumotlari | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/leadership.css' %}">
+    <link rel="stylesheet" href="{% static 'css/department-details.css' %}">
+
+    <style>
+        /* Custom Back Button Override for Elite Theme */
+        .btn-elite-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--diplomat-navy);
+            font-weight: 700;
+            margin-bottom: 20px;
+            transition: 0.3s;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            font-family: 'Unbounded', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .btn-elite-back:hover {
+            color: #fff;
+            background: var(--diplomat-navy);
+            transform: translateX(-5px);
+        }
+    </style>
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+        <!-- Asosiy Meta Teglar -->
+        <meta name="description"
+            content="Diplomat University Ijtimoiy va siyosiy fanlar kafedrasi, fakultet professor-o'qituvchilari, o'quv dasturlari hamda yo'nalishlari haqida to'liq ma'lumot.">
+        <meta name="keywords"
+            content="fakultet, kafedra, o'quv rejasi, mutaxassislik, ta'lim yo'nalishi, Ijtimoiy va siyosiy fanlar, siyosatshunoslik, sotsiologiya, o'qituvchilar">
+        <meta name="author" content="Diplomat University">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="language" content="Uzbek">
+        <meta name="theme-color" content="#07006b">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+        <meta name="generator" content="Diplomat University Engine">
+    
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://diplomat.university/department-details.html">
+    
+        <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Fakultet va Kafedra ma'lumotlari | Diplomat University">
+        <meta property="og:description"
+            content="Ijtimoiy va siyosiy fanlar kafedrasidagi fanlar, akademik jamoa va ta'lim sohasidagi imkoniyatlar.">
+        <meta property="og:url" content="https://diplomat.university/department-details.html">
+        <meta property="og:site_name" content="Diplomat University">
+        <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="Department Preview">
+        <meta property="og:locale" content="uz_UZ">
+    
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@diplomat_uni">
+        <meta name="twitter:creator" content="@diplomat_uni">
+        <meta name="twitter:title" content="Fakultet va Kafedra ma'lumotlari | Diplomat University">
+        <meta name="twitter:description"
+            content="Universitetning etakchi ilmiy markazi - Ijtimoiy va siyosiy fanlar kafedrasi bilan tanishing.">
+        <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta name="twitter:image:alt" content="Kafedra ma'lumotlari">
+    
+        <!-- JSON-LD (Schema.org) for Department -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Department",
+          "name": "Ijtimoiy va siyosiy fanlar kafedrasi",
+          "description": "Ijtimoiy va siyosiy fanlar kafedrasi universitetning yetakchi ilmiy markazlaridan biri bo‘lib, talabalarga siyosatshunoslik, sotsiologiya, tarix va falsafa fanlaridan ta'lim beradi.",
+          "url": "https://diplomat.university/department-details.html",
+          "parentOrganization": {
+            "@type": "EducationalOrganization",
+            "name": "Diplomat University",
+            "url": "https://diplomat.university/"
+          }
+        }
+        </script>
+{% endblock extra_head %}
+
+{% block content %}
+    <main>
+        <!-- Back Navigation -->
+                <div class="container pt-5">
+                    <a href="leadership.html" class="btn-elite-back"><i class="fas fa-arrow-left"></i> Rahbariyatga qaytish</a>
+                </div>
+        
+                <!-- Cinematic Hero Name -->
+                <div class="dept-hero-elite" data-aos="fade-up">
+                    <div class="container">
+                        <div class="dept-hero-title">
+                            <h1 id="dept-title-hero">Ijtimoiy va siyosiy fanlar kafedrasi</h1>
+                            <div class="dept-hero-line"></div>
+                        </div>
+        
+                        <!-- Short Description below title -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div id="dept-description" style="font-size: 1.1rem; color: #555; line-height: 1.8;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <section class="department-details-section py-5">
+                    <div class="container">
+        
+                        <!-- Magazine Style Department Head -->
+                        <div id="dept-head-container">
+                            <div class="head-modern-glass" data-aos="fade-up">
+                                <div class="head-modern-bg"></div>
+                                <!-- GEOMETRIC ANIMATED STYLE (Matches Leadership) -->
+                                <div class="head-modern-visual">
+                                    <div class="geo-image-container" style="height: 350px;">
+                                        <div class="geo-frame"></div>
+                                        <div class="geo-image-mask" style="top: 15px; left: 15px; right: 15px; bottom: 15px;">
+                                            <img src="{% static 'images/ijtimoiy.jpg' %}" alt="Berdikulov Mashrab Alikulovich">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="head-modern-content">
+                                    <h2 class="head-modern-name">Berdikulov Mashrab Alikulovich</h2>
+                                    <p class="head-modern-role">Kafedra mudiri</p>
+                                    <div class="head-modern-divider"></div>
+        
+                                    <div class="head-modern-bio">
+                                        Berdikulov Mashrab Alikulovich 1979-yil 7-sentyabrda Samarqand viloyatida tug‘ilgan.
+                                        O’zbekiston Respublikasi Prezidenti “Umid” jamg’armasi sovrindori. Ilmiy unvoni –
+                                        dotsent.
+                                        <br><br>
+                                        1998-2001 yillarda Buyuk Britaniyaning Vulverhampton universitetida tahsil olgan.
+                                        2002-2004 yillarda Jahon iqtisodiyoti va diplomatiya universiteti magistraturasini
+                                        tamomlagan.
+                                    </div>
+        
+                                    <div class="head-contact-grid">
+                                        <a href="tel:+998881248888" class="text-decoration-none">
+                                            <div class="head-contact-item">
+                                                <i class="fas fa-phone-alt head-contact-icon"></i>
+                                                <span class="text-dark fw-bold">+998 88 124 88 88</span>
+                                            </div>
+                                        </a>
+                                        <a href="mailto:info@diplomat.university" class="text-decoration-none">
+                                            <div class="head-contact-item">
+                                                <i class="fas fa-envelope head-contact-icon"></i>
+                                                <span class="text-dark fw-bold">info@diplomat.university</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Department About Section -->
+                        <div id="dept-about-container">
+                            <div class="dept-about-section" data-aos="fade-up">
+                                <h3 class="dept-about-title"><i class="fas fa-info-circle"></i> Kafedra Haqida</h3>
+                                <div class="dept-about-text">
+                                    Ijtimoiy va siyosiy fanlar kafedrasi universitetning yetakchi ilmiy markazlaridan biridir.
+                                    Kafedrada yuqori malakali professor-o'qituvchilar faoliyat yuritib, talabalarga
+                                    siyosatshunoslik, sotsiologiya, tarix va falsafa fanlaridan chuqur bilim beradilar.
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Executive Employees List -->
+                        <div class="row mt-5 mb-4">
+                            <div class="section-header-elite" data-aos="fade-right">
+                                <h2 class="section-title-elite">Kafedra Xodimlari</h2>
+                            </div>
+                        </div>
+        
+                        <div class="row" id="dept-employees-grid">
+                            <!-- Rustam Ziyatovich Djumayev -->
+                            <div class="col-12 employee-replica-wrapper" data-aos="fade-up" data-aos-delay="0">
+                                <div class="dept-card-3d">
+                                    <div class="dept-3d-inner">
+                                        <div class="dept-3d-glow"></div>
+                                        <div class="dept-3d-particles">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                        </div>
+                                        <div class="dept-3d-icon-side">
+                                            <div class="dept-3d-icon-frame">
+                                                <div class="dept-3d-ring"></div>
+                                                <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                <img src="{% static 'images/Rustam Jumayev.jpg' %}" alt="Rustam Ziyatovich Djumayev"
+                                                    class="dept-3d-avatar-img">
+                                            </div>
+                                        </div>
+                                        <div class="dept-3d-info-side">
+                                            <h3 class="dept-3d-name">Rustam Ziyatovich Djumayev</h3>
+                                            <p class="dept-3d-subtitle">Ijtimoiy va siyosiy fanlar kafedrasi professori</p>
+                                            <div class="dept-3d-divider"></div>
+        
+                                            <div class="staff-bio-container">
+                                                <div class="staff-bio-text">
+                                                    <p>Rustam Ziyatovich Djumayev - 1960 yil 4 iyun kuni Buxoro viloyati Olot
+                                                        shahrida tug‘ilgan.
+                                                        <br><br>1978-1987 yy. - ToshDU hozirgi O‘zbekiston Milliy
+                                                        universitetining
+                                                        Falsafa-iqtisod fakulteti talabasi va aspiranturasini tamomlagan.
+                                                        <br><br>U 1988 yilda falsafa fanlari nomzodi, 1992 yilda dotsent
+                                                        unvoni, 1997 yilda siyosiy fanlar doktori, 1998 yilda professor ilmiy
+                                                        unvonini olgan.
+                                                    </p>
+                                                </div>
+                                            </div>
+        
+                                            <div class="card-3d-actions mt-3">
+                                                <div class="card-3d-socials ms-0">
+                                                    <a href="tel:+998881248888"><i class="fas fa-phone-alt"></i></a>
+                                                    <a href="mailto:r.djumayev@diplomat.university"><i
+                                                            class="fas fa-envelope"></i></a>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Tolipov Farxod Fazilovich -->
+                            <div class="col-12 employee-replica-wrapper" data-aos="fade-up" data-aos-delay="0">
+                                <div class="dept-card-3d">
+                                    <div class="dept-3d-inner">
+                                        <div class="dept-3d-glow"></div>
+                                        <div class="dept-3d-particles">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                        </div>
+                                        <div class="dept-3d-icon-side">
+                                            <div class="dept-3d-icon-frame">
+                                                <div class="dept-3d-ring"></div>
+                                                <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                <img src="{% static 'images/Farxod.jpg' %}" alt="Tolipov Farxod Fazilovich"
+                                                    class="dept-3d-avatar-img">
+                                            </div>
+                                        </div>
+                                        <div class="dept-3d-info-side">
+                                            <h3 class="dept-3d-name">Tolipov Farxod Fazilovich</h3>
+                                            <p class="dept-3d-subtitle">Dotsent v.b., Siyosiy fanlar bo’yicha falsafa doktori
+                                                (PhD)</p>
+                                            <div class="dept-3d-divider"></div>
+        
+                                            <div class="staff-bio-container">
+                                                <div class="staff-bio-text">
+                                                    <p>Toshkent Davlat universitetini tamomlagan. Siyosiy fanlar bo’yicha
+                                                        falsafa doktori. Ihtisosligi Xalqaro Munosabatlar nazariyasi; Xalqaro va
+                                                        Milliy Xavfsizlik; Geosiyosat; Markaziy Osiyo tadqiqotlari.
+                                                        <br><br>F. Tolipov bitta monografiya, 200 dan ortiq ilmiy maqolalari
+                                                        O‘zbekiston va horijiy ilmiy nashrlarda chop etilgan. AQSHning Garvard,
+                                                        Georgia Universitetlari, NATO Mudofaa Kolleji va boshqa horijiy ilmiy
+                                                        maskanlar va universitetlarda malaka oshirgan va ma’ruzalar o’qigan.
+                                                        <br><br>Markaziy Osiyo Tadqiqotlari bo’yicha Yevropa Jamiyati (ESCAS);
+                                                        Markaziy Yevro-Osiyo Tadqiqotlari Jamiyati (a’zosi) (CESS).
+                                                    </p>
+                                                </div>
+                                            </div>
+        
+                                            <div class="card-3d-actions mt-3">
+                                                <div class="card-3d-socials ms-0">
+                                                    <a href="#"><i class="fas fa-phone-alt"></i></a>
+                                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Ametov Temirbek Almasbaevich -->
+                            <div class="col-12 employee-replica-wrapper" data-aos="fade-up" data-aos-delay="100">
+                                <div class="dept-card-3d">
+                                    <div class="dept-3d-inner">
+                                        <div class="dept-3d-glow"></div>
+                                        <div class="dept-3d-particles">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                        </div>
+                                        <div class="dept-3d-icon-side">
+                                            <div class="dept-3d-icon-frame">
+                                                <div class="dept-3d-ring"></div>
+                                                <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                <img src="{% static 'images/DU8.jpg' %}" alt="Ametov Temirbek Almasbaevich"
+                                                    class="dept-3d-avatar-img">
+                                            </div>
+                                        </div>
+                                        <div class="dept-3d-info-side">
+                                            <h3 class="dept-3d-name">Ametov Temirbek Almasbaevich</h3>
+                                            <p class="dept-3d-subtitle">Dotsent, Tarix fanlari bo‘yicha falsafa doktori (PhD)
+                                            </p>
+                                            <div class="dept-3d-divider"></div>
+        
+                                            <div class="staff-bio-container">
+                                                <div class="staff-bio-text">
+                                                    <p>Ajiniyoz nomidagi Nukus davlat pedagogika instituti Tarix mutaxassisligi
+                                                        bo‘yicha tamomlagan. Tarix fanlari bo‘yicha falsafa doktori (PhD),
+                                                        dotsent.
+                                                        <br><br>T. Ametov 8 ta monografiya, 3 tа o‘quv qo‘llanma muallifi, 140
+                                                        dan ortiq ilmiy maqolalari O‘zbekiston, Qozog‘iston, AQSh, Britaniya,
+                                                        Rossiya, Turkiya va boshqada davlatlarning nufuzli ilmiy jurnallari va
+                                                        mahalliy nashrlarida chop etilgan.
+                                                        <br><br>Xalqaro va mahalliy OAK ro‘yxatiga kiritilgan jurnallarning
+                                                        tahririyat a’zosi.
+                                                    </p>
+                                                </div>
+                                            </div>
+        
+                                            <div class="card-3d-actions mt-3">
+                                                <div class="card-3d-socials ms-0">
+                                                    <a href="#"><i class="fas fa-phone-alt"></i></a>
+                                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Tagayeva Faragat Begmirzayevna -->
+                            <div class="col-12 employee-replica-wrapper" data-aos="fade-up" data-aos-delay="200">
+                                <div class="dept-card-3d">
+                                    <div class="dept-3d-inner">
+                                        <div class="dept-3d-glow"></div>
+                                        <div class="dept-3d-particles">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                        </div>
+                                        <div class="dept-3d-icon-side">
+                                            <div class="dept-3d-icon-frame">
+                                                <div class="dept-3d-ring"></div>
+                                                <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                <img src="{% static 'images/Faragot.png' %}" alt="Tagayeva Faragat Begmirzayevna"
+                                                    class="dept-3d-avatar-img">
+                                            </div>
+                                        </div>
+                                        <div class="dept-3d-info-side">
+                                            <h3 class="dept-3d-name">Tagayeva Faragat Begmirzayevna</h3>
+                                            <p class="dept-3d-subtitle">Kafedra o'qituvchisi</p>
+                                            <div class="dept-3d-divider"></div>
+        
+                                            <div class="staff-bio-container">
+                                                <div class="staff-bio-text">
+                                                    <p>Jahon iqtisodiyoti va diplomatiya universitetini “Xalqaro munosabatlar”
+                                                        yo‘nalishi bo‘yicha bakalavr va magistr darajalarida tamomlagan.
+                                                        <br><br>Toshkent davlat sharqshunoslik universiteti “Xalqaro
+                                                        munosabatlar” kafedrasi mustaqil izlanuvchisi (PhD). Rus, yapon, ingliz
+                                                        va turk tillarini mukammal biladi.
+                                                        <br><br>2008-yilda yapon tili bo‘yicha notiqlik san’ati yo‘nalishida
+                                                        o‘tkazilgan XVI Respublika tanlovi g‘olibasi bo‘lgan. 10 dan ortiq ilmiy
+                                                        maqola va tezislar muallifi.
+                                                    </p>
+                                                </div>
+                                            </div>
+        
+                                            <div class="card-3d-actions mt-3">
+                                                <div class="card-3d-socials ms-0">
+                                                    <a href="#"><i class="fas fa-phone-alt"></i></a>
+                                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Pirmatov Dilshod Sunnatulla o‘g‘li -->
+                            <div class="col-12 employee-replica-wrapper" data-aos="fade-up" data-aos-delay="300">
+                                <div class="dept-card-3d">
+                                    <div class="dept-3d-inner">
+                                        <div class="dept-3d-glow"></div>
+                                        <div class="dept-3d-particles">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                        </div>
+                                        <div class="dept-3d-icon-side">
+                                            <div class="dept-3d-icon-frame">
+                                                <div class="dept-3d-ring"></div>
+                                                <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                <img src="{% static 'images/DU9.jpg' %}" alt="Pirmatov Dilshod Sunnatulla o‘g‘li"
+                                                    class="dept-3d-avatar-img">
+                                            </div>
+                                        </div>
+                                        <div class="dept-3d-info-side">
+                                            <h3 class="dept-3d-name">Pirmatov Dilshod Sunnatulla o‘g‘li</h3>
+                                            <p class="dept-3d-subtitle">Kafedra o‘qituvchisi</p>
+                                            <div class="dept-3d-divider"></div>
+        
+                                            <div class="staff-bio-container">
+                                                <div class="staff-bio-text">
+                                                    <p>O‘zbekiston Xalqaro Islom Akademiyasini Dinshunoslik va tarix
+                                                        mutaxassisligi bo‘yicha tamomlagan.
+                                                        <br><br>D. Pirmatov 10 dan ortiq ilmiy maqolalari O‘zbekiston, Rossiya,
+                                                        Chexiyaning nufuzli ilmiy jurnallari va mahalliy nashrlarida chop
+                                                        etilgan.
+                                                        <br><br>O‘zbekiston Al-Buxoriy nomli davlat stipendiyasi sovrindori.
+                                                    </p>
+                                                </div>
+                                            </div>
+        
+                                            <div class="card-3d-actions mt-3">
+                                                <div class="card-3d-socials ms-0">
+                                                    <a href="#"><i class="fas fa-phone-alt"></i></a>
+                                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <!-- Sa’diyev Bahodir Ubaydulo o’g’li -->
+                            <div class="col-12 employee-replica-wrapper" data-aos="fade-up" data-aos-delay="400">
+                                <div class="dept-card-3d">
+                                    <div class="dept-3d-inner">
+                                        <div class="dept-3d-glow"></div>
+                                        <div class="dept-3d-particles">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                        </div>
+                                        <div class="dept-3d-icon-side">
+                                            <div class="dept-3d-icon-frame">
+                                                <div class="dept-3d-ring"></div>
+                                                <div class="dept-3d-ring dept-3d-ring-2"></div>
+                                                <img src="{% static 'images/DU10.jpg' %}" alt="Sa’diyev Bahodir Ubaydulo o’g’li"
+                                                    class="dept-3d-avatar-img">
+                                            </div>
+                                        </div>
+                                        <div class="dept-3d-info-side">
+                                            <h3 class="dept-3d-name">Sa’diyev Bahodir Ubaydulo o’g’li</h3>
+                                            <p class="dept-3d-subtitle">Kafedra o‘qituvchisi</p>
+                                            <div class="dept-3d-divider"></div>
+        
+                                            <div class="staff-bio-container">
+                                                <div class="staff-bio-text">
+                                                    <p>Jahon Iqtisodiyosti Va Diplomatiya Universitetini Siyosatshunoslik
+                                                        mutaxassisligi bo‘yicha tamomlagan.
+                                                        <br><br>Jahon Iqtisodiyosti Va Diplomatiya Universitetini Xalqaro
+                                                        munosabatlar va zamonaviy siyosiy jarayonlar yo’nalishini
+                                                        magistraturasini tugatgan.
+                                                    </p>
+                                                </div>
+                                            </div>
+        
+                                            <div class="card-3d-actions mt-3">
+                                                <div class="card-3d-socials ms-0">
+                                                    <a href="#"><i class="fas fa-phone-alt"></i></a>
+                                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+                </section>
+    </main>
+{% endblock content %}
+
+{% block extra_js %}
+    <!-- Removed Department JS files as content is now static -->
+{% endblock extra_js %}

@@ -1,0 +1,147 @@
+/*
+=========================================
+ICHKI QOIDALAR - PREMIUM STYLE (REMASTERED)
+=========================================
+*/
+
+/* 1. HERO MATNI FIX */
+.highlight-text-premium::before {
+    content: 'QOIDALAR' !important;
+}
+
+/* 2. GRID KONTAYNER */
+.rules-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+/* 3. PREMIUM QOIDA KARTASI */
+.premium-rule-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(7, 0, 107, 0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+
+/* Hover Effekti */
+.premium-rule-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(7, 0, 107, 0.12);
+    border-color: transparent;
+}
+
+/* Orqa fon bezagi (Overlay) */
+.rule-overlay {
+    position: absolute;
+    top: 0; right: 0;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+    border-radius: 0 0 0 100%;
+    transform: translate(50%, -50%);
+    transition: transform 0.5s ease;
+    z-index: 0;
+}
+.premium-rule-card:hover .rule-overlay {
+    transform: translate(30%, -30%) scale(1.2);
+}
+
+/* Ikonka Qutisi */
+.rule-icon-box {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    color: #07006b;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(7,0,107,0.05);
+    z-index: 1;
+}
+
+.premium-rule-card:hover .rule-icon-box {
+    background: #07006b;
+    color: #FFC107;
+    transform: rotate(360deg);
+}
+
+/* Matn Qismi */
+.rule-content {
+    z-index: 1;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rule-card-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    transition: color 0.3s;
+}
+
+.premium-rule-card:hover .rule-card-title {
+    color: #07006b;
+}
+
+.rule-card-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* Yuklab Olish Tugmasi */
+.btn-rule-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8faff;
+    color: #07006b;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(7,0,107,0.1);
+    align-self: flex-start;
+}
+
+.btn-rule-download:hover {
+    background: #FFC107;
+    color: #07006b;
+    border-color: #FFC107;
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-rule-download i {
+    font-size: 1.1rem;
+}
+
+/* Mobil Moslashuv */
+@media (max-width: 768px) {
+    .rules-grid-container {
+        grid-template-columns: 1fr;
+    }
+    .premium-rule-card {
+        padding: 30px 20px;
+    }
+}

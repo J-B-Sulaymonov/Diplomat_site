@@ -1,0 +1,732 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Universitet Do'koni (Merch) | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+    <!-- Asosiy Meta Teglar -->
+    <meta name="description"
+        content="Diplomat University rasmiy kiyimlari, esdalik sovg'alari va o'quv qurollari do'koni. Universitet logotipi tushirilgan sifatli merch mahsulotlarini xarid qiling.">
+    <meta name="keywords"
+        content="universitet do'koni, merch, formalar, esdalik sovg'alari, diploshp, talabalar do'koni, kiyimlar, aksessuarlar, kanselyariya">
+    <meta name="author" content="Diplomat University">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="Uzbek">
+    <meta name="theme-color" content="#07006b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+    <meta name="generator" content="Diplomat University Engine">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://diplomat.university/shop/">
+
+    <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Universitet Do'koni (Merch) | Diplomat University">
+    <meta property="og:description"
+        content="Diplomat University rasmiy kiyimlari, esdalik sovg'alari va maqsadli merch maxsulotlari onlayn do'koni.">
+    <meta property="og:url" content="https://diplomat.university/shop/">
+    <meta property="og:site_name" content="Diplomat University">
+    <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="University Shop Preview">
+    <meta property="og:locale" content="uz_UZ">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@diplomat_uni">
+    <meta name="twitter:creator" content="@diplomat_uni">
+    <meta name="twitter:title" content="Universitet Do'koni (Merch) | Diplomat University">
+    <meta name="twitter:description"
+        content="Universitet logotipi tushirilgan sifatli kiyim-kechak, qulay esdalik sovg'alari hamda maxsus mahsulotlarni tanlang.">
+    <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta name="twitter:image:alt" content="Diplomat Merch">
+
+    <!-- JSON-LD (Schema.org) for Store -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Diplomat University Shop",
+      "image": "https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg",
+      "description": "Diplomat University rasmiy kiyimlari, esdalik sovg'alari va o'quv qurollari sotiladigan maxsus do'kon.",
+      "url": "https://diplomat.university/shop/",
+      "priceRange": "UZS",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Toshkent",
+        "addressRegion": "Toshkent",
+        "addressCountry": "UZ"
+      },
+      "parentOrganization": {
+        "@type": "EducationalOrganization",
+        "name": "Diplomat University",
+        "url": "https://diplomat.university/"
+      }
+    }
+    </script>
+{% endblock extra_head %}
+
+{% block content %}
+
+    <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+    <section class="shop-hero-3d">
+        <div class="hero-3d-bg"></div>
+        <div class="container h-100 d-flex align-items-center position-relative z-2">
+            <div class="row align-items-center w-100">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <span class="premium-badge">PREMIUM COLLECTION 2026</span>
+                    <h1 class="hero-3d-title">KELAJAK <br> <span class="text-gold stroke-text">STILI</span></h1>
+                    <p class="hero-3d-desc">Diplomat University talabalari uchun maxsus dizayn. <br> Sifat, qulaylik va
+                        o'zgacha uslub.</p>
+                    <a href="#products" class="btn-3d-action">
+                        <span>XARID QILISH</span>
+                    </a>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
+                    <div class="floating-hero-obj">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop"
+                            class="img-fluid rounded-4 shadow-lg tilt-element" data-tilt data-tilt-max="15"
+                            data-tilt-speed="400" alt="Hero Product">
+                        <div class="hero-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="shop-main-wrapper py-5" id="products">
+        <div class="container">
+            <div class="row g-4">
+
+                <aside class="col-lg-3">
+                    <div class="shop-sidebar-glass sticky-sidebar" data-aos="fade-up">
+                        <div class="sidebar-header">
+                            <h4 class="widget-title"><i class="fas fa-filter text-gold me-2"></i> FILTRLAR</h4>
+                        </div>
+
+                        <div class="sidebar-widget">
+                            <div class="search-box-glass">
+                                <input type="text" id="shop-search-input" placeholder="Qidirish..." oninput="filterProducts()">
+                                <button><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-widget">
+                            <h5 class="sub-title">Kategoriyalar</h5>
+                            <ul class="category-list-modern">
+                                <li><a href="#" class="active" data-filter="all"
+                                        onclick="selectCategory(this, 'all'); return false;">Barchasi <span
+                                            class="count">{{ total_count }}</span></a></li>
+                                {% for cat in categories %}
+                                <li><a href="#" data-filter="{{ cat.slug }}"
+                                        onclick="selectCategory(this, '{{ cat.slug }}'); return false;">{{ cat.title }} <span
+                                            class="count">{{ cat.product_count }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-widget">
+                            <h5 class="sub-title">Narx oralig'i</h5>
+                            <div class="range-wrapper">
+                                <input type="range" class="form-range styled-range" min="0" max="1000000"
+                                    value="1000000" id="priceRange" oninput="updatePrice(this.value)">
+                                <div class="price-value">
+                                    <span>0 UZS</span>
+                                    <span id="priceOutput" class="text-gold fw-bold">1,000,000 UZS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </aside>
+
+                <div class="col-lg-9">
+                    <div class="shop-toolbar-glass d-flex justify-content-between align-items-center mb-4"
+                        data-aos="fade-down">
+                        <p class="mb-0 fw-bold text-dark" id="product-count-text">Natija: {{ total_count }} ta mahsulot</p>
+                        <div class="d-flex gap-3">
+                            <select class="form-select glass-select" onchange="sortProducts(this.value)">
+                                <option value="new">Saralash: Yangi kelganlar</option>
+                                <option value="price-asc">Narx: Arzonroq</option>
+                                <option value="price-desc">Narx: Qimmatroq</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-4" id="product-list">
+
+                        {% for product in products %}
+                        <div class="col-md-4 col-sm-6 product-item"
+                             id="product-card-{{ product.id }}"
+                             data-id="{{ product.id }}"
+                             data-category="{{ product.category.slug }}"
+                             data-price="{{ product.price }}"
+                             data-date="{{ product.created_at|date:'Y-m-d' }}"
+                             data-title="{{ product.title }}"
+                             data-image="{{ product.image.url }}"
+                             data-colors="{% for color in product.colors.all %}{{ color.name }}:{% if color.image %}{{ color.image.url }}{% else %}{{ product.image.url }}{% endif %}{% if not forloop.last %}|{% endif %}{% endfor %}"
+                             data-sizes="{% for size in product.sizes.all %}{{ size.name }}{% if not forloop.last %},{% endif %}{% endfor %}"
+                             data-aos="fade-up"
+                             {% if forloop.counter > 1 %}data-aos-delay="{{ forloop.counter0|add:'0' }}00"{% endif %}>
+                            <div class="product-card-3d" data-tilt data-tilt-max="10" data-tilt-speed="400"
+                                data-tilt-perspective="1000">
+                                <div class="card-3d-inner">
+                                    {% if product.badge %}
+                                    <span class="badge-3d {% if 'YANGI' in product.badge or 'HOT' in product.badge %}new{% else %}sale{% endif %}">{{ product.badge }}</span>
+                                    {% endif %}
+                                    <div class="img-box-3d">
+                                        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                                        <div class="overlay-3d">
+                                            <button class="btn-icon-3d" title="Savatga qo'shish" onclick="openQuickView({{ product.id }})"><i
+                                                    class="fas fa-shopping-bag"></i></button>
+                                            <button class="btn-icon-3d quick-view-btn" title="Tez ko'rish" onclick="openQuickView({{ product.id }})"><i
+                                                    class="far fa-eye"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="content-3d">
+                                        <div class="rating">
+                                            {% for i in "12345" %}
+                                                {% if forloop.counter <= product.rating %}
+                                                <i class="fas fa-star text-warning"></i>
+                                                {% else %}
+                                                <i class="far fa-star text-warning"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <h3 class="title-3d">{{ product.title }}</h3>
+                                        <div class="price-3d">
+                                            {% if product.old_price %}
+                                            <span class="old">{{ product.formatted_old_price }}</span>
+                                            {% endif %}
+                                            <span class="new">{{ product.formatted_price }} UZS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
+                            <h4 class="text-muted">Hozircha mahsulotlar mavjud emas</h4>
+                            <p class="text-muted">Tez orada yangi kolleksiya qo'shiladi!</p>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Cart Button -->
+    <button class="floating-cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="floating-cart-count">0</span>
+    </button>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+                <div class="modal-header border-0 pb-0 position-relative">
+                    <button type="button" class="btn-close position-absolute" style="top: 20px; right: 20px; z-index: 1060;" onclick="closeQuickView()" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-0">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-6 text-center">
+                            <img src="" id="qv-image" class="img-fluid rounded-3 shadow-sm" alt="Product Image" style="max-height: 400px; object-fit: cover;">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="qv-title" class="fw-bold text-dark mb-2">Mahsulot</h3>
+                            <h4 id="qv-price" class="text-gold fw-bold mb-4">0 UZS</h4>
+                            
+                            <!-- Colors -->
+                            <div class="mb-3" id="qv-color-wrapper" style="display: none;">
+                                <label class="fw-bold mb-2">Rangni tanlang:</label>
+                                <div class="d-flex gap-2 flex-wrap" id="qv-colors-container"></div>
+                                <input type="hidden" id="qv-selected-color" value="">
+                            </div>
+
+                            <!-- Sizes -->
+                            <div class="mb-4" id="qv-size-wrapper" style="display: none;">
+                                <label class="fw-bold mb-2">O'lchamni tanlang:</label>
+                                <div class="d-flex gap-2 flex-wrap" id="qv-sizes-container"></div>
+                                <input type="hidden" id="qv-selected-size" value="">
+                            </div>
+
+                            <!-- Quantity & Action -->
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="quantity-selector d-flex align-items-center border rounded-pill px-2 py-1">
+                                    <button class="btn btn-sm btn-link text-dark text-decoration-none" onclick="changeQvQuantity(-1)"><i class="fas fa-minus"></i></button>
+                                    <span id="qv-quantity" class="fw-bold px-3">1</span>
+                                    <button class="btn btn-sm btn-link text-dark text-decoration-none" onclick="changeQvQuantity(1)"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <button class="btn-3d-action w-100 text-center flex-grow-1" id="qv-add-btn" onclick="confirmAddToCart()">
+                                    <i class="fas fa-shopping-bag me-2"></i> SAVATGA QO'SHISH
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Cart -->
+    <div class="offcanvas offcanvas-end shadow" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold" id="cartOffcanvasLabel"><i class="fas fa-shopping-cart text-gold me-2"></i> Sizning Savatingiz</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column h-100 p-0">
+            <!-- Cart Items List -->
+            <div class="cart-items-wrapper flex-grow-1 overflow-auto p-3" id="cart-items-container">
+                <!-- Items injected by JS -->
+                <div class="text-center py-5 text-muted" id="empty-cart-msg">
+                    <i class="fas fa-shopping-basket fa-3x mb-3 opacity-50"></i>
+                    <h6>Savatingiz bo'sh</h6>
+                </div>
+            </div>
+
+            <!-- Cart Footer & Checkout -->
+            <div class="cart-footer border-top p-4 bg-light">
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="fw-bold">Jami:</span>
+                    <span class="fw-bold text-gold fs-5" id="cart-total-price">0 UZS</span>
+                </div>
+                
+                <form id="checkout-form" onsubmit="submitCheckout(event)" class="mt-3">
+                    <h6 class="fw-bold mb-3 border-bottom pb-2">Ma'lumotlaringiz:</h6>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" id="co-name" placeholder="Ism va Familiya" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="tel" class="form-control" id="co-phone" placeholder="Telefon raqamingiz" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="co-address" rows="2" placeholder="Yetkazib berish manzili (ixtiyoriy)"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100 rounded-pill fw-bold py-2 shadow-sm" id="checkout-btn">
+                        RASMIYLASHTIRISH
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .floating-cart-btn {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--dark-blue);
+            color: #fff;
+            border: none;
+            box-shadow: 0 10px 20px rgba(7, 0, 107, 0.3);
+            font-size: 1.5rem;
+            z-index: 1050;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .floating-cart-btn:hover { transform: translateY(-5px); background: var(--gold); color: var(--dark-blue); }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.75rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid #fff;
+        }
+        .color-option-img {
+            width: 50px; height: 50px; border-radius: 8px; border: 2px solid #ddd; cursor: pointer; transition: 0.2s; object-fit: cover;
+        }
+        .color-option-img.selected { border: 2px solid var(--dark-blue); transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .size-option {
+            border: 1px solid #ddd; padding: 5px 15px; border-radius: 20px; cursor: pointer; transition: 0.2s; font-weight: 500;
+        }
+        .size-option.selected { background: var(--dark-blue); color: #fff; border-color: var(--dark-blue); }
+        .cart-item { display: flex; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+        .cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 10px; }
+        .cart-item-details { flex-grow: 1; }
+        .cart-item-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 5px; color: #333; display: block; }
+        .cart-item-meta { font-size: 0.8rem; color: #777; margin-bottom: 5px; }
+        .cart-item-price { font-weight: 700; color: var(--dark-blue); font-size: 0.9rem; }
+        .cart-remove-btn { color: #dc3545; cursor: pointer; transition: 0.2s; }
+        .cart-remove-btn:hover { color: #a71d2a; transform: scale(1.1); }
+    </style>
+
+{% endblock content %}
+
+{% block extra_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        // --- 1. FILTER & SORT LOGIC ---
+        const productsGrid = document.getElementById('product-list');
+        let productsElements = [];
+        const countElement = document.getElementById('product-count-text');
+        const priceOutput = document.getElementById('priceOutput');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            productsElements = Array.from(document.querySelectorAll('.product-item'));
+            filterProducts();
+            loadCart(); // Load cart from localStorage
+        });
+
+        function updatePrice(value) {
+            priceOutput.innerText = new Intl.NumberFormat('uz-UZ').format(value) + ' UZS';
+            filterProducts();
+        }
+
+        function selectCategory(element, category) {
+            document.querySelectorAll('.category-list-modern a').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const searchInput = document.getElementById('shop-search-input');
+            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+            const activeCategoryLink = document.querySelector('.category-list-modern a.active');
+            const selectedCategory = activeCategoryLink ? activeCategoryLink.getAttribute('data-filter') : 'all';
+            const priceInput = document.getElementById('priceRange');
+            const maxPrice = priceInput ? parseInt(priceInput.value) : 1000000;
+
+            let visibleCount = 0;
+
+            productsElements.forEach(product => {
+                const title = product.getAttribute('data-title').toLowerCase();
+                const category = product.getAttribute('data-category');
+                const price = parseInt(product.getAttribute('data-price'));
+
+                const matchesSearch = title.includes(searchTerm);
+                const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+                const matchesPrice = price <= maxPrice;
+
+                if (matchesSearch && matchesCategory && matchesPrice) {
+                    product.classList.remove('d-none');
+                    visibleCount++;
+                } else {
+                    product.classList.add('d-none');
+                }
+            });
+
+            if (countElement) countElement.innerText = `Natija: ${visibleCount} ta mahsulot`;
+            if (typeof AOS !== 'undefined') AOS.refresh();
+        }
+
+        function sortProducts(sortValue) {
+            const sorted = productsElements.sort((a, b) => {
+                if (sortValue === 'new') return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+                else if (sortValue === 'price-asc') return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
+                else if (sortValue === 'price-desc') return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
+                return 0;
+            });
+            productsGrid.innerHTML = '';
+            sorted.forEach(product => productsGrid.appendChild(product));
+            filterProducts();
+        }
+
+        // --- 2. QUICK VIEW MODAL LOGIC ---
+        let currentQVProduct = null;
+        let qvModal = null;
+
+        function openQuickView(productId) {
+            const el = document.getElementById(`product-card-${productId}`);
+            if (!el) return;
+
+            currentQVProduct = {
+                id: productId,
+                title: el.getAttribute('data-title'),
+                price: parseInt(el.getAttribute('data-price')),
+                image: el.getAttribute('data-image'),
+                colorsStr: el.getAttribute('data-colors'),
+                sizesStr: el.getAttribute('data-sizes'),
+                quantity: 1
+            };
+
+            document.getElementById('qv-title').innerText = currentQVProduct.title;
+            document.getElementById('qv-price').innerText = new Intl.NumberFormat('uz-UZ').format(currentQVProduct.price) + ' UZS';
+            document.getElementById('qv-image').src = currentQVProduct.image;
+            document.getElementById('qv-quantity').innerText = '1';
+            
+            // Render Colors (now as images)
+            const colorWrapper = document.getElementById('qv-color-wrapper');
+            const colorsContainer = document.getElementById('qv-colors-container');
+            document.getElementById('qv-selected-color').value = '';
+            colorsContainer.innerHTML = '';
+            if (currentQVProduct.colorsStr) {
+                const colors = currentQVProduct.colorsStr.split('|');
+                colors.forEach(c => {
+                    if (!c) return;
+                    const parts = c.split(':');
+                    const name = parts[0];
+                    const imgUrl = parts[1];
+                    const nameEscaped = name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    colorsContainer.innerHTML += `<img src="${imgUrl}" class="color-option-img" title="${name}" onclick="selectColor(this, '${nameEscaped}', '${imgUrl}')" alt="${name}">`;
+                });
+                colorWrapper.style.display = 'block';
+            } else {
+                colorWrapper.style.display = 'none';
+            }
+
+            // Render Sizes
+            const sizeWrapper = document.getElementById('qv-size-wrapper');
+            const sizesContainer = document.getElementById('qv-sizes-container');
+            document.getElementById('qv-selected-size').value = '';
+            sizesContainer.innerHTML = '';
+            if (currentQVProduct.sizesStr) {
+                const sizes = currentQVProduct.sizesStr.split(',');
+                sizes.forEach(s => {
+                    if (!s) return;
+                    sizesContainer.innerHTML += `<div class="size-option" onclick="selectSize(this, '${s}')">${s}</div>`;
+                });
+                sizeWrapper.style.display = 'block';
+            } else {
+                sizeWrapper.style.display = 'none';
+            }
+
+            if(!qvModal) qvModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
+            qvModal.show();
+        }
+
+        function closeQuickView() {
+            if(qvModal) {
+                qvModal.hide();
+            }
+        }
+
+        function changeQvQuantity(change) {
+            if(!currentQVProduct) return;
+            let val = currentQVProduct.quantity + change;
+            if(val < 1) val = 1;
+            if(val > 10) val = 10;
+            currentQVProduct.quantity = val;
+            document.getElementById('qv-quantity').innerText = val;
+        }
+
+        function selectColor(element, colorName, imageUrl) {
+            document.querySelectorAll('.color-option-img').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('qv-selected-color').value = colorName;
+            // Update big image
+            document.getElementById('qv-image').src = imageUrl;
+            // Update current product object so added item uses the assigned color's image
+            if (currentQVProduct) currentQVProduct.selectedImageUrl = imageUrl;
+        }
+
+        function selectSize(element, sizeName) {
+            document.querySelectorAll('.size-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('qv-selected-size').value = sizeName;
+        }
+
+        // --- 3. SHOPPING CART LOGIC (LocalStorage) ---
+        let cart = [];
+
+        function saveCart() {
+            localStorage.setItem('diplomat_shop_cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function loadCart() {
+            const saved = localStorage.getItem('diplomat_shop_cart');
+            if(saved) {
+                cart = JSON.parse(saved);
+            }
+            renderCart();
+        }
+
+        function confirmAddToCart() {
+            if(!currentQVProduct) return;
+            
+            const reqColor = document.getElementById('qv-color-wrapper').style.display !== 'none';
+            const reqSize = document.getElementById('qv-size-wrapper').style.display !== 'none';
+            
+            const selColor = document.getElementById('qv-selected-color').value;
+            const selSize = document.getElementById('qv-selected-size').value;
+
+            if (reqColor && !selColor) {
+                showToast("Iltimos, rangni tanlang!", "warning", "exclamation-triangle");
+                return;
+            }
+            if (reqSize && !selSize) {
+                showToast("Iltimos, o'lchamni tanlang!", "warning", "exclamation-triangle");
+                return;
+            }
+
+            // Check if exact same item exists
+            const existingItem = cart.find(i => i.product_id === currentQVProduct.id && i.color === selColor && i.size === selSize);
+            
+            if (existingItem) {
+                existingItem.quantity += currentQVProduct.quantity;
+            } else {
+                cart.push({
+                    product_id: currentQVProduct.id,
+                    title: currentQVProduct.title,
+                    price: currentQVProduct.price,
+                    image: currentQVProduct.selectedImageUrl || currentQVProduct.image,
+                    quantity: currentQVProduct.quantity,
+                    color: selColor,
+                    size: selSize
+                });
+            }
+
+            saveCart();
+            qvModal.hide();
+            showToast(`Savatga ${currentQVProduct.title} qo'shildi!`, "success", "check-circle");
+            
+            // Bump cart icon
+            const cartBadge = document.getElementById('floating-cart-count');
+            cartBadge.classList.add('bump');
+            setTimeout(() => cartBadge.classList.remove('bump'), 300);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            showToast("Mahsulot savatdan o'chirildi", "secondary", "trash");
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const totalEl = document.getElementById('cart-total-price');
+            const badge = document.getElementById('floating-cart-count');
+            const btn = document.getElementById('checkout-btn');
+            
+            let totalSum = 0;
+            let totalItems = 0;
+            
+            cart.forEach(item => {
+                totalSum += item.price * item.quantity;
+                totalItems += item.quantity;
+            });
+
+            if (badge) badge.innerText = totalItems;
+            if (totalEl) totalEl.innerText = new Intl.NumberFormat('uz-UZ').format(totalSum) + ' UZS';
+
+            container.innerHTML = '';
+
+            if(cart.length === 0) {
+                container.innerHTML = `
+                <div class="text-center py-5 text-muted" id="empty-cart-msg">
+                    <i class="fas fa-shopping-basket fa-3x mb-3 opacity-50"></i>
+                    <h6>Savatingiz bo'sh</h6>
+                </div>`;
+                if (btn) btn.disabled = true;
+            } else {
+                if (btn) btn.disabled = false;
+                
+                cart.forEach((item, index) => {
+                    let meta = [];
+                    if(item.color) meta.push(`Rang: ${item.color}`);
+                    if(item.size) meta.push(`O'lcham: ${item.size}`);
+                    
+                    const html = `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="">
+                        <div class="cart-item-details">
+                            <span class="cart-item-title">${item.title}</span>
+                            <div class="cart-item-meta">${meta.join(' | ')}</div>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="cart-item-price">${item.quantity} x ${new Intl.NumberFormat('uz-UZ').format(item.price)} UZS</span>
+                                <i class="fas fa-trash-alt cart-remove-btn" onclick="removeFromCart(${index})"></i>
+                            </div>
+                        </div>
+                    </div>`;
+                    container.insertAdjacentHTML('beforeend', html);
+                });
+            }
+        }
+
+        // --- 4. CHECKOUT API CALL ---
+        async function submitCheckout(e) {
+            e.preventDefault();
+            if(cart.length === 0) return;
+
+            const name = document.getElementById('co-name').value;
+            const phone = document.getElementById('co-phone').value;
+            const address = document.getElementById('co-address').value;
+            const btn = document.getElementById('checkout-btn');
+
+            btn.disabled = true;
+            btn.innerText = "YUBORILMOQDA...";
+
+            const payload = {
+                full_name: name,
+                phone: phone,
+                address: address,
+                items: cart
+            };
+
+            try {
+                const response = await fetch('{% url "shop_checkout_api" %}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    cart = [];
+                    saveCart();
+                    document.getElementById('checkout-form').reset();
+                    bootstrap.Offcanvas.getInstance(document.getElementById('cartOffcanvas')).hide();
+                    showToast("Buyurtmangiz qabul qilindi! Tez orada aloqaga chiqamiz.", "success", "check-circle");
+                } else {
+                    showToast(data.message || "Xatolik yuz berdi", "danger", "exclamation-circle");
+                }
+            } catch(err) {
+                showToast("Tarmoq xatosi. Iltimos tekshirib qayta urinib ko'ring.", "danger", "wifi");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "RASMIYLASHTIRISH";
+            }
+        }
+
+        // --- 5. TOAST NOTIFICATIONS ---
+        function showToast(message, type="success", icon="check-circle") {
+            const toastContainer = document.getElementById('toast-container');
+            const toastHTML = `
+            <div class="toast align-items-center text-white bg-${type} border-0 show fade-in-up" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="fas fa-${icon} me-2"></i> ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+            </div>`;
+            const div = document.createElement('div');
+            div.innerHTML = toastHTML;
+            toastContainer.appendChild(div.firstElementChild);
+
+            const toastEl = toastContainer.lastElementChild;
+            setTimeout(() => {
+                if (toastEl) toastEl.remove();
+            }, 4000);
+        }
+    </script>
+{% endblock extra_js %}

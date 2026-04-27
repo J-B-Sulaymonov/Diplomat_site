@@ -1,0 +1,350 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ program.title }} | Diplomat University{% endblock title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/business-page.css' %}">
+
+    <!-- MUKAMMAL SEO OPTIMIZATSIYA (SENIOR LEVEL) -->
+        <!-- Asosiy Meta Teglar -->
+        <meta name="description"
+            content="Diplomat Universityda Biznesni boshqarish (BBA) yo'nalishida o'qing. Zamonaviy tadbirkorlik, menejment, marketing sirlarini amaliyot bilan birgalikda mukammal o'zlashtiring.">
+        <meta name="keywords"
+            content="Biznesni boshqarish, BBA, menejment, marketing, biznes o'qish, biznes ta'lim, universitet yo'nalishlari, O'zbekiston, bakalavr">
+        <meta name="author" content="Diplomat University">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+        <meta name="language" content="Uzbek">
+        <meta name="theme-color" content="#07006b">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#07006b">
+        <meta name="generator" content="Diplomat University Engine">
+    
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://diplomat.university/bussines.html">
+    
+        <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="Biznesni boshqarish (BBA) | Diplomat University">
+        <meta property="og:description"
+            content="Diplomat Universityda Biznesni boshqarish bo'yicha tahsil oling va kelajak uchun mustahkam biznes poydevoringizni qurib chiqing.">
+        <meta property="og:url" content="https://diplomat.university/bussines.html">
+        <meta property="og:site_name" content="Diplomat University">
+        <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="Business Administration Banner">
+        <meta property="og:locale" content="uz_UZ">
+    
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@diplomat_uni">
+        <meta name="twitter:creator" content="@diplomat_uni">
+        <meta name="twitter:title" content="Biznesni boshqarish (BBA) | Diplomat University">
+        <meta name="twitter:description"
+            content="Diplomat Universityda Biznesni boshqarish (BBA) yo'nalishida o'qing. Zamonaviy tadbirkorlik doirasidagi ta’lim sizni kutmoqda.">
+        <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+        <meta name="twitter:image:alt" content="Diplomat University BBA">
+    
+        <!-- JSON-LD (Schema.org) for Course/Educational Program -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Course",
+          "name": "Biznesni boshqarish (BBA)",
+          "description": "Talabalar tadbirkorlik, moliyaviy barqarorlik va strategik boshqaruv bo'yicha to'liq 4 yillik bakalavriat bilimlariga ega bo'ladilar.",
+          "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Diplomat University",
+            "sameAs": "https://diplomat.university/"
+          },
+          "educationalCredentialAwarded": "Bakalavriat darajasi",
+          "occupationalCredentialAwarded": "BBA mutaxassisi",
+          "timeRequired": "P4Y",
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Kunduzgi",
+            "location": "Tashkent, Uzbekistan"
+          }
+        }
+        </script>
+{% endblock extra_head %}
+
+{% block content %}
+    <main>
+        <div class="container">
+                    <section class="admission-hero-elite"
+                        style="background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070') no-repeat center center / cover !important;"
+                        data-aos="zoom-in">
+                        <div class="page-hero-header-premium">
+                            <h1 class="title-premium">
+                                {{ program.title|upper|linebreaksbr }}
+                            </h1>
+                            <div class="premium-line-divider"></div>
+                        </div>
+                    </section>
+                </div>
+        
+                <section class="admission-body-wrapper">
+                    <div class="container">
+        
+                        <div class="row g-4 steps-grid-spaced position-relative justify-content-center mt-4">
+        
+                            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="stat-card-premium active-gold float-anim-1">
+                                    <div class="stat-icon-box">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <h3 class="stat-value">{{ program.duration|upper }}</h3>
+                                    <p class="stat-label">Davomiyligi</p>
+                                    <div class="card-shine"></div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                                <div class="stat-card-premium active-gold float-anim-2">
+                                    <div class="stat-icon-box">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <h3 class="stat-value">{{ program.education_form.title|upper }}</h3>
+                                    <p class="stat-label">Ta'lim shakli</p>
+                                    <div class="card-shine"></div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                                <div class="stat-card-premium active-gold float-anim-3">
+                                    <div class="stat-icon-box">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <h3 class="stat-value">{{ program.degree.title|upper }}</h3>
+                                    <p class="stat-label">Ta'lim darajasi</p>
+                                    <div class="card-shine"></div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                                <div class="stat-card-premium active-gold float-anim-4">
+                                    <div class="stat-icon-box">
+                                        <i class="fas fa-coins"></i>
+                                    </div>
+                                    <h3 class="stat-value">{{ program.contract_amount|upper }}</h3>
+                                    <p class="stat-label">Kontrakt</p>
+                                    <div class="card-shine"></div>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                        <div class="content-card hero-overlap-card vaw-card-design" data-aos="fade-up"
+                            style="margin-top: 20px;">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6" style="position: relative; z-index: 5;">
+                                    <h2 class="vaw-title">DASTUR SIZGA NIMA <span class="gradient-text">BERADI</span></h2>
+                                    <div class="title-underline"></div>
+                                    <p class="vaw-text">
+                                        {{ program.what_it_gives_text }}
+                                    </p>
+                                    <ul class="vaw-features">
+                                        {% for item in program.what_it_gives_items.all %}
+                                        <li><i class="{{ item.icon }}"></i> {{ item.title }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <div class="vaw-buttons mt-4 mb-4 d-flex flex-wrap gap-3">
+                                        <a href="https://apply.diplomat.university" class="btn-vaw-primary">
+                                            Ro'yxatdan o'tish <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                        <button type="button" class="btn-vaw-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#leadMagnetModal">
+                                            Ariza qoldirish <i class="fas fa-file-signature"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mt-4 mt-lg-0" style="position: relative; z-index: 1;">
+                                    <div class="vaw-image-wrapper">
+                                        {% if program.image %}
+                                        <img src="{{ program.image.url }}" alt="{{ program.title }}" class="vaw-main-img">
+                                        {% else %}
+                                        <img src="{% static 'images/yunalish/students.jpg' %}" alt="Students" class="vaw-main-img">
+                                        {% endif %}
+                                        <div class="gold-border-effect"></div>
+                                        <div class="float-stat-card">
+                                            <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
+                                            <div class="text-box">
+                                                <strong>100%</strong>
+                                                <span>Amaliyot imkoniyati</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="premium-main-card" data-aos="fade-up" style="margin-top: 60px;">
+                            <div class="text-center mb-5">
+                                <h2 class="title-kanit-main">Ta’lim yo‘nalishining afzalliklari </h2>
+                                <div class="divider-gold-center"></div>
+                            </div>
+        
+                            <div class="modern-list-grid">
+                                {% for adv in program.advantages.all %}
+                                <div class="list-card gold-border">
+                                    <i class="{{ adv.icon }} list-icon gold"></i>
+                                    <span>{{ adv.title }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+        
+        
+                        <div class="premium-main-card text-center strategy-section-bg" data-aos="fade-up"
+                            style="margin-top: 80px;">
+        
+                            <h2 class="title-kanit-main text-white">Bizning yondashuv</h2>
+                            <div class="divider-gold-center"></div>
+        
+        
+                            <div class="row mt-5 g-4 justify-content-center">
+                                {% for approach in approaches %}
+                                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="{{ forloop.counter|add:100 }}">
+                                    <div class="strategy-card-elite">
+                                        <div class="icon-circle">
+                                            <i class="{{ approach.icon }}"></i>
+                                        </div>
+                                        <h4 class="card-title">{{ approach.title }}</h4>
+                                        <p class="card-text" style="color:white">
+                                           {{ approach.description }}
+                                        </p>
+                                        <div class="hover-line"></div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Lead Magnet Modal -->
+                <div class="modal fade" id="leadMagnetModal" tabindex="-1" aria-labelledby="leadMagnetModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;">
+                        <div class="modal-content"
+                            style="border-radius: 20px; overflow: hidden; border: none; box-shadow: 0 30px 60px rgba(7,0,107,0.2);">
+                            <div class="modal-header d-flex flex-column align-items-start"
+                                style="background: #0d098d; color: white; border-bottom: none; padding: 35px 40px; position: relative;">
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                    style="position: absolute; top: 20px; right: 20px; opacity: 0.8;"></button>
+                                <h4 class="modal-title w-100 m-0" id="leadMagnetModalLabel"
+                                    style="font-family: 'Unbounded', sans-serif; color:white; font-weight: 800; font-size: 2rem; line-height: 1.1; letter-spacing: 0.5px; opacity: 0.95;">
+                                    ARIZA<br>QOLDARISH
+                                </h4>
+                            </div>
+                            <div class="modal-body" style="padding: 40px; background-color: #ffffff;">
+                                <p class="app-modal-desc"
+                                    style="color: #4a5568; margin-bottom: 30px; font-size: 1rem; line-height: 1.5; font-weight: 400;">
+                                    Iltimos, ma'lumotlaringizni kiriting. Mas'ullarimiz siz bilan tez orada bog'lanadi.</p>
+
+                                <div id="applicationSuccess" style="display:none; text-align:center; padding: 40px 20px;">
+                                    <div style="width:80px; height:80px; border-radius:50%; background: linear-gradient(135deg, #10b981, #059669); margin: 0 auto 20px; display:flex; align-items:center; justify-content:center;">
+                                        <i class="fas fa-check" style="font-size: 2rem; color: white;"></i>
+                                    </div>
+                                    <h4 style="font-family: 'Unbounded', sans-serif; font-weight: 700; color: #1a202c; margin-bottom: 10px;">Ariza qabul qilindi!</h4>
+                                    <p style="color: #4a5568; font-size: 1rem;">Mutaxassislarimiz siz bilan tez orada bog'lanadi.</p>
+                                </div>
+
+                                <form id="programApplicationForm">
+                                    <input type="hidden" id="appProgramId" value="{{ program.id }}">
+                                    <div class="form-group mb-4 position-relative">
+                                        <i class="fas fa-user position-absolute"
+                                            style="top: 50%; left: 24px; transform: translateY(-50%); color: #FFC107; font-size: 1.1rem;"></i>
+                                        <input type="text" id="appFirstName" class="form-control" placeholder="Ismingiz" required
+                                            style="padding: 16px 20px 16px 60px; border-radius: 14px; background-color: #ffffff; border: 1.5px solid #e2e8f0; box-shadow: none; font-size: 1.05rem; color: #2d3748; font-weight: 500;">
+                                    </div>
+                                    <div class="form-group mb-4 position-relative">
+                                        <i class="fas fa-user position-absolute"
+                                            style="top: 50%; left: 24px; transform: translateY(-50%); color: #FFC107; font-size: 1.1rem;"></i>
+                                        <input type="text" id="appLastName" class="form-control" placeholder="Familiyangiz" required
+                                            style="padding: 16px 20px 16px 60px; border-radius: 14px; background-color: #ffffff; border: 1.5px solid #e2e8f0; box-shadow: none; font-size: 1.05rem; color: #2d3748; font-weight: 500;">
+                                    </div>
+                                    <div class="form-group mb-4 position-relative">
+                                        <i class="fas fa-id-badge position-absolute"
+                                            style="top: 50%; left: 24px; transform: translateY(-50%); color: #FFC107; font-size: 1.1rem;"></i>
+                                        <input type="text" id="appMiddleName" class="form-control" placeholder="Sharifingiz"
+                                            style="padding: 16px 20px 16px 60px; border-radius: 14px; background-color: #ffffff; border: 1.5px solid #e2e8f0; box-shadow: none; font-size: 1.05rem; color: #2d3748; font-weight: 500;">
+                                    </div>
+                                    <div class="form-group mb-5 position-relative">
+                                        <i class="fas fa-phone-alt position-absolute"
+                                            style="top: 50%; left: 24px; transform: translateY(-50%); color: #FFC107; font-size: 1.1rem;"></i>
+                                        <input type="tel" id="appPhone" class="form-control" placeholder="+998 (__) ___-__-__" required
+                                            style="padding: 16px 20px 16px 60px; border-radius: 14px; background-color: #ffffff; border: 1.5px solid #e2e8f0; box-shadow: none; font-size: 1.05rem; color: #718096; font-weight: 500; letter-spacing: 0.5px;">
+                                    </div>
+                                    <button type="submit" id="appSubmitBtn"
+                                        class="lm-btn w-100 d-flex justify-content-center align-items-center gap-2"
+                                        style="padding: 18px; border-radius: 14px; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.5px; background: #0d098d; color: #ffffff; border: none; box-shadow: 0 10px 25px rgba(13, 9, 141, 0.3); transition: all 0.3s ease;">
+                                        YUBORISH <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                    <div class="text-center mt-4 d-flex justify-content-center align-items-center gap-2"
+                                        style="font-size: 0.95rem; color: #10b981; font-weight: 600;">
+                                        <i class="fas fa-shield-alt"></i> Ma'lumotlaringiz xavfsizligi kafolatlangan
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </main>
+
+    <script>
+    document.getElementById('programApplicationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('appSubmitBtn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
+        btn.disabled = true;
+
+        const data = {
+            first_name: document.getElementById('appFirstName').value.trim(),
+            last_name: document.getElementById('appLastName').value.trim(),
+            middle_name: document.getElementById('appMiddleName').value.trim(),
+            phone: document.getElementById('appPhone').value.trim(),
+            program_id: document.getElementById('appProgramId').value
+        };
+
+        fetch('/api/program-application/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(r => r.json())
+        .then(result => {
+            if (result.success) {
+                document.getElementById('programApplicationForm').style.display = 'none';
+                document.querySelector('.app-modal-desc').style.display = 'none';
+                document.getElementById('applicationSuccess').style.display = 'block';
+            } else {
+                alert(result.error || "Xatolik yuz berdi.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        })
+        .catch(() => {
+            alert("Tarmoq xatosi. Qayta urinib ko'ring.");
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+    });
+
+    document.getElementById('leadMagnetModal').addEventListener('hidden.bs.modal', function() {
+        document.getElementById('programApplicationForm').reset();
+        document.getElementById('programApplicationForm').style.display = '';
+        document.querySelector('.app-modal-desc').style.display = '';
+        document.getElementById('applicationSuccess').style.display = 'none';
+        const btn = document.getElementById('appSubmitBtn');
+        btn.innerHTML = 'YUBORISH <i class="fas fa-paper-plane"></i>';
+        btn.disabled = false;
+    });
+    </script>
+{% endblock content %}
