@@ -211,11 +211,11 @@
                                     <div class="modern-nc-content">
                                         <div class="modern-nc-date"><i class="far fa-calendar-alt"></i> {{ article.published_date|date:"d-M, Y" }}
                                         </div>
-                                        <a href="#" class="modern-nc-title">{{ article.title }}</a>
+                                        <a href="{% url 'news_detail' article.slug %}" class="modern-nc-title">{{ article.title }}</a>
                                         <div class="modern-nc-excerpt">{{ article.excerpt|safe }}</div>
                                         <div class="modern-nc-footer">
                                             <div class="modern-nc-author"><i class="fas fa-user-circle"></i> {{ article.author }}</div>
-                                            <a href="#" class="modern-nc-readmore"><i
+                                            <a href="{% url 'news_detail' article.slug %}" class="modern-nc-readmore"><i
                                                     class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>

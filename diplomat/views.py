@@ -98,6 +98,21 @@ def analytics(request):
     analytics_list = News.objects.filter(is_published=True, category__slug='tahliliy-materiallar').order_by('-published_date', '-id')
     return render(request, 'analytics.html', {'analytics_list': analytics_list})
 
+def news_detail(request, slug):
+    from .models import News
+    article = get_object_or_404(News, slug=slug, is_published=True)
+    # Ko'rishlar sonini oshirish
+    article.views_count += 1
+    article.save(update_fields=['views_count'])
+    # O'xshash yangiliklar (shu kategoriyadan)
+    related_news = News.objects.filter(
+        is_published=True, category=article.category
+    ).exclude(id=article.id).order_by('-published_date')[:3]
+    return render(request, 'news_detail.html', {
+        'article': article,
+        'related_news': related_news,
+    })
+
 def research(request):
     from .models import Researcher
     researchers = Researcher.objects.all()
