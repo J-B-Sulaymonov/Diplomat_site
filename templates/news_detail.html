@@ -5,584 +5,806 @@
 {% block title %}{{ article.title }} | Diplomat University{% endblock title %}
 
 {% block extra_head %}
-    <link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
-
-    <style>
-        /* =============================================
-           NEWS DETAIL — PREMIUM DESIGN
-           ============================================= */
-        .news-detail-hero {
-            position: relative;
-            width: 100%;
-            height: 450px;
-            overflow: hidden;
-            border-radius: 0 0 30px 30px;
-        }
-
-        .news-detail-hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .news-detail-hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(7, 0, 107, 0.85) 0%, rgba(7, 0, 107, 0.2) 60%, transparent 100%);
-            z-index: 1;
-        }
-
-        .news-detail-hero-content {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            right: 0;
-            z-index: 2;
-            padding: 0 20px;
-        }
-
-        .news-detail-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 193, 7, 0.15);
-            border: 1px solid rgba(255, 193, 7, 0.4);
-            backdrop-filter: blur(10px);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #FFC107;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Kanit', sans-serif;
-            margin-bottom: 20px;
-        }
-
-        .news-detail-badge i {
-            font-size: 0.5rem;
-        }
-
-        .news-detail-hero-title {
-            font-family: 'Kanit', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .news-detail-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .news-detail-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .news-detail-meta-item i {
-            color: #FFC107;
-            font-size: 1rem;
-        }
-
-        /* BREADCRUMB */
-        .news-breadcrumb {
-            background: transparent;
-            padding: 25px 0 15px;
-        }
-
-        .news-breadcrumb a {
-            color: #07006b;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .news-breadcrumb a:hover {
-            color: #FFC107;
-        }
-
-        .news-breadcrumb span {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        .news-breadcrumb i {
-            color: #ccc;
-            margin: 0 10px;
-            font-size: 0.7rem;
-        }
-
-        /* CONTENT AREA */
-        .news-detail-content-wrapper {
-            padding: 50px 0 80px;
-        }
-
-        .news-detail-content {
-            background: #fff;
-            border-radius: 24px;
-            padding: 50px;
-            box-shadow: 0 10px 40px rgba(7, 0, 107, 0.06);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .news-detail-body {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: #333;
-        }
-
-        .news-detail-body p {
-            margin-bottom: 1.5rem;
-        }
-
-        .news-detail-body img {
-            max-width: 100%;
-            border-radius: 16px;
-            margin: 20px 0;
-        }
-
-        .news-detail-body h2,
-        .news-detail-body h3,
-        .news-detail-body h4 {
-            font-family: 'Kanit', sans-serif;
-            color: #07006b;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .news-detail-body blockquote {
-            border-left: 4px solid #FFC107;
-            padding: 20px 25px;
-            margin: 25px 0;
-            background: rgba(255, 193, 7, 0.05);
-            border-radius: 0 12px 12px 0;
-            font-style: italic;
-            color: #555;
-        }
-
-        .news-detail-body ul,
-        .news-detail-body ol {
-            padding-left: 25px;
-            margin-bottom: 1.5rem;
-        }
-
-        .news-detail-body li {
-            margin-bottom: 8px;
-        }
-
-        /* SIDEBAR */
-        .news-detail-sidebar-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 30px rgba(7, 0, 107, 0.06);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            margin-bottom: 30px;
-        }
-
-        .sidebar-title {
-            font-family: 'Kanit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #07006b;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(7, 0, 107, 0.08);
-            position: relative;
-        }
-
-        .sidebar-title::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: #FFC107;
-        }
-
-        /* INFO BOX */
-        .news-info-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .news-info-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-info-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            background: rgba(7, 0, 107, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #07006b;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .news-info-label {
-            font-size: 0.8rem;
-            color: #999;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .news-info-value {
-            font-size: 0.95rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        /* SHARE BUTTONS */
-        .share-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .share-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .share-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            color: #fff;
-        }
-
-        .share-btn-tg { background: #0088cc; }
-        .share-btn-fb { background: #1877f2; }
-        .share-btn-tw { background: #1da1f2; }
-        .share-btn-li { background: #0a66c2; }
-        .share-btn-copy {
-            background: #07006b;
-            cursor: pointer;
-            border: none;
-        }
-
-        /* RELATED NEWS */
-        .related-news-section {
-            padding: 60px 0 80px;
-            background: #f8f9ff;
-        }
-
-        .related-news-title {
-            font-family: 'Kanit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #07006b;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .related-divider {
-            width: 60px;
-            height: 4px;
-            background: #FFC107;
-            border-radius: 2px;
-            margin: 0 auto 40px;
-        }
-
-        /* BACK BUTTON */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 28px;
-            background: #07006b;
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 2px solid #07006b;
-        }
-
-        .back-btn:hover {
-            background: transparent;
-            color: #07006b;
-        }
-
-        .back-btn i {
-            transition: transform 0.3s;
-        }
-
-        .back-btn:hover i {
-            transform: translateX(-5px);
-        }
-
-        /* MODERN NEWS CARD (for related) */
-        .modern-news-card {
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(7, 0, 107, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modern-news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 45px rgba(7, 0, 107, 0.12);
-        }
-
-        .modern-nc-img-wrapper {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .modern-nc-image {
-            width: 100%;
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.6s ease;
-        }
-
-        .modern-news-card:hover .modern-nc-image {
-            transform: scale(1.08);
-        }
-
-        .modern-nc-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #07006b;
-            z-index: 2;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            font-family: 'Kanit', sans-serif;
-            text-transform: uppercase;
-        }
-
-        .modern-nc-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modern-nc-date {
-            font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .modern-nc-date i { color: #FFC107; }
-
-        .modern-nc-title {
-            font-size: 1.05rem;
-            font-family: 'Kanit', sans-serif;
-            color: #07006b;
-            font-weight: 700;
-            line-height: 1.4;
-            margin-bottom: 12px;
-            text-decoration: none;
-            display: block;
-            transition: color 0.3s;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .modern-nc-title:hover { color: #FFC107; }
-
-        .modern-nc-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(7, 0, 107, 0.08);
-            padding-top: 15px;
-            margin-top: auto;
-        }
-
-        .modern-nc-author {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #07006b;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .modern-nc-author i { color: #0d6efd; }
-
-        .modern-nc-readmore {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: #f8faff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #07006b;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-            border: 1px solid rgba(7, 0, 107, 0.05);
-        }
-
-        .modern-news-card:hover .modern-nc-readmore {
-            background: #FFC107;
-            color: #fff;
-            transform: scale(1.1) rotate(-45deg);
-            border-color: #FFC107;
-        }
-
-        /* COPY NOTIFICATION */
-        .copy-toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #07006b;
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            z-index: 9999;
-            transition: transform 0.4s ease;
-            box-shadow: 0 10px 30px rgba(7, 0, 107, 0.3);
-        }
-
-        .copy-toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 992px) {
-            .news-detail-hero { height: 350px; }
-            .news-detail-hero-title { font-size: 1.6rem; }
-            .news-detail-content { padding: 30px 25px; }
-        }
-
-        @media (max-width: 576px) {
-            .news-detail-hero { height: 280px; border-radius: 0 0 20px 20px; }
-            .news-detail-hero-title { font-size: 1.3rem; }
-            .news-detail-content { padding: 25px 20px; }
-            .news-detail-meta { gap: 15px; }
-        }
-    </style>
-
-    <!-- SEO -->
-    <meta name="description" content="{{ article.excerpt|truncatewords:25 }}">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="{{ article.title }}">
-    <meta property="og:description" content="{{ article.excerpt|truncatewords:25 }}">
-    {% if article.image %}
-    <meta property="og:image" content="{{ article.image.url }}">
-    {% endif %}
+<link rel="stylesheet" href="{% static 'css/admission-page.css' %}">
+
+<style>
+    /* =============================================
+       NEWS DETAIL — ULTRA PREMIUM REDESIGN
+       ============================================= */
+
+    /* ---------- HERO SECTION ---------- */
+    .nd-hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        margin-top: 30px;
+        height: 520px;
+    }
+
+    .nd-hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 8s ease;
+    }
+
+    .nd-hero:hover .nd-hero-img {
+        transform: scale(1.05);
+    }
+
+    .nd-hero-gradient {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(180deg,
+                transparent 0%,
+                rgba(7, 0, 50, 0.15) 30%,
+                rgba(7, 0, 50, 0.6) 65%,
+                rgba(7, 0, 50, 0.95) 100%);
+        z-index: 1;
+    }
+
+    .nd-hero-inner {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        padding: 45px 50px;
+    }
+
+    .nd-category-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 18px;
+        border-radius: 50px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-family: 'Kanit', sans-serif;
+        color: #07006b;
+        background: linear-gradient(135deg, #FFC107, #FFD54F);
+        box-shadow: 0 4px 18px rgba(255, 193, 7, 0.4);
+        margin-bottom: 22px;
+    }
+
+    .nd-category-pill i {
+        font-size: 0.55rem;
+    }
+
+    .nd-hero-title {
+        font-family: 'Kanit', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.25;
+        margin-bottom: 24px;
+        max-width: 850px;
+    }
+
+    .nd-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        align-items: center;
+    }
+
+    .nd-meta-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.82rem;
+        font-weight: 500;
+        transition: all 0.3s;
+    }
+
+    .nd-meta-chip:hover {
+        background: rgba(255, 255, 255, 0.18);
+        transform: translateY(-2px);
+    }
+
+    .nd-meta-chip i {
+        color: #FFC107;
+        font-size: 0.85rem;
+    }
+
+    /* ---------- MAIN LAYOUT ---------- */
+    .nd-main-wrapper {
+        padding: 50px 0 90px;
+    }
+
+    /* ---------- ARTICLE BODY ---------- */
+    .nd-article-card {
+        background: #fff;
+        border-radius: 28px;
+        padding: 55px;
+        box-shadow:
+            0 1px 3px rgba(7, 0, 107, 0.03),
+            0 10px 40px rgba(7, 0, 107, 0.06);
+        border: 1px solid rgba(7, 0, 107, 0.04);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nd-article-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #07006b, #FFC107, #07006b);
+        background-size: 200% 100%;
+        animation: gradientShift 4s ease infinite;
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .nd-body {
+        font-size: 1.08rem;
+        line-height: 2;
+        color: #2d2d3a;
+        font-weight: 400;
+    }
+
+    .nd-body p {
+        margin-bottom: 1.6rem;
+    }
+
+    .nd-body img {
+        max-width: 100%;
+        border-radius: 20px;
+        margin: 25px 0;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .nd-body h2, .nd-body h3, .nd-body h4 {
+        font-family: 'Kanit', sans-serif;
+        color: #07006b;
+        margin-top: 2.2rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .nd-body blockquote {
+        position: relative;
+        border: none;
+        padding: 30px 35px 30px 35px;
+        margin: 30px 0;
+        background: linear-gradient(135deg, rgba(7, 0, 107, 0.03), rgba(255, 193, 7, 0.06));
+        border-radius: 18px;
+        font-style: italic;
+        color: #444;
+        border-left: 5px solid #FFC107;
+    }
+
+    .nd-body blockquote::before {
+        content: '\201C';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 5rem;
+        color: rgba(255, 193, 7, 0.2);
+        font-family: Georgia, serif;
+        line-height: 1;
+    }
+
+    .nd-body ul, .nd-body ol {
+        padding-left: 25px;
+        margin-bottom: 1.5rem;
+    }
+
+    .nd-body li {
+        margin-bottom: 10px;
+    }
+
+    /* ---------- BACK NAVIGATION ---------- */
+    .nd-back-row {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nd-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 32px;
+        background: linear-gradient(135deg, #07006b, #0d0d99);
+        color: #fff;
+        border-radius: 60px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.88rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 6px 25px rgba(7, 0, 107, 0.25);
+        letter-spacing: 0.3px;
+    }
+
+    .nd-back-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(7, 0, 107, 0.35);
+        color: #fff;
+    }
+
+    .nd-back-btn i {
+        transition: transform 0.3s;
+    }
+
+    .nd-back-btn:hover i {
+        transform: translateX(-6px);
+    }
+
+    /* ---------- SIDEBAR ---------- */
+    .nd-sidebar-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow:
+            0 1px 3px rgba(7, 0, 107, 0.03),
+            0 8px 30px rgba(7, 0, 107, 0.06);
+        border: 1px solid rgba(7, 0, 107, 0.04);
+        margin-bottom: 28px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nd-sidebar-title {
+        font-family: 'Kanit', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #07006b;
+        margin-bottom: 22px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid rgba(7, 0, 107, 0.06);
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nd-sidebar-title::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 45px;
+        height: 2px;
+        background: linear-gradient(90deg, #FFC107, transparent);
+    }
+
+    .nd-sidebar-title i {
+        color: #FFC107;
+        font-size: 1rem;
+    }
+
+    /* ---------- LATEST NEWS (Mini List) ---------- */
+    .nd-mini-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nd-mini-news {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        background: rgba(7, 0, 107, 0.02);
+        border: 1px solid rgba(7, 0, 107, 0.03);
+    }
+
+    .nd-mini-news:hover {
+        background: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(7, 0, 107, 0.08);
+        border-color: rgba(255, 193, 7, 0.4);
+    }
+
+    .nd-mini-thumb {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .nd-mini-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .nd-mini-title {
+        font-family: 'Kanit', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #07006b;
+        line-height: 1.35;
+        margin-bottom: 6px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color 0.3s;
+    }
+
+    .nd-mini-news:hover .nd-mini-title {
+        color: #FFC107;
+    }
+
+    .nd-mini-date {
+        font-size: 0.72rem;
+        color: #888;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 500;
+    }
+
+    .nd-mini-date i {
+        color: #c4c4c4;
+    }
+
+
+    /* Info Items */
+    .nd-info-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(7, 0, 107, 0.04);
+        transition: all 0.3s;
+    }
+
+    .nd-info-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .nd-info-row:hover {
+        padding-left: 5px;
+    }
+
+    .nd-info-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        transition: all 0.3s;
+    }
+
+    .nd-info-icon.icon-date {
+        background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.2));
+        color: #e6a800;
+    }
+
+    .nd-info-icon.icon-author {
+        background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(13, 110, 253, 0.2));
+        color: #0d6efd;
+    }
+
+    .nd-info-icon.icon-views {
+        background: linear-gradient(135deg, rgba(25, 135, 84, 0.1), rgba(25, 135, 84, 0.2));
+        color: #198754;
+    }
+
+    .nd-info-icon.icon-category {
+        background: linear-gradient(135deg, rgba(111, 66, 193, 0.1), rgba(111, 66, 193, 0.2));
+        color: #6f42c1;
+    }
+
+    .nd-info-label {
+        font-size: 0.72rem;
+        color: #aaa;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 2px;
+    }
+
+    .nd-info-value {
+        font-size: 0.92rem;
+        color: #2d2d3a;
+        font-weight: 600;
+    }
+
+    /* Share Card */
+    .nd-share-card {
+        background: linear-gradient(135deg, #07006b, #100078);
+        border: none;
+        color: #fff;
+    }
+
+    .nd-share-card .nd-sidebar-title {
+        color: #fff;
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nd-share-card .nd-sidebar-title::after {
+        background: linear-gradient(90deg, #FFC107, transparent);
+    }
+
+    .nd-share-card .nd-sidebar-title i {
+        color: #FFC107;
+    }
+
+    .nd-share-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+
+    .nd-share-btn {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nd-share-btn:hover {
+        transform: translateY(-4px) scale(1.05);
+    }
+
+    .nd-share-tg {
+        background: linear-gradient(135deg, #0088cc, #00aaff);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+    }
+
+    .nd-share-fb {
+        background: linear-gradient(135deg, #1877f2, #42a5f5);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+    }
+
+    .nd-share-tw {
+        background: linear-gradient(135deg, #1da1f2, #64b5f6);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3);
+    }
+
+    .nd-share-li {
+        background: linear-gradient(135deg, #0a66c2, #2196f3);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(10, 102, 194, 0.3);
+    }
+
+    .nd-share-copy {
+        background: rgba(255, 255, 255, 0.12);
+        color: #FFC107;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .nd-share-copy:hover {
+        background: #FFC107;
+        color: #07006b;
+    }
+
+    /* ---------- RELATED NEWS ---------- */
+    .nd-related-section {
+        padding: 70px 0 90px;
+        background: linear-gradient(180deg, #f4f6ff 0%, #fff 100%);
+        position: relative;
+    }
+
+    .nd-related-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(255, 193, 7, 0.08), transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .nd-related-header {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .nd-related-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 20px;
+        background: rgba(7, 0, 107, 0.04);
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #07006b;
+        margin-bottom: 18px;
+    }
+
+    .nd-related-label i {
+        color: #FFC107;
+    }
+
+    .nd-related-title {
+        font-family: 'Kanit', sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #07006b;
+    }
+
+    /* Related Card */
+    .nd-rel-card {
+        background: #fff;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(7, 0, 107, 0.06);
+        transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        height: 100%;
+        border: 1px solid rgba(7, 0, 107, 0.04);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nd-rel-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(7, 0, 107, 0.12);
+    }
+
+    .nd-rel-img-wrap {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .nd-rel-img {
+        width: 100%;
+        height: 230px;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.7s ease;
+    }
+
+    .nd-rel-card:hover .nd-rel-img {
+        transform: scale(1.1);
+    }
+
+    .nd-rel-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: linear-gradient(135deg, #FFC107, #FFD54F);
+        padding: 5px 14px;
+        border-radius: 50px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #07006b;
+        z-index: 2;
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+        font-family: 'Kanit', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .nd-rel-body {
+        padding: 24px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nd-rel-date {
+        font-size: 0.78rem;
+        color: #999;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-weight: 500;
+    }
+
+    .nd-rel-date i {
+        color: #FFC107;
+    }
+
+    .nd-rel-title {
+        font-size: 1.05rem;
+        font-family: 'Kanit', sans-serif;
+        color: #07006b;
+        font-weight: 700;
+        line-height: 1.45;
+        margin-bottom: 0;
+        text-decoration: none;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color 0.3s;
+        flex-grow: 1;
+    }
+
+    .nd-rel-title:hover {
+        color: #FFC107;
+    }
+
+    .nd-rel-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(7, 0, 107, 0.06);
+        padding-top: 16px;
+        margin-top: 18px;
+    }
+
+    .nd-rel-author {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .nd-rel-author i {
+        color: #0d6efd;
+    }
+
+    .nd-rel-arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(7, 0, 107, 0.04), rgba(7, 0, 107, 0.08));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #07006b;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    .nd-rel-card:hover .nd-rel-arrow {
+        background: linear-gradient(135deg, #FFC107, #FFD54F);
+        color: #07006b;
+        transform: rotate(-45deg) scale(1.1);
+        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+    }
+
+    /* ---------- TOAST ---------- */
+    .nd-toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(120px);
+        background: linear-gradient(135deg, #07006b, #0d0d99);
+        color: #fff;
+        padding: 14px 30px;
+        border-radius: 60px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        z-index: 9999;
+        transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 12px 40px rgba(7, 0, 107, 0.35);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nd-toast.show {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .nd-toast i {
+        color: #FFC107;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 992px) {
+        .nd-hero { height: 400px; }
+        .nd-hero-title { font-size: 1.8rem; }
+        .nd-hero-inner { padding: 35px 30px; }
+        .nd-article-card { padding: 35px 30px; }
+        .nd-share-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    @media (max-width: 576px) {
+        .nd-hero { height: 320px; border-radius: 18px; margin-top: 20px; }
+        .nd-hero-title { font-size: 1.35rem; }
+        .nd-hero-inner { padding: 25px 20px; }
+        .nd-article-card { padding: 28px 22px; border-radius: 22px; }
+        .nd-meta-row { gap: 10px; }
+        .nd-meta-chip { padding: 6px 12px; font-size: 0.75rem; }
+        .nd-sidebar-card { padding: 25px; }
+    }
+</style>
+
+<!-- SEO -->
+<meta name="description" content="{{ article.excerpt|truncatewords:25 }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ article.title }}">
+<meta property="og:description" content="{{ article.excerpt|truncatewords:25 }}">
+{% if article.image %}
+<meta property="og:image" content="{{ article.image.url }}">
+{% endif %}
 {% endblock extra_head %}
 
 {% block content %}
 <main>
-    <!-- HERO -->
-    <div class="news-detail-hero" data-aos="fade-in">
-        <img src="{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}"
-             alt="{{ article.title }}" class="news-detail-hero-img">
-        <div class="news-detail-hero-overlay"></div>
-        <div class="news-detail-hero-content">
-            <div class="container">
-                {% if article.badge %}
-                <div class="news-detail-badge">
-                    <i class="fas fa-circle"></i> {{ article.badge }}
-                </div>
-                {% endif %}
-                <h1 class="news-detail-hero-title">{{ article.title }}</h1>
-                <div class="news-detail-meta">
-                    <div class="news-detail-meta-item">
+
+    <!-- ====== HERO ====== -->
+    <div class="container">
+        <div class="nd-hero" data-aos="fade-up">
+            <img src="{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}"
+                alt="{{ article.title }}" class="nd-hero-img">
+            <div class="nd-hero-gradient"></div>
+            <div class="nd-hero-inner">
+
+                <div class="nd-meta-row">
+                    <div class="nd-meta-chip">
                         <i class="far fa-calendar-alt"></i> {{ article.published_date|date:"d-M, Y" }}
                     </div>
-                    <div class="news-detail-meta-item">
-                        <i class="fas fa-user-circle"></i> {{ article.author }}
+                    <div class="nd-meta-chip">
+                        <i class="fas fa-user"></i> {{ article.author }}
                     </div>
-                    <div class="news-detail-meta-item">
+                    <div class="nd-meta-chip">
                         <i class="fas fa-eye"></i> {{ article.views_count }} {% trans "ko'rilgan" %}
-                    </div>
-                    <div class="news-detail-meta-item">
-                        <i class="fas fa-folder"></i> {{ article.category.title }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- BREADCRUMB -->
-    <div class="container">
-        <div class="news-breadcrumb" data-aos="fade-up">
-            <a href="{% url 'index' %}">{% trans "Bosh sahifa" %}</a>
-            <i class="fas fa-chevron-right"></i>
-            {% if article.category.slug == 'yangiliklar' %}
-            <a href="{% url 'news' %}">{% trans "Yangiliklar" %}</a>
-            {% else %}
-            <a href="{% url 'analytics' %}">{% trans "Tahliliy materiallar" %}</a>
-            {% endif %}
-            <i class="fas fa-chevron-right"></i>
-            <span>{{ article.title|truncatewords:6 }}</span>
-        </div>
-    </div>
-
-    <!-- CONTENT -->
-    <div class="news-detail-content-wrapper">
+    <!-- ====== CONTENT ====== -->
+    <div class="nd-main-wrapper">
         <div class="container">
-            <div class="row">
-                <!-- MAIN CONTENT -->
+            <div class="row g-4">
+
+                <!-- ARTICLE -->
                 <div class="col-lg-8" data-aos="fade-up">
-                    <div class="news-detail-content">
-                        <div class="news-detail-body">
+                    <div class="nd-article-card">
+                        <h1 class="nd-article-title" style="text-align: center; font-family: 'Kanit', sans-serif; font-weight: 800; color: #07006b; font-size: 2.2rem; margin-bottom: 35px; line-height: 1.3;">{{ article.title }}</h1>
+                        <div class="nd-body">
                             {{ article.content|safe }}
                         </div>
                     </div>
 
-                    <div style="margin-top: 35px;" data-aos="fade-up">
+                    <div class="nd-back-row" data-aos="fade-up">
                         {% if article.category.slug == 'yangiliklar' %}
-                        <a href="{% url 'news' %}" class="back-btn">
+                        <a href="{% url 'news' %}" class="nd-back-btn">
                             <i class="fas fa-arrow-left"></i> {% trans "Barcha yangiliklar" %}
                         </a>
                         {% else %}
-                        <a href="{% url 'analytics' %}" class="back-btn">
+                        <a href="{% url 'analytics' %}" class="nd-back-btn">
                             <i class="fas fa-arrow-left"></i> {% trans "Barcha materiallar" %}
                         </a>
                         {% endif %}
@@ -590,121 +812,112 @@
                 </div>
 
                 <!-- SIDEBAR -->
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <!-- INFO -->
-                    <div class="news-detail-sidebar-card">
-                        <h5 class="sidebar-title">{% trans "Ma'lumot" %}</h5>
-                        <div class="news-info-item">
-                            <div class="news-info-icon"><i class="far fa-calendar-alt"></i></div>
-                            <div>
-                                <div class="news-info-label">{% trans "Sana" %}</div>
-                                <div class="news-info-value">{{ article.published_date|date:"d F, Y" }}</div>
-                            </div>
-                        </div>
-                        <div class="news-info-item">
-                            <div class="news-info-icon"><i class="fas fa-user"></i></div>
-                            <div>
-                                <div class="news-info-label">{% trans "Muallif" %}</div>
-                                <div class="news-info-value">{{ article.author }}</div>
-                            </div>
-                        </div>
-                        <div class="news-info-item">
-                            <div class="news-info-icon"><i class="fas fa-eye"></i></div>
-                            <div>
-                                <div class="news-info-label">{% trans "Ko'rishlar" %}</div>
-                                <div class="news-info-value">{{ article.views_count }}</div>
-                            </div>
-                        </div>
-                        <div class="news-info-item">
-                            <div class="news-info-icon"><i class="fas fa-tag"></i></div>
-                            <div>
-                                <div class="news-info-label">{% trans "Turkum" %}</div>
-                                <div class="news-info-value">{{ article.category.title }}</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="nd-sticky-sidebar">
 
-                    <!-- SHARE -->
-                    <div class="news-detail-sidebar-card">
-                        <h5 class="sidebar-title">{% trans "Ulashish" %}</h5>
-                        <div class="share-buttons">
-                            <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}&text={{ article.title }}"
-                               target="_blank" class="share-btn share-btn-tg" title="Telegram">
-                                <i class="fab fa-telegram-plane"></i>
-                            </a>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
-                               target="_blank" class="share-btn share-btn-fb" title="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
-                               target="_blank" class="share-btn share-btn-tw" title="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ article.title }}"
-                               target="_blank" class="share-btn share-btn-li" title="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <button class="share-btn share-btn-copy" onclick="copyLink()" title="{% trans 'Nusxalash' %}">
-                                <i class="fas fa-link"></i>
-                            </button>
+                        <!-- Related Mini List -->
+                        {% if latest_news %}
+                        <div class="nd-sidebar-card">
+                            <h5 class="nd-sidebar-title">
+                                <i class="fas fa-bolt"></i> 
+                                {% if article.category.slug == 'yangiliklar' %}
+                                    {% trans "So'nggi yangiliklar" %}
+                                {% else %}
+                                    {% trans "So'nggi materiallar" %}
+                                {% endif %}
+                            </h5>
+                            <div class="nd-mini-list">
+                                {% for item in latest_news %}
+                                <a href="{% url 'news_detail' item.slug %}" class="nd-mini-news">
+                                    <div class="nd-mini-thumb" style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');"></div>
+                                    <div class="nd-mini-info">
+                                        <div class="nd-mini-title">{{ item.title|truncatewords:8 }}</div>
+                                        <div class="nd-mini-date"><i class="far fa-clock"></i> {{ item.published_date|date:"d-M, Y" }}</div>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
                         </div>
+                        {% endif %}
+
+                        <!-- Top News Mini List -->
+                        {% if top_news %}
+                        <div class="nd-sidebar-card">
+                            <h5 class="nd-sidebar-title">
+                                <i class="fas fa-fire" style="color: #ff4757;"></i> 
+                                {% if article.category.slug == 'yangiliklar' %}
+                                    {% trans "Top yangiliklar" %}
+                                {% else %}
+                                    {% trans "Top materiallar" %}
+                                {% endif %}
+                            </h5>
+                            <div class="nd-mini-list">
+                                {% for item in top_news %}
+                                <a href="{% url 'news_detail' item.slug %}" class="nd-mini-news">
+                                    <div class="nd-mini-thumb" style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}'); position: relative;">
+                                        <div style="position: absolute; top: -5px; left: -5px; background: #ff4757; color: white; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.75rem; font-weight: 800; border: 2px solid #fff; box-shadow: 0 3px 6px rgba(255, 71, 87, 0.3);">{{ forloop.counter }}</div>
+                                    </div>
+                                    <div class="nd-mini-info">
+                                        <div class="nd-mini-title">{{ item.title|truncatewords:8 }}</div>
+                                        <div class="nd-mini-date"><i class="fas fa-eye"></i> {{ item.views_count }} {% trans "ko'rilgan" %}</div>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- Share Card -->
+                        <div class="nd-sidebar-card nd-share-card">
+                            <h5 class="nd-sidebar-title"><i class="fas fa-share-alt"></i> {% trans "Ulashish" %}</h5>
+                            <div class="nd-share-grid">
+                                <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}&text={{ article.title }}"
+                                    target="_blank" class="nd-share-btn nd-share-tg" title="Telegram">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                                    target="_blank" class="nd-share-btn nd-share-fb" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
+                                    target="_blank" class="nd-share-btn nd-share-tw" title="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ article.title }}"
+                                    target="_blank" class="nd-share-btn nd-share-li" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <button class="nd-share-btn nd-share-copy" onclick="copyLink()"
+                                    title="{% trans 'Nusxalash' %}">
+                                    <i class="fas fa-link"></i>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!-- RELATED NEWS -->
-    {% if related_news %}
-    <section class="related-news-section">
-        <div class="container">
-            <h2 class="related-news-title" data-aos="fade-up">{% trans "O'xshash yangiliklar" %}</h2>
-            <div class="related-divider" data-aos="fade-up"></div>
-
-            <div class="row">
-                {% for item in related_news %}
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
-                    <article class="modern-news-card">
-                        <div class="modern-nc-img-wrapper">
-                            {% if item.badge %}
-                            <div class="modern-nc-badge"><i class="fas fa-circle me-1" style="color:#FFC107;"></i> {{ item.badge }}</div>
-                            {% endif %}
-                            <div class="modern-nc-image"
-                                 style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
-                            </div>
-                        </div>
-                        <div class="modern-nc-content">
-                            <div class="modern-nc-date"><i class="far fa-calendar-alt"></i> {{ item.published_date|date:"d-M, Y" }}</div>
-                            <a href="{% url 'news_detail' item.slug %}" class="modern-nc-title">{{ item.title }}</a>
-                            <div class="modern-nc-footer">
-                                <div class="modern-nc-author"><i class="fas fa-user-circle"></i> {{ item.author }}</div>
-                                <a href="{% url 'news_detail' item.slug %}" class="modern-nc-readmore"><i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    {% endif %}
 
 </main>
 
-<!-- COPY TOAST -->
-<div id="copyToast" class="copy-toast">
-    <i class="fas fa-check-circle me-2"></i> {% trans "Havola nusxalandi!" %}
+<!-- TOAST -->
+<div id="ndToast" class="nd-toast">
+    <i class="fas fa-check-circle"></i> {% trans "Havola nusxalandi!" %}
 </div>
 
 <script>
-function copyLink() {
-    navigator.clipboard.writeText(window.location.href).then(function() {
-        var toast = document.getElementById('copyToast');
-        toast.classList.add('show');
-        setTimeout(function() {
-            toast.classList.remove('show');
-        }, 2000);
-    });
-}
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+            var toast = document.getElementById('ndToast');
+            toast.classList.add('show');
+            setTimeout(function () {
+                toast.classList.remove('show');
+            }, 2500);
+        });
+    }
 </script>
 {% endblock content %}

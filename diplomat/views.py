@@ -97,20 +97,33 @@ def analytics(request):
     from .models import News
     analytics_list = News.objects.filter(is_published=True, category__slug='tahliliy-materiallar').order_by('-published_date', '-id')
     return render(request, 'analytics.html', {'analytics_list': analytics_list})
-
 def news_detail(request, slug):
     from .models import News
     article = get_object_or_404(News, slug=slug, is_published=True)
     # Ko'rishlar sonini oshirish
     article.views_count += 1
     article.save(update_fields=['views_count'])
+    
     # O'xshash yangiliklar (shu kategoriyadan)
     related_news = News.objects.filter(
         is_published=True, category=article.category
     ).exclude(id=article.id).order_by('-published_date')[:3]
+    
+    # So'nggi yangiliklar/materiallar (shu kategoriyadan)
+    latest_news = News.objects.filter(
+        is_published=True, category=article.category
+    ).exclude(id=article.id).order_by('-published_date')[:3]
+    
+    # Top yangiliklar/materiallar (shu kategoriyadan)
+    top_news = News.objects.filter(
+        is_published=True, category=article.category
+    ).exclude(id=article.id).order_by('-views_count')[:3]
+    
     return render(request, 'news_detail.html', {
         'article': article,
         'related_news': related_news,
+        'latest_news': latest_news,
+        'top_news': top_news,
     })
 
 def research(request):

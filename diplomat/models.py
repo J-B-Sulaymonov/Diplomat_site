@@ -709,6 +709,7 @@ class ShopOrder(models.Model):
     address = models.TextField(blank=True, verbose_name="Manzili (Yetkazib berish uchun)")
     total_price = models.PositiveIntegerField(default=0, verbose_name="Jami summa (so'm)")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new', verbose_name="Holati")
+    note = models.TextField(blank=True, null=True, verbose_name="Izoh")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Buyurtma vaqti")
 
     def __str__(self):
@@ -731,7 +732,9 @@ class ShopOrderItem(models.Model):
     
     @property
     def total_price(self):
-        return self.quantity * self.price
+        qty = self.quantity or 0
+        prc = self.price or 0
+        return qty * prc
 
     def __str__(self):
         return f"{self.product_name} x{self.quantity}"
