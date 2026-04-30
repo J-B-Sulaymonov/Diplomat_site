@@ -753,7 +753,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="{{ article.title }}">
 <meta property="og:description" content="{{ article.excerpt|truncatewords:25 }}">
-{% if article.image %}
+{% if article.detail_image %}
+<meta property="og:image" content="{{ article.detail_image.url }}">
+{% elif article.image %}
 <meta property="og:image" content="{{ article.image.url }}">
 {% endif %}
 {% endblock extra_head %}
@@ -764,7 +766,7 @@
     <!-- ====== HERO ====== -->
     <div class="container">
         <div class="nd-hero" data-aos="fade-up">
-            <img src="{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}"
+            <img src="{% if article.detail_image %}{{ article.detail_image.url }}{% elif article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}"
                 alt="{{ article.title }}" class="nd-hero-img">
             <div class="nd-hero-gradient"></div>
             <div class="nd-hero-inner">
