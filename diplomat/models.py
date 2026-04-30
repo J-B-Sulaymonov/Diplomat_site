@@ -443,7 +443,8 @@ class News(models.Model):
     category = models.ForeignKey(NewsCategory, on_delete=models.CASCADE, related_name='news_set', verbose_name="Turkum")
     title = models.CharField(max_length=500, verbose_name="Sarlavha")
     slug = models.SlugField(max_length=500, unique=True, verbose_name="URL Slug")
-    image = models.ImageField(upload_to="news/", verbose_name="Rasm")
+    image = models.ImageField(upload_to="news/", verbose_name="Ro'yxat sahifasi rasmi (Asosiy)")
+    detail_image = models.ImageField(upload_to="news/details/", null=True, blank=True, verbose_name="Batafsil sahifa rasmi (Ichkari)")
     
     badge = models.CharField(max_length=100, blank=True, null=True, verbose_name="Yorliq (Badge)", help_text="M-n: Dolzarb, Xalqaro")
     
