@@ -811,7 +811,7 @@
                                 <div class="col-lg-4">
                                     <div class="news-image-wrapper">
                                         <div class="news-image"
-                                            style="background-image: url('{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
+                                            style="background-position: center {{ article.image_position_y }}%; background-image: url('{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
                                         </div>
                                     </div>
                                 </div>
@@ -868,7 +868,7 @@
                                         style="color:#FFC107;"></i> {{ article.badge }}</div>
                                 {% endif %}
                                 <div class="modern-nc-image"
-                                    style="background-image: url('{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
+                                    style="background-position: center {{ article.image_position_y }}%; background-image: url('{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');">
                                 </div>
                             </div>
                             <div class="modern-nc-content">

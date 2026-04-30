@@ -444,7 +444,17 @@ class News(models.Model):
     title = models.CharField(max_length=500, verbose_name="Sarlavha")
     slug = models.SlugField(max_length=500, unique=True, verbose_name="URL Slug")
     image = models.ImageField(upload_to="news/", verbose_name="Ro'yxat sahifasi rasmi (Asosiy)")
+    image_position_y = models.IntegerField(
+        default=50,
+        verbose_name="Asosiy rasm joylashuvi Y (%)",
+        help_text='0 (tepa), 50 (o\'rta), 100 (past). Masalan teparoqni ko\'rsatish uchun 20-30 qiling. <br><b>Joriy qiymat:</b> <span id="main_pos_val" style="color:#007bff; font-weight:bold; font-size:16px;"></span><script>document.addEventListener("DOMContentLoaded", function(){ var inp = document.getElementById("id_image_position_y"); if(inp){ document.getElementById("main_pos_val").innerText = inp.value + "%"; } });</script>'
+    )
     detail_image = models.ImageField(upload_to="news/details/", null=True, blank=True, verbose_name="Batafsil sahifa rasmi (Ichkari)")
+    detail_image_position_y = models.IntegerField(
+        default=50,
+        verbose_name="Ichki rasm joylashuvi Y (%)",
+        help_text='0 (tepa), 50 (o\'rta), 100 (past). Masalan teparoqni ko\'rsatish uchun 20-30 qiling. <br><b>Joriy qiymat:</b> <span id="pos_val" style="color:#007bff; font-weight:bold; font-size:16px;"></span><script>document.addEventListener("DOMContentLoaded", function(){ var inp = document.getElementById("id_detail_image_position_y"); if(inp){ document.getElementById("pos_val").innerText = inp.value + "%"; } });</script>'
+    )
     
     badge = models.CharField(max_length=100, blank=True, null=True, verbose_name="Yorliq (Badge)", help_text="M-n: Dolzarb, Xalqaro")
     

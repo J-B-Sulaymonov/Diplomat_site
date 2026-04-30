@@ -767,7 +767,7 @@
     <div class="container">
         <div class="nd-hero" data-aos="fade-up">
             <img src="{% if article.detail_image %}{{ article.detail_image.url }}{% elif article.image %}{{ article.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}"
-                alt="{{ article.title }}" class="nd-hero-img">
+                alt="{{ article.title }}" class="nd-hero-img" style="object-position: center {{ article.detail_image_position_y }}%;">
             <div class="nd-hero-gradient"></div>
             <div class="nd-hero-inner">
 
@@ -831,7 +831,7 @@
                             <div class="nd-mini-list">
                                 {% for item in latest_news %}
                                 <a href="{% url 'news_detail' item.slug %}" class="nd-mini-news">
-                                    <div class="nd-mini-thumb" style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');"></div>
+                                    <div class="nd-mini-thumb" style="background-position: center {{ item.image_position_y }}%; background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}');"></div>
                                     <div class="nd-mini-info">
                                         <div class="nd-mini-title">{{ item.title|truncatewords:8 }}</div>
                                         <div class="nd-mini-date"><i class="far fa-clock"></i> {{ item.published_date|date:"d-M, Y" }}</div>
@@ -856,7 +856,7 @@
                             <div class="nd-mini-list">
                                 {% for item in top_news %}
                                 <a href="{% url 'news_detail' item.slug %}" class="nd-mini-news">
-                                    <div class="nd-mini-thumb" style="background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}'); position: relative;">
+                                    <div class="nd-mini-thumb" style="background-position: center {{ item.image_position_y }}%; background-image: url('{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-news.jpg' %}{% endif %}'); position: relative;">
                                         <div style="position: absolute; top: -5px; left: -5px; background: #ff4757; color: white; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.75rem; font-weight: 800; border: 2px solid #fff; box-shadow: 0 3px 6px rgba(255, 71, 87, 0.3);">{{ forloop.counter }}</div>
                                     </div>
                                     <div class="nd-mini-info">

@@ -175,8 +175,34 @@ class NewsCategoryAdmin(TranslationAdmin):
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title',)
 
+from django import forms
+
+class NewsAdminForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = '__all__'
+        widgets = {
+            'image_position_y': forms.NumberInput(attrs={
+                'type': 'range', 
+                'min': '0', 
+                'max': '100', 
+                'step': '1', 
+                'style': 'width: 100%; max-width: 400px; margin-top: 5px;',
+                'oninput': 'document.getElementById("main_pos_val").innerText = this.value + "%"'
+            }),
+            'detail_image_position_y': forms.NumberInput(attrs={
+                'type': 'range', 
+                'min': '0', 
+                'max': '100', 
+                'step': '1', 
+                'style': 'width: 100%; max-width: 400px; margin-top: 5px;',
+                'oninput': 'document.getElementById("pos_val").innerText = this.value + "%"'
+            }),
+        }
+
 @admin.register(News)
 class NewsAdmin(TranslationAdmin):
+    form = NewsAdminForm
     list_display = ('title', 'category', 'published_date', 'views_count', 'is_published')
     list_display_links = ('title',)
     list_filter = ('category', 'is_published', 'published_date')
