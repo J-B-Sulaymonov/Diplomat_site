@@ -228,6 +228,38 @@
                             </div>
                             {% endfor %}
                         </div>
+
+                        <!-- Pagination -->
+                        {% if analytics_list.has_other_pages %}
+                        <div class="row mt-5">
+                            <div class="col-12 d-flex justify-content-center">
+                                <nav>
+                                    <ul class="pagination pagination-lg">
+                                        {% if analytics_list.has_previous %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ analytics_list.previous_page_number }}">&laquo;</a></li>
+                                        {% else %}
+                                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                                        {% endif %}
+                                        
+                                        {% for i in analytics_list.paginator.page_range %}
+                                            {% if analytics_list.number == i %}
+                                                <li class="page-item active"><span class="page-link" style="background-color: #07006b; border-color: #07006b; color: #fff;">{{ i }}</span></li>
+                                            {% else %}
+                                                <li class="page-item"><a class="page-link" href="?page={{ i }}" style="color: #07006b;">{{ i }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        
+                                        {% if analytics_list.has_next %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ analytics_list.next_page_number }}">&raquo;</a></li>
+                                        {% else %}
+                                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        {% endif %}
+
                     </div>
                 </section>
     </main>

@@ -90,12 +90,20 @@ def masters(request):
 
 def news(request):
     from .models import News
-    news_list = News.objects.filter(is_published=True, category__slug='yangiliklar').order_by('-published_date', '-id')
+    from django.core.paginator import Paginator
+    news_qs = News.objects.filter(is_published=True, category__slug='yangiliklar').order_by('-published_date', '-id')
+    paginator = Paginator(news_qs, 18)
+    page_number = request.GET.get('page')
+    news_list = paginator.get_page(page_number)
     return render(request, 'news.html', {'news_list': news_list})
 
 def analytics(request):
     from .models import News
-    analytics_list = News.objects.filter(is_published=True, category__slug='tahliliy-materiallar').order_by('-published_date', '-id')
+    from django.core.paginator import Paginator
+    analytics_qs = News.objects.filter(is_published=True, category__slug='tahliliy-materiallar').order_by('-published_date', '-id')
+    paginator = Paginator(analytics_qs, 18)
+    page_number = request.GET.get('page')
+    analytics_list = paginator.get_page(page_number)
     return render(request, 'analytics.html', {'analytics_list': analytics_list})
 def news_detail(request, slug):
     from .models import News
