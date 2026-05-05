@@ -47,7 +47,7 @@
         content="Diplomat University - O'zbekistondagi zamonaviy ta'lim, ilm-fan va innovatsiyalar uyg'unlashgan, raqobatbardosh kadrlarni tayyorlovchi xalqaro aql markazi.">
     <meta property="og:url" content="https://diplomat.university/">
     <meta property="og:site_name" content="Diplomat University">
-    <meta property="og:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta property="og:image" content="{% static 'images/DULOGO.svg' %}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Diplomat University Banner">
@@ -62,7 +62,7 @@
     <meta name="twitter:title" content="Diplomat University | Xalqaro Ta'lim va Innovatsiyalar Markazi">
     <meta name="twitter:description"
         content="Diplomat University - O'zbekistondagi zamonaviy ta'lim, ilm-fan va innovatsiyalar uyg'unlashgan xalqaro universitet.">
-    <meta name="twitter:image" content="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg">
+    <meta name="twitter:image" content="{% static 'images/DULOGO.svg' %}">
     <meta name="twitter:image:alt" content="Diplomat University Logo">
 
     <!-- JSON-LD (Schema.org) for Google Rich Snippets -->
@@ -72,12 +72,12 @@
       "@graph": [
         {
           "@type": "EducationalOrganization",
-          "@id": "https://diplomat.university/#organization",
+          "@id": "{% static 'images/DULOGO.svg' %}",
           "name": "Diplomat University",
           "url": "https://diplomat.university/",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg",
+            "url": "{% static 'images/DULOGO.svg' %}",
             "width": "200",
             "height": "60"
           },
@@ -161,15 +161,15 @@
                                 {% endif %}
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="{% url 'set-language' 'uz' %}"><img
+                               <li><a class="dropdown-item" href="{% url 'set-language' 'uz' %}"><img
                                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Uzbekistan.svg/20px-Flag_of_Uzbekistan.svg.png"
                                             width="20" class="me-2"> O'zbekcha</a></li>
-                                <li><a class="dropdown-item" href="{% url 'set-language' 'en' %}"><img
+                                 <!-- <li><a class="dropdown-item" href="{% url 'set-language' 'en' %}"><img
                                             src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"
                                             width="20" class="me-2"> English</a></li>
                                 <li><a class="dropdown-item" href="{% url 'set-language' 'ru' %}"><img
                                             src="https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg"
-                                            width="20" class="me-2"> Русский</a></li>
+                                            width="20" class="me-2"> Р СѓСЃСЃРєРёР№</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
             <div class="container">
 
                 <a class="navbar-brand" href="{% url 'index' %}">
-                    <img src="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg"
+                    <img src="{% static 'images/DULOGO.svg' %}"
                         alt="Diplomat University Logo">
                 </a>
 
@@ -268,7 +268,7 @@
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item" href="{% url 'leadership' %}">Jamoamiz</a>
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'legal' %}">Me’yoriy-huquqiy hujjatlar</a>
+                                <li><a class="dropdown-item" href="{% url 'legal' %}">MeвЂ™yoriy-huquqiy hujjatlar</a>
                                 </li>
                                 <li><a class="dropdown-item" href="{% url 'rules' %}">Ichki qoidalar</a></li>
                                 <li><a class="dropdown-item" href="{% url 'news' %}">Yangiliklar</a></li>
@@ -315,7 +315,7 @@
             <div class="row gy-4">
                 <div class="col-lg-3 col-md-12">
                     <div class="footer-brand-box" data-aos="fade-right">
-                        <img src="https://diplomat.university/_nuxt/img/headerLogo.6b30d99.svg"
+                        <img src="{% static 'images/DULOGO.svg' %}"
                             alt="Diplomat University Logo" class="footer-premium-logo">
 
                         <div class="social-pulse-wrapper">
@@ -514,7 +514,7 @@
             chatBtn.addEventListener('click', toggleChat);
             closeMini.addEventListener('click', toggleChat);
 
-            // Agar oldingi sessiya bo'lsa — to'g'ridan-to'g'ri chatga o'tish
+            // Agar oldingi sessiya bo'lsa вЂ” to'g'ridan-to'g'ri chatga o'tish
             if (sessionKey) {
                 screenForm.style.display = 'none';
                 screenMain.style.display = 'flex';
@@ -610,7 +610,7 @@
                     if (data.success) {
                         // Yangi xabar kelganini tekshirish
                         if (data.messages.length > lastMessageCount && lastMessageCount > 0) {
-                            // Yangi admin xabari keldi — bildirishnoma
+                            // Yangi admin xabari keldi вЂ” bildirishnoma
                             if (!chatWindow.classList.contains('open')) {
                                 notificationDot.style.display = 'flex';
                             }
@@ -636,7 +636,7 @@
                 .catch(err => console.error('Xabarlarni yuklashda xato:', err));
             }
 
-            // 6. POLLING — har 5 sekundda yangi xabarlarni tekshirish
+            // 6. POLLING вЂ” har 5 sekundda yangi xabarlarni tekshirish
             function startPolling() {
                 if (pollingInterval) clearInterval(pollingInterval);
                 pollingInterval = setInterval(loadMessages, 5000);

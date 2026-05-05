@@ -35,7 +35,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://diplomat.university',
+    'https://www.diplomat.university', # Agar www subdomeni ham yo'naltirilgan bo'lsa, buni ham qo'shib qo'ygan ma'qul
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -122,8 +125,8 @@ LANGUAGE_CODE = 'uz'
 DEFAULT_LANGUAGE = 1
 LANGUAGES = (
     ('uz', _('Uzbek')),
-    ('en', _('English')),
-    ('ru', _('Russian')),
+    #('en', _('English')),
+    #('ru', _('Russian')),
 )
 
 LOCALE_PATHS = (
@@ -150,3 +153,15 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'allowedContent': True,
+        'extraPlugins': ','.join([
+            'uploadimage',
+            'youtube',
+        ]),
+    },
+}

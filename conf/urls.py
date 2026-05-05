@@ -25,7 +25,7 @@ from diplomat.views import set_language
 from diplomat import views as diplomat_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('du-admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path("set_language/<str:language>", set_language, name="set-language"),
